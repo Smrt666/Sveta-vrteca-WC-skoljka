@@ -20,6 +20,8 @@ Potem uporabiš čarobni ukaz:
 
 in moral bi se ti naložiti projekt v mapo Sveta-vrteca-WC-skoljka. Greš vanjo.
 
+## Uporaba git-a
+
 Za preverjanje verzije programa:
 
 `git status`
