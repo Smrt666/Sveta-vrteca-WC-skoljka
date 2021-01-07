@@ -41,3 +41,7 @@ git push
 ```
 
 `git push` shrani podatke na github.
+
+Da prešteješ število vrstic v datotekah:
+
+`git ls-files | xargs wc -l`
