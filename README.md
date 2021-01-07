@@ -1,4 +1,4 @@
-# Dimenzije
+# Sveta vrteča WC  školjka
 Projekt pri matematiki in informatiki v drugem letniku.
 
 ## Vsebina projekta
