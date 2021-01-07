@@ -42,6 +42,10 @@ git commit -m 'Sporočilo o spremebah. (nekaj besed)'
 git push
 ```
 
+
+
+`git add ime_programa` če želiš shraniti samo določene programe, * pomeni vse.
+
 `git push` shrani podatke na github.
 
 Da prešteješ število vrstic v datotekah:
