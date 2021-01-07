@@ -45,3 +45,19 @@ git push
 Da prešteješ število vrstic v datotekah:
 
 `git ls-files | xargs wc -l`
+
+Za brisanje datotek:
+
+`git rm ime_datoteke`
+
+Za preimenovanje:
+
+`git mv ime_datoteke novo_ime_datoteke`
+
+Za premikanje po mapah:
+
+`git mv ime_datoteke ime_mape`
+
+Za brisanje vseh datotek v mapi:
+
+`git rm -rf ime_mape`
