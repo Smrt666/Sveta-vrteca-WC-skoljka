@@ -133,3 +133,4 @@ dmypy.json
 
 *.exe
 *.o
+*test*
