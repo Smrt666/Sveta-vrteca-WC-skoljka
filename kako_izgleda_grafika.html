@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Animacija</title>
+                <meta charset="utf-8">
+        </head>
+
+        <body>
+                <h1>Velika vrteča se straniščna školjka.</h1>
+                <svg width="1800" height="800"></svg>
+                <script src="https://d3js.org/d3.v6.min.js"></script>
+                <script src="js/library.js"></script>
+                <svg id="svg1" style="margin: 0 auto; display: block;"></svg>
+                <script>
+                        var svg = d3.select("body").select("svg").style('background-color', 'black');
+
+
+                        var bar1 = svg.append("rect").attr("fill", "blue").attr("x", 100).attr("y", 20).attr("height", 20).attr("width", 10)
+
+                        var bar2 = svg.append("rect").attr("fill", "blue").attr("x", 120).attr("y", 20).attr("height", 20).attr("width", 10)
+
+                        update();
+
+                        let x = 0
+                        function update() {
+                                bar1.transition()
+                                        .ease(d3.easeLinear)
+                                        .duration(2000)
+                                        .attr("height", 700)
+
+                                bar2.transition()
+                                        .ease(d3.easeLinear)
+                                        .duration(2000)
+                                        .delay(2000)
+                                        .attr("height", 700)
+                        }
+                </script>
+        </body>	
+</html>
