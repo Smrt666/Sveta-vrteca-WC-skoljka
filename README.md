@@ -42,8 +42,6 @@ git commit -m 'Sporočilo o spremebah. (nekaj besed)'
 git push
 ```
 
-
-
 `git add ime_programa` če želiš shraniti samo določene programe, * pomeni vse.
 
 `git push` shrani podatke na github.
@@ -67,3 +65,7 @@ Za premikanje po mapah:
 Za brisanje vseh datotek v mapi:
 
 `git rm -rf ime_mape`
+
+## Teorija
+
+V Opis/Hiperprostor.tex sem začel s pisanjem osnovne teorije. (pa mal  vadm LaTeX)
