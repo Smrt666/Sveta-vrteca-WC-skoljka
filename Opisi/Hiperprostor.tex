@@ -2,7 +2,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{greek}
 
 \usepackage{witharrows}
 \usepackage[utf8]{inputenc}
@@ -10,7 +9,7 @@
 
 \usepackage{tikz}     % tole je za koordinatni sistem
 \usepackage{verbatim} % tole sm vidu zraven, najbrž rabš
-\usetikzlibrary{arrows}
+\usetikzlibrary{angles, arrows, quotes}
 
 \title{Transformacije prostora}
 \author{Jošt Smrtnik}
@@ -58,8 +57,15 @@
            \draw[-stealth, line width=0.5mm, shorten <= -1mm] (nula) to node [below=7pt] {$\vec{i}$} (b);
            
            % kot
+           \draw pic[draw,angle radius=2cm, "$\alpha$" shift={(6mm,1mm)}] {angle=b--nula--a};
+           %\draw pic[draw,fill=blue!30,angle radius=0.7cm,"$\epsilon$" shift={(-3mm,5mm)}] {angle=b--a--c};
+           
            \coordinate (skornula) at (-0.01, 0);
            \draw(skornula) -- ++(0.9cm,0) arc(0:{atan(1/2)}:0.9cm) node[midway,left] {$\varphi$} -- cycle;
+           
+           \coordinate (skornula) at (-0.01, 0);
+           \draw(skornula) -- ++(0,0.9cm) arc(0:{atan(1/2)+90}:0.9cm) node[midway,left] {$\varphi$} -- cycle;
+
            
            \node[above,font=\large\bfseries] at (current bounding box.north) {Prikaz vrtenja od $x$ proti $y$ osi};
         \end{tikzpicture}
