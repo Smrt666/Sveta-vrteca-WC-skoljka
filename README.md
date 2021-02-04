@@ -68,4 +68,25 @@ Za brisanje vseh datotek v mapi:
 
 ## Teorija
 
-V Opis/Hiperprostor.tex sem začel s pisanjem osnovne teorije. (pa mal  vadm LaTeX)
+### Celih dimenzij
+
+* lastnosti osnovnih oblik
+* obnašanje vektorjev pri translacijah, rotacijah
+
+### Ne celih dimenzij
+
+* definicija dimenzij
+* fraktali
+* ostalo
+
+## Praktičen del
+
+### Celih dimenzij
+
+N-D svet - grafični prikaz preprostih oblik v poljubno dimenzionalnem svetu.
+
+### Ne celih dimenzij
+
+1. Opis parih fraktalov
+2. Način risanja fraktalov
+3. Par jih narišeš
