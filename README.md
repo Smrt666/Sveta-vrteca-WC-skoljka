@@ -70,6 +70,7 @@ Za brisanje vseh datotek v mapi:
 
 ### Celih dimenzij
 
+* lastnosti prostorov
 * lastnosti osnovnih oblik
 * obnašanje vektorjev pri translacijah, rotacijah
 
