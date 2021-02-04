@@ -134,3 +134,7 @@ dmypy.json
 *.exe
 *.o
 *test*
+*.pdf
+*.gz
+*.aux
+*.dvi
