@@ -10,16 +10,6 @@ Končni izdelek bo spletna stran o prostorskih dimenzijah.Projekt bo vseboval:
 * Prokazovalnik večdimenzionalnega sveta, kjer je število dimenzij naravno število
 * izrisovalnik fraktalov
 
-## Priprava lokalnega git repositorija
-
-Najprej naloži [Git for Windows](https://gitforwindows.org/), če ga še nimaš. Vpišeš se noter.
-
-Potem uporabiš čarobni ukaz:
-
-`git clone https://github.com/Smrt666/Sveta-vrteca-WC-skoljka`
-
-in moral bi se ti naložiti projekt v mapo Sveta-vrteca-WC-skoljka. Greš vanjo.
-
 ## Uporaba git-a - za Jošta in Andreja
 
 Za preverjanje verzije programa:
