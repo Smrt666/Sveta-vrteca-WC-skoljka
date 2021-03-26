@@ -1,2 +1,2 @@
-from PreizkusMDGrafike.univerze import *
+from PreizkusMDGrafike.universe import *
 main()
