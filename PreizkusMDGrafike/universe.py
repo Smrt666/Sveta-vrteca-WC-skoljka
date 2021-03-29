@@ -14,6 +14,8 @@ except ModuleNotFoundError:
         raise ModuleNotFoundError("Manjka pygame modul.")
 color = pygame.color.THECOLORS
 
+from random import randint
+
 def Text(text, pos, screen):
         """
         text se izpiše na zaslonu na mestu pos.
@@ -42,6 +44,7 @@ def main():
         screen = pygame.display.set_mode(size, pygame.RESIZABLE)
         size = screen_width, screen_height = pygame.display.get_surface().get_size()
 
+        rot = [randint(-20, 20)/10 for i in range(dimensions - 1)]
         holding = dict()
         while True:
                 for event in pygame.event.get():
@@ -61,7 +64,7 @@ def main():
                         return 0
 
                 # Izračuanaj vse
-                view.rotate([1]*(dimensions - 1))
+                view.rotate(rot)
                 to_draw = []
                 trans, rotmat = mover_and_rotator(view)
                 for triangle in shape.triangles:
