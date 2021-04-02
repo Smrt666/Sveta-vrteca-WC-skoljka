@@ -127,6 +127,16 @@ function matrix_inv(matrix) {
         // console.log(matrix_str(tmp));
         // Vrstico po vrstico
         for (let y = 0; y < size; y++) {
+                if (tmp[y][y] == 0) {
+                        for (let yi = y; yi < size; yi++){
+                                if (tmp[yi][y] != 0) {
+                                        for (let x = 0; x < size*2; x++) {
+                                                tmp[y][x] = tmp[y][x] + tmp[yi][x];
+                                        }
+                                        break;
+                                }
+                        }
+                }
                 factor = 1/tmp[y][y];
                 // stolpec po stolpec
                 for (let x = y; x < size*2; x++) {
