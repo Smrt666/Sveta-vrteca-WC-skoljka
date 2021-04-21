@@ -1,18 +1,17 @@
 function matrix_add(left, right) {
-        let height = left.length;
-        let width;
-        if (height > 0){
-                width = left[0].length;
+        _height = left.length;
+        if (_height > 0){
+                _width = left[0].length;
         }else {
                 return undefined;
         }
-        let r = Array(height);
-        for (let y = 0; y < height; y++) {
-                r[y] = Array(width);                       
+        r = Array(_height);
+        for (let y = 0; y < _height; y++) {
+                r[y] = Array(_width);                       
         }
 
-        for (let y = 0; y < height; y++) {
-                for (let x = 0; x < width; x++) {
+        for (let y = 0; y < _height; y++) {
+                for (let x = 0; x < _width; x++) {
                         r[y][x] = left[y][x] + right[y][x];
                 }
                 
@@ -21,20 +20,19 @@ function matrix_add(left, right) {
 }
 
 function matrix_sub(left, right) {
-        let height = left.length;
-        let width;
-        if (height > 0) {
-                width = left[0].length;
+        _height = left.length;
+        if (_height > 0) {
+                _width = left[0].length;
         } else {
                 return undefined;
         }
-        let r = Array(height);
-        for (let y = 0; y < height; y++) {
-                r[y] = Array(width);
+        r = Array(_height);
+        for (let y = 0; y < _height; y++) {
+                r[y] = Array(_width);
         }
 
-        for (let y = 0; y < height; y++) {
-                for (let x = 0; x < width; x++) {
+        for (let y = 0; y < _height; y++) {
+                for (let x = 0; x < _width; x++) {
                         r[y][x] = left[y][x] - right[y][x];
                 }
 
@@ -43,16 +41,14 @@ function matrix_sub(left, right) {
 }
 
 function matrix_mul(left, right) {
-        let lh = left.length;
-        let lw;
+        lh = left.length;
         // Praznih matrik ne moremo pomnožiti
         if (lh > 0) {
                 lw = left[0].length;
         } else {
                 return undefined;
         }
-        let rh = right.length;
-        let rw;
+        rh = right.length;
         if (rh > 0) {
                 rw = right[0].length;
         } else {
@@ -65,7 +61,7 @@ function matrix_mul(left, right) {
         } else {return undefined;}
 
         // Zgradimo prazno matriko, kamor bomo shranili rezultat
-        let r = Array(h);
+        r = Array(h);
         for (let y = 0; y < h; y++) {
                 r[y] = Array(w);
         }
@@ -73,7 +69,7 @@ function matrix_mul(left, right) {
         // izračunamo rezultat
         for (let yleft = 0; yleft < lh; yleft++) {
                 for (let xright = 0; xright < rw; xright++) {
-                        let sum = 0
+                        sum = 0
                         for (let yright = 0; yright < rh; yright++) {
                                 xleft = yright;
                                 sum += left[yleft][xleft] * right[yright][xright];                                
@@ -86,11 +82,11 @@ function matrix_mul(left, right) {
 }
 
 function matrix_str(matrix) {
-        let r = "";
+        r = "";
         for (let y = 0; y < matrix.length; y++) {
-                let line = matrix[y];
+                line = matrix[y];
                 for (let x=0; x < line.length; x++) {
-                        let number = line[x];
+                        number = line[x];
                         r += number.toString() + " ";
                 }
                 r += "\n";
@@ -99,20 +95,19 @@ function matrix_str(matrix) {
 }
 
 function matrix_inv(matrix) {
-        let size = matrix.length;
-        let width;
+        size = matrix.length;
         // Če je matrika prazna ali pa če ni kvadratna, vrnemo undefined
         if (size > 0) {
-                width = matrix[0].length;
+                _width = matrix[0].length;
         } else {
                 return undefined;
         }
-        if (size != width) {
+        if (size != _width) {
                 return undefined;
         }
         
         // Pripravimo pomožno matriko z desnim delom identiteto in levim matrix
-        let tmp = Array(size);
+        tmp = Array(size);
         for (let y = 0; y < size; y++) {
                 tmp[y] = Array(size*2);
         }
@@ -142,7 +137,7 @@ function matrix_inv(matrix) {
                                 }
                         }
                 }
-                let factor = 1/tmp[y][y];
+                factor = 1/tmp[y][y];
                 // stolpec po stolpec
                 for (let x = y; x < size*2; x++) {
                         // najprej celotno vrstico pomnožimo s factor
@@ -153,7 +148,7 @@ function matrix_inv(matrix) {
                         // krat k, tako da se znebimo x-tega stolpca
                         // ne odštevamo samo od y-te vrstice
                         if (yi != y){
-                                let k = tmp[yi][y];
+                                k = tmp[yi][y];
                                 // console.log(k);
                                 for (let x = y; x < size*2; x++){
                                         tmp[yi][x] = tmp[yi][x] - tmp[y][x] * k;
@@ -165,7 +160,7 @@ function matrix_inv(matrix) {
 
         }
 
-        let r = Array(size);
+        r = Array(size);
         for (let y = 0; y < size; y++) {
                 r[y] = Array(size);
                 for (let x = 0; x < size; x++) {

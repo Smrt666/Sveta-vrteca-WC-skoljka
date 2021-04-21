@@ -138,3 +138,5 @@ dmypy.json
 *.gz
 *.aux
 *.dvi
+view.js
+tasks.json
