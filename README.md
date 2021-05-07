@@ -60,15 +60,16 @@ Za brisanje vseh datotek v mapi:
 
 ### Celih dimenzij
 
-* lastnosti prostorov
 * lastnosti osnovnih oblik
-* obnašanje vektorjev pri translacijah, rotacijah
+* kompleksna števila
+* kvaternioni
+* matrike, vektorji
 
 ### Ne celih dimenzij
 
-* definicija dimenzij
-* fraktali
-* ostalo
+* fraktalna definicija dimenzij
+* samopodobni fraktali
+* nesamopodbni fraktali
 
 ## Praktičen del
 
@@ -81,3 +82,12 @@ N-D svet - grafični prikaz preprostih oblik v poljubno dimenzionalnem svetu.
 1. Opis parih fraktalov
 2. Način risanja fraktalov
 3. Par jih narišeš
+
+## Pisanje enačb
+Znotraj besedila \(\frac{1}{2}\)
+$$ 1 + 2 = 3 $$
+
+podpisano:
+ x_{to je spodej}^{to je zgorej}
+ \phi \alpha
+
