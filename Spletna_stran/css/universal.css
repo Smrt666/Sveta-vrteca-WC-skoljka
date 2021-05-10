@@ -1,0 +1,22 @@
+nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.teorija{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  flex-wrap: wrap;
+}
+
+.praktika{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  flex-wrap: wrap;
+}
+
+.nav-element:hover{
+  background-color: brown;
+}

@@ -61,9 +61,10 @@ Za brisanje vseh datotek v mapi:
 ### Celih dimenzij
 
 * lastnosti osnovnih oblik
-* kompleksna števila
+* kompleksna števila (argument, množenje - rotacija, seštevanje - premikanje, korenjenje, zrcaljenje)
 * kvaternioni
-* matrike, vektorji
+* matrike, vektorji (definicija, lastnosti, n+1 dimenzij - pospešena grafika)
+* projekcija
 
 ### Ne celih dimenzij
 
@@ -84,10 +85,14 @@ N-D svet - grafični prikaz preprostih oblik v poljubno dimenzionalnem svetu.
 3. Par jih narišeš
 
 ## Pisanje enačb
+
 Znotraj besedila \(\frac{1}{2}\)
-$$ 1 + 2 = 3 $$
+
+$$
+1 + 2 = 3
+
+$$
 
 podpisano:
- x_{to je spodej}^{to je zgorej}
- \phi \alpha
-
+x_{to je spodej}^{to je zgorej}
+\phi \alpha
