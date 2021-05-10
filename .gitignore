@@ -142,3 +142,10 @@ view.js
 tasks.json
 *.doc
 *.docx
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.fls
+*.ps
+*.fdb_latexmk

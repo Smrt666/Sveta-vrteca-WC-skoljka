@@ -1,0 +1,49 @@
+\documentclass[a4paper, 12px]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{biblatex}
+\addbibresource{viri-projekcija.bib}
+
+\usepackage{witharrows}
+
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, angles, quotes, calc, patterns}
+
+\usepackage[utf8]{inputenc}
+\usepackage[slovene]{babel}
+
+\title{Projekcija \\[1ex] \large Del teorije pri projektnem delu v drugem letniku}
+
+\begin{document}
+\maketitle
+
+\section{3D projekcija}
+    3D projekcija oziroma grafična projekcija je tehnika, ki se uporablja za prikaz 3 dimenzionalnih objektov na 
+    2 dimenzionalno ravnino. Obstaja več različnih vrst projekcij. V grobem se delijo na paralelne 
+    in perspektivne. Pri paralelnih vzporedne daljice v prostoru obdržijo vzporednost tudi po 
+    projekciji na ravnino. Pri perspektivnih pa se z oddaljenostjo od gledišča razdalje manjšajo.
+    Pri perspektivnih projekcijah lahko ravne črte ostanejo ravne in se razdalje manjšajo samo v 
+    eno smer, dve ali pa tri, lahko pa ravne črte postanejo krive.
+    \cite{3D-projection}
+
+\section{Računanje projekcije}
+    Vidno polje \\
+    \begin{tikzpicture}
+        \coordinate (origin) at (0, 0);
+        \node[anchor=north east] at (origin) {Mesto opazovalca};
+        \coordinate (direction) at (10, 0);
+        \coordinate (upfin) at (10, 5);
+        \coordinate (botfin) at (10, -5);
+        \draw[-stealth] (origin) -- (direction) node[anchor=west] {Smer pogleda};
+        \draw[-stealth] (origin) -- (upfin);
+        \draw[-stealth] (origin) -- (botfin);
+        \pic [draw, angle eccentricity=1.5, angle radius=5cm] {angle = direction--origin--upfin};
+        \node at (2,0.5) {$\varphi$};
+    \end{tikzpicture}
+
+% biber projekcija-teorija
+\printbibliography
+
+\end{document}
