@@ -2,6 +2,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{gensymb}
 
 \usepackage{biblatex}
 \addbibresource{viri-projekcija.bib}
@@ -18,6 +20,7 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 \section{3D projekcija}
     3D projekcija oziroma grafična projekcija je tehnika, ki se uporablja za prikaz 3 dimenzionalnih objektov na 
@@ -25,23 +28,78 @@
     in perspektivne. Pri paralelnih vzporedne daljice v prostoru obdržijo vzporednost tudi po 
     projekciji na ravnino. Pri perspektivnih pa se z oddaljenostjo od gledišča razdalje manjšajo.
     Pri perspektivnih projekcijah lahko ravne črte ostanejo ravne in se razdalje manjšajo samo v 
-    eno smer, dve ali pa tri, lahko pa ravne črte postanejo krive.
+    eno smer, dve ali pa tri, lahko pa tudi ravne črte, ki ne ležijo na oseh, postanejo krive.
     \cite{3D-projection}
 
 \section{Računanje projekcije}
-    Vidno polje \\
+    Skica \\
     \begin{tikzpicture}
         \coordinate (origin) at (0, 0);
-        \node[anchor=north east] at (origin) {Mesto opazovalca};
+        \node[anchor=north east] at (origin) {$O\left(0, 0\right)$};
         \coordinate (direction) at (10, 0);
         \coordinate (upfin) at (10, 5);
         \coordinate (botfin) at (10, -5);
-        \draw[-stealth] (origin) -- (direction) node[anchor=west] {Smer pogleda};
+        \draw[-] (2, 1) -- (2, -1) node[anchor=south west] {Zaslon}; % Tukaj je zaslon
+        \draw[-stealth] (origin) -- (direction) node[anchor=west] {Smer pogleda ($y$)};
+        \draw[-stealth] (0, -5) -- (0, 5) node[anchor=west] {Smer $x$};
         \draw[-stealth] (origin) -- (upfin);
         \draw[-stealth] (origin) -- (botfin);
         \pic [draw, angle eccentricity=1.5, angle radius=5cm] {angle = direction--origin--upfin};
-        \node at (2,0.5) {$\varphi$};
-    \end{tikzpicture}
+        \node at (4,1) {$\varphi$};
+        \draw (7,3.5) node[circle,fill,inner sep=1pt,label=above:\text{$T_0\left(x_0, y_0\right)$}](a){};
+        \draw (7,0) node[circle,fill,inner sep=1pt,label=above:\text{$T_1\left(x_1, y_1\right)$}](a){};
+        \draw (7,2) node[circle,fill,inner sep=1pt,label=above:\text{$T_2\left(x_2, y_2\right)$}](a){};
+        \draw (8,2.2857) node[circle,fill,inner sep=1pt,label=right:\text{$T_3\left(x_3, y_3\right)$}](a){};
+        \draw (8,4) node[circle,fill,inner sep=1pt,label=right:\text{$T_4\left(x_4, y_4\right)$}](a){};
+
+        \draw (2,1) node[circle,fill,inner sep=1pt,label=right:\text{$T'_0$}](a){};
+        \draw (2,0) node[circle,fill,inner sep=1pt,label=right:\text{$T'_1$}](a){};
+        \draw (2,0.5714) node[circle,fill,inner sep=1pt,label=right:\text{$T'_{2,3}$}](a){};
+        \draw[-stealth, dotted] (origin) -- (10, 2.857);
+    \end{tikzpicture}\\
+    Da si lažje predstavljamo kako točke projicirati, si problem narišemo v ravnini.
+    Določimo mesto opazovalca, najlažje kar v točki $O\left(0, 0\right)$. 
+    Vedeti moramo tudi širino zaslona $w$ in njegovo višino $h$. Razmerje med stranicama zaslona naj bo $a = \frac{h}{w}$.
+    Velikost vidnega polja je v primeru na sliki $2\varphi$. Ko računamo projekcijo, je ta kot navadno večji kot v 
+    primeru, recimo $90\degree$.\\
+
+    Vse točke, ki so na isti premici, ki gre skozi točko $O$, se preslikajo na isto mesto na zaslonu.
+    Zato vsem točkam koordianto $x$ (in $z$) delimo z največjo vidno, pri tisti oddaljenosti od zaslona.
+    (Primer na sliki ima 3 točke, vse za $y_0 = y_1 = y_2$ oddaljene od zaslona. $T_0$ ima največjo še vidno $x$
+    koordinato, pri tej oddaljenosti od zaslona. Če bi bila večja, bi bila na sliki višje, kar je že izven vidnega polja.
+    Ko delimo $x_0$ z $x_0$, dobimo $1$, ki je naječja vrednost, ki jo lahko na takšen način dobimo, drugače točka ni vidna.
+    Točke na $y$ osi imajo $x$ (in $z$) koordinato $0$, $0$ deljeno z največjim $x$ pri tisti oddaljenosti od $O$, 
+    bo pa vedno nič. Edina težava je, če je ta točka pri $y = 0$, ampak takšnih primerov ne rišemo.
+    Točki $T_2$ in $T_3$ ležita na isti premici skozi $O$, zato se morata projicirati na isto mesto na zaslonu.
+    Iz podobnih trikotnikov sledi, da je razmerje $x_2 : y_2 = x_3 : y_3$ in $x_0 : y_0 = x_4 : y_4$,
+    ker sta pa $y_0 = y_2$ in $y_3 = y_4$, sledi $x_3 : x_2 = x_4 : x_0$, kar pa pomeni $x_4 : x_3 = x_0 : x_2$.
+    Skupaj s tem, da se ohranijo razmerja razdalj na premicah, vzporednih z $x$ osjo, pa to točno to, kar potrebujemo.)\\
+
+    V splošnem to dosežemo tako, da koordinati $x$ (in $z$) delimo z $R\tan{\varphi}$. R je tukaj oddaljenost točke od zaslona,
+    torej je v primeru na sliki $R = y$, v več dimenzijah bi bilo pa $R = \sqrt{y^2 + w^2 + c_4^2 + c_5^2 + \dots + c_{n-1}^2}$,
+    kjer smo koordinate po vrsti označili z $x, y, z, w, c_4, c_5, \dots, c_{n-1}$, $n$ je pa število dimenzij.
+    $R\tan{\varphi}$ je največja vidna koordinata $x$ (in $z$) pri dani oddaljenosti od zaslona $R$.
+    S tem, ko smo vsako točko pomnožili z $s = \frac{1}{\tan{\varphi}}$ in delili z $R$, ima vsaka nova točka koordinati $x$ in $z$ med $-1$ in $1$. \\
+
+    Preostane nam samo še postavljanje vidnih točk na zaslon $w \times h$. To dosežemo tako, da prvo koordinato pomnožimo
+    z razmerjem stranic zaslona $a$, potem pa obema prištejemo $1$ in ju pomnožimo z velikostjo zaslona. Pri tem ne smemo
+    pozabiti, da je to prištevanje $1$ ker je na zaslonih točka $\left(0, 0\right)$ v zgornjem levem kotu, $x$ koordinata
+    se veča v desno, $y$ pa navzdol. Zaradi tega, moramo tudi drugače obrniti predmete, ki jih projiciramo, ali pa pomnožiti
+    $z$ z $-1$. Torej se točka $T\left(x, y, z\right)$ projicira v 
+    $T'\left(\left(\frac{h}{w} \cdot \frac{x}{y \cdot \tan{\varphi}} + 1\right) \cdot \frac{w}{2},
+    \left(\frac{z}{y \cdot \tan{\varphi}} + 1\right) \cdot \frac{h}{2} \right)$, 
+    kjer je $T'$ točka na zaslonu. Če preoblikujemo izraz, postane 
+    $$T'\left(\left(a \cdot x \cdot s \cdot \frac{1}{R} + 1\right) \cdot \frac{w}{2},
+    \left(z \cdot s \cdot \frac{1}{R} + 1\right) \cdot \frac{h}{2} \right)$$
+    Koordinate točk $T'$ so v koordinatah zaslona, ne začetnega prostora.
+    \cite{ProjectionVideo}
+
+\section{Manipulacija prostora}
+    V prejšnjem poglavju je opisan postopek projiciranja točk na ravnino $xz$.
+    Ker pa se lahko smer in položaj opazovalca spreminjata, je potrebno temu primerno premikati
+    točke po prostoru, da se doseže učinek premikanja opazovalca.
+    \subsection{Rotacije}
+    \subsection{Translacije}
 
 % biber projekcija-teorija
 \printbibliography

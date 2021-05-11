@@ -149,3 +149,4 @@ tasks.json
 *.fls
 *.ps
 *.fdb_latexmk
+*.toc
