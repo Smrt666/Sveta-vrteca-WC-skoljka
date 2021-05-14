@@ -31,6 +31,27 @@ function distance_around(a, b, d) {
         }
 }
 
+function eq(arr1, arr2) {
+        if (arr1.length != arr2.length) {
+                return false;
+        }
+        for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] != arr2[i]) {
+                        return false;
+                }
+        }
+        return true;
+}
+
+function is_in(arr, v) {
+        for (let i = 0; i < arr.length; i++) {
+                if (eq(arr[i], v)) {
+                        return true;
+                }
+        }
+        return false;
+}
+
 function move_to_center(point) {
         let x = point[0];
         let y = point[1];

@@ -20,10 +20,10 @@ function createTesseract(dimensions) {
 
 function tesseractSides(dimensions) {
   if (dimensions > 8) {
-    dimensions = 3;
+    //dimensions = 3;
   }
   let vertices = createTesseract(dimensions);
-  let r = new Set();
+  let r = [];
   for (let a = 0; a < vertices.length; a++) {
     for (let b = 0; b < vertices.length; b++) {
       if (distance_around(vertices[a], vertices[b], 2) && (a != b)) {
@@ -35,8 +35,13 @@ function tesseractSides(dimensions) {
                 let tmp1 = [vertices[b], vertices[c], vertices[d], vertices[a]];
                 let tmp2 = [vertices[c], vertices[d], vertices[a], vertices[b]];
                 let tmp3 = [vertices[d], vertices[a], vertices[b], vertices[c]];
-                if ((!r.has(tmp0)) && (!r.has(tmp1)) && (!r.has(tmp2)) && (!r.has(tmp3))) {
-                  r.add(tmp0);
+
+                let tmp4 = [vertices[d], vertices[c], vertices[b], vertices[a]];
+                let tmp5 = [vertices[c], vertices[b], vertices[a], vertices[d]];
+                let tmp6 = [vertices[b], vertices[a], vertices[d], vertices[c]];
+                let tmp7 = [vertices[a], vertices[d], vertices[c], vertices[b]];
+                if ((!is_in(r, tmp0)) && (!is_in(r, tmp1)) && (!is_in(r, tmp2)) && (!is_in(r, tmp3)) && (!is_in(r, tmp4)) && (!is_in(r, tmp5)) && (!is_in(r, tmp6)) && (!is_in(r, tmp7))) {
+                  r.push(tmp0);
                 }
               }              
             }
@@ -45,5 +50,5 @@ function tesseractSides(dimensions) {
       }
     }
   }
-  return Array.from(r);
+  return r;
 }
