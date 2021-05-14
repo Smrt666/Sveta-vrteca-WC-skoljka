@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liki</title>
+    <link rel="stylesheet" type="text/css" href="../../css/universal.css">
+    <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header><h1>Liki</h1></header>
+  <nav></nav>
+  <div class="content">
+    <section>
+      <p>
+        <input type="range" min="0" max="36" value="3" class="slider" id="sides" style="width: 100%;"> <br>
+        <canvas id="canvas" style="width: 100%; height: 100%; border:1px solid #d3d3d3; background-color: white;">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+      </p>
+    </section>
+  </div>
+</body>
+<script>
+    var last_timestamp;
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var can = document.getElementById("canvas");
+    can.width = width;
+    can.height = height;
+    var ctx = can.getContext("2d");
+
+    var n = 3;
+    var scale = 3;
+
+    function sides() {
+      return document.getElementById("sides").value;
+    }
+
+    function draw(n) {
+      if (n >= 2) {
+        let p = [];
+        let angle = 0;
+        for (let i = 0; i < n; i++) {
+          p.push([(Math.cos(angle))*can.height/scale + can.width/2, (Math.sin(angle))*can.height/scale + can.height/2]);
+          angle += 2*Math.PI / n;
+        }
+        console.log(p);
+        ctx.clearRect(0, 0, can.width, can.height);
+        ctx.beginPath();
+        ctx.moveTo(p[0][0], p[0][1]);
+        for (let i = 0; i < p.length; i++) {
+          ctx.lineTo(p[i][0], p[i][1]);
+        }
+        ctx.lineTo(p[0][0], p[0][1]);
+        ctx.stroke();
+      } else {
+        if (n == 1) {
+        }
+      }
+    }
+    
+    function mainloop(timestamp) {
+      n = sides();
+      draw(n);
+      last_timestamp = timestamp;
+      requestAnimationFrame(mainloop);
+    }
+    requestAnimationFrame(mainloop);
+  </script>
+</html>
