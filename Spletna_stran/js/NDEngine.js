@@ -14,6 +14,23 @@ function R2(point) {
         return Math.sqrt(s);
 }
 
+function distance(a, b) {
+        let sum = 0;
+        for (let i = 0; i < a.length; i++) {
+                sum += (a[i] - b[i]) ** 2;
+        }
+        return Math.sqrt(sum);
+}
+
+function distance_around(a, b, d) {
+        let ab = distance(a, b);
+        if (Math.abs(ab - d) < 0.001) {
+                return true;
+        } else {
+                return false;
+        }
+}
+
 function move_to_center(point) {
         let x = point[0];
         let y = point[1];

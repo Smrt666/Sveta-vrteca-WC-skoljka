@@ -20,13 +20,6 @@ function createSimplex(dimensions) {
   }
 }
 
-function distance(a, b) {
-  sum = 0;
-  for (let i = 0; i < a.length; i++) {
-    sum += a[i] ** 2 + b[i] ** 2;
-  }
-  return Math.sqrt(sum);
-}
 
 function simplexSides(dimensions) {
   let vertices = createSimplex(dimensions);
