@@ -33,10 +33,13 @@ function simplexSides(dimensions) {
         let d1 = ab - ac;
         let d2 = ac - bc;
         if (d1 + d2 < 0.000001) {
-          r.push([vertices[a], vertices[b], vertices[c]]);
+          let tmp = [vertices[a], vertices[b], vertices[c]];
+          tmp.sort();
+          r.push(tmp);
         }
       }
     }
   }
-  return r;
+  let tmps = new Set(r);
+  return Array.from(tmps);
 }
