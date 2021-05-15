@@ -45,6 +45,14 @@ nav{
   justify-content:space-around;
   flex-wrap: wrap;
   background-color: rgb(240, 240, 240);
+  margin-top: 10px;
+}
+
+.drzalo{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 .praktika{
@@ -71,14 +79,11 @@ nav{
 }
 
 #domov{
-  margin-right: 10px;
   background-color: rgb(240, 240, 240);
-  justify-content: center;
-  align-items: center;
-}
-
-#domov a{
-  margin: auto auto;
+  margin-right: 10px;
+  /* margin-bottom: 10px; */
+  /* justify-content: center;
+  align-items: center; */
 }
 
 @media(prefers-color-scheme: dark){
@@ -104,7 +109,6 @@ nav{
   }
 
   #domov{
-    margin-right: 10px;
     background-color: rgb(60, 60, 60);
   }
 }
