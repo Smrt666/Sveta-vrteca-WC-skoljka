@@ -1,22 +1,41 @@
-nav{
-  display: flex;
-  flex-direction: column;
+:root{
+  font-size: 16px;
 }
 
-.teorija{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-  flex-wrap: wrap;
+*{
+  padding: 0;
+  margin: 0;
 }
 
-.praktika{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-  flex-wrap: wrap;
+body{
+  background-color: white;
 }
 
-.nav-element:hover{
-  background-color: brown;
+header{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+h2{
+  margin-bottom: 5px;
+  font-size: 1.9rem;
+}
+
+p{
+  margin-bottom: 15px;
+}
+
+.content{
+  /* margin: auto auto; */
+  /* width: min(1000px, 90%); */
+  /* padding: 0 min(5%, 300px); */
+  padding: 0 5%;
+}
+
+@media(prefers-color-scheme: dark){
+  body{
+    background-color: rgb(56, 56, 56);
+    color: rgb(224, 224, 224);
+  }
 }
