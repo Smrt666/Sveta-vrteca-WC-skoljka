@@ -36,7 +36,7 @@ p{
 nav{
   display: flex;
   flex-direction: column;
-  margin: 0 1%;
+  margin: 0 max(5px, 2%);
 }
 
 .teorija{
@@ -53,6 +53,7 @@ nav{
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-end;
+  justify-content: center;
 }
 
 .praktika{
