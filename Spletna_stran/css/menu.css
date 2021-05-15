@@ -1,68 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Century Gothic;
     box-sizing: border-box;
     scroll-behavior: smooth;
-}
-
-nav{
-    display: flex;
-    flex-direction: column;
-    margin: 0 1%;
-}
-  
-.teorija{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    flex-wrap: wrap;
-    background-color: rgb(240, 240, 240);
-    /* border-bottom: rgb(37, 37, 37) solid 2px;
-    padding-bottom: 10px; */
-}
-  
-.praktika{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    flex-wrap: wrap;
-    background-color: rgb(240, 240, 240);
-    /* padding-top: 10px; */
-    margin: 10px 0 20px 0;
-}
-
-.nav-element{
-    padding: 10px 15px;
-}
-
-.nav-element a{
-    text-decoration: none;
-    font-size: 1.4rem;
-    color: blue;
-}
-
-.nav-element a:hover{
-    color: lightblue;
-}
-
-@media(prefers-color-scheme: dark){
-    .nav-element a{
-        /* color: rgb(86, 86, 255); */
-        color: green;
-    }
-
-    .nav-element a:hover{
-        color: lightgreen;
-    }
-}
-
-@media(prefers-color-scheme: dark){
-    .teorija{
-        background-color: rgb(60, 60, 60);
-    }
-
-    .praktika{
-        background-color: rgb(60, 60, 60);
-    }
 }

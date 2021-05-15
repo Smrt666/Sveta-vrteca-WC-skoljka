@@ -5,10 +5,13 @@
 *{
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body{
   background-color: white;
+  font-family: Century Gothic;
 }
 
 header{
@@ -27,15 +30,81 @@ p{
 }
 
 .content{
-  /* margin: auto auto; */
-  /* width: min(1000px, 90%); */
-  /* padding: 0 min(5%, 300px); */
   padding: 0 5%;
+}
+
+nav{
+  display: flex;
+  flex-direction: column;
+  margin: 0 1%;
+}
+
+.teorija{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  flex-wrap: wrap;
+  background-color: rgb(240, 240, 240);
+}
+
+.praktika{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  flex-wrap: wrap;
+  background-color: rgb(240, 240, 240);
+  margin: 10px 0 20px 0;
+}
+
+.nav-element{
+  padding: 10px 15px;
+}
+
+.nav-element a{
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: blue;
+}
+
+.nav-element a:hover{
+  color: lightblue;
+}
+
+#domov{
+  margin-right: 10px;
+  background-color: rgb(240, 240, 240);
+  justify-content: center;
+  align-items: center;
+}
+
+#domov a{
+  margin: auto auto;
 }
 
 @media(prefers-color-scheme: dark){
   body{
     background-color: rgb(56, 56, 56);
     color: rgb(224, 224, 224);
+  }
+
+  .teorija{
+    background-color: rgb(60, 60, 60);
+  }
+
+  .praktika{
+      background-color: rgb(60, 60, 60);
+  }
+
+  .nav-element a{
+    color: green;
+  }
+
+  .nav-element a:hover{
+      color: lightgreen;
+  }
+
+  #domov{
+    margin-right: 10px;
+    background-color: rgb(60, 60, 60);
   }
 }
