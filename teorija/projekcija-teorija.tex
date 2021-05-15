@@ -60,11 +60,14 @@
     Da si lažje predstavljamo kako točke projicirati, si problem narišemo v ravnini.
     Določimo mesto opazovalca, najlažje kar v točki $O\left(0, 0\right)$. 
     Vedeti moramo tudi širino zaslona $w$ in njegovo višino $h$. Razmerje med stranicama zaslona naj bo $a = \frac{h}{w}$.
-    Velikost vidnega polja je v primeru na sliki $2\varphi$. Ko računamo projekcijo, je ta kot navadno večji kot v 
-    primeru, recimo $90\degree$.\\
+    Velikost vidnega polja je v primeru na sliki $2\varphi$. Edini pomen tega kota je povečevanje in manjšanje slike.
+    Mirno ga lahko izpustimo, če pa želimo s kotom določati velikost predmetov na projekciji, ga spreminjamo od malo več
+    kot $0\degree$ za največjo povečavo, do manj kot $180\degree$ za najmanjšo povečavo.\\
 
     Vse točke, ki so na isti premici, ki gre skozi točko $O$, se preslikajo na isto mesto na zaslonu.
-    Zato vsem točkam koordianto $x$ (in $z$) delimo z največjo vidno, pri tisti oddaljenosti od zaslona.
+    (Seveda morajo biti te točke pred opazovalcem, torej imeti pozitivno $y$ koordinato.)
+    Zato vsem točkam koordianto $x$ (in $z$) delimo z največjo vidno, pri tisti oddaljenosti od zaslona, kar je
+    določeno z velikostjo vidnega polja.
     (Primer na sliki ima 3 točke, vse za $y_0 = y_1 = y_2$ oddaljene od zaslona. $T_0$ ima največjo še vidno $x$
     koordinato, pri tej oddaljenosti od zaslona. Če bi bila večja, bi bila na sliki višje, kar je že izven vidnega polja.
     Ko delimo $x_0$ z $x_0$, dobimo $1$, ki je naječja vrednost, ki jo lahko na takšen način dobimo, drugače točka ni vidna.
