@@ -16,13 +16,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage[slovene]{babel}
 
-\title{Projekcija \\[1ex] \large Del teorije pri projektnem delu v drugem letniku}
+\title{Del teorije pri projektnem delu v drugem letniku}
 
 \begin{document}
 \maketitle
 \tableofcontents
 
-\section{3D projekcija}
+\section{Projekcija}
+\subsection{Kaj je 3D projekcija}
     3D projekcija oziroma grafična projekcija je tehnika, ki se uporablja za prikaz 3 dimenzionalnih objektov na 
     2 dimenzionalno ravnino. Obstaja več različnih vrst projekcij. V grobem se delijo na paralelne 
     in perspektivne. Pri paralelnih vzporedne daljice v prostoru obdržijo vzporednost tudi po 
@@ -31,7 +32,7 @@
     eno smer, dve ali pa tri, lahko pa tudi ravne črte, ki ne ležijo na oseh, postanejo krive.
     \cite{3D-projection}
 
-\section{Računanje projekcije}
+\subsection{Računanje projekcije}
     Skica \\
     \begin{tikzpicture}
         \coordinate (origin) at (0, 0);
@@ -66,11 +67,11 @@
 
     Vse točke, ki so na isti premici, ki gre skozi točko $O$, se preslikajo na isto mesto na zaslonu.
     (Seveda morajo biti te točke pred opazovalcem, torej imeti pozitivno $y$ koordinato.)
-    Zato vsem točkam koordianto $x$ (in $z$) delimo z največjo vidno, pri tisti oddaljenosti od zaslona, kar je
+    Zato vsem točkam koordinato $x$ (in $z$) delimo z največjo vidno, pri tisti oddaljenosti od zaslona, kar je
     določeno z velikostjo vidnega polja.
     (Primer na sliki ima 3 točke, vse za $y_0 = y_1 = y_2$ oddaljene od zaslona. $T_0$ ima največjo še vidno $x$
     koordinato, pri tej oddaljenosti od zaslona. Če bi bila večja, bi bila na sliki višje, kar je že izven vidnega polja.
-    Ko delimo $x_0$ z $x_0$, dobimo $1$, ki je naječja vrednost, ki jo lahko na takšen način dobimo, drugače točka ni vidna.
+    Ko delimo $x_0$ z $x_0$, dobimo $1$, ki je največja vrednost, ki jo lahko na takšen način dobimo, drugače točka ni vidna.
     Točke na $y$ osi imajo $x$ (in $z$) koordinato $0$, $0$ deljeno z največjim $x$ pri tisti oddaljenosti od $O$, 
     bo pa vedno nič. Edina težava je, če je ta točka pri $y = 0$, ampak takšnih primerov ne rišemo.
     Točki $T_2$ in $T_3$ ležita na isti premici skozi $O$, zato se morata projicirati na isto mesto na zaslonu.
@@ -101,8 +102,44 @@
     V prejšnjem poglavju je opisan postopek projiciranja točk na ravnino $xz$.
     Ker pa se lahko smer in položaj opazovalca spreminjata, je potrebno temu primerno premikati
     točke po prostoru, da se doseže učinek premikanja opazovalca.
-    \subsection{Rotacije}
-    \subsection{Translacije}
+\subsection{Vektorji}
+    Za predstavitev točk v prostoru se pogosto uporablja krajevne vektorje. Primer:
+    $\vec{v}=\begin{bmatrix}
+        x \\ y \\ z
+    \end{bmatrix}$, če je točka del 3 dimenzionalnega prostora. Vektorje lahko seštevamo in odštevamo:
+    $\begin{bmatrix}
+        x_1 \\ y_1 \\ z_1
+    \end{bmatrix} - \begin{bmatrix}
+        x_2 \\ y_2 \\ z_2
+    \end{bmatrix} = \begin{bmatrix}
+        x_1 - x_2 \\ y_1 - y_2 \\ z_1 - z_2
+    \end{bmatrix}$, lahko pa tudi množimo. \\
+
+    Vektorje lahko množimo na več različnih načinov. Trije najbolj poznani načini so produkt s skalarjem, 
+    skalarni produkt in vektorski produkt. Produkt vektorja s skalarjem vrne vektor enake velikosti:
+    $$k \begin{bmatrix}
+        x \\ y \\ z \\ \vdots
+    \end{bmatrix} = \begin{bmatrix}
+        k x \\ k y \\ k z \\ \vdots
+    \end{bmatrix}$$
+    Kadar imamo opravka z realnimi števili, operacija poveča ali zmanjša vektor za nek faktor. \\
+
+    Vektorski produkt je možen samo v treh in sedmih dimenzijah. Za prostore ostalih dimenzij obstajajo
+    druge operacije, ki imajo podobne lastnosti kot vektorski produkt.
+    $$\begin{bmatrix}
+        A_x \\ A_y \\ A_z
+    \end{bmatrix} \times \begin{bmatrix}
+        B_x \\ B_y \\ B_z
+    \end{bmatrix} = \begin{bmatrix}
+        A_y B_z - A_z B_y \\ A_z B_x - A_x B_z \\ A_x B_y - A_y B_x
+    \end{bmatrix}$$
+    V dveh dimenzijah se lahko pretvarjamo, da je $z$ koordinata enaka $0$. S tem prvi dve vrednosti
+    produkta postaneta $0$, predznak zadnje pa nam pove orientacijo trikotnika, ki ga ta dva vektorja 
+    določata in dvakratnik njegove ploščine. Predznak lahko uporabimo za določanje konveksnosti likov
+    s podanimi oglišči ali pa če stranica 3D objekta gleda v našo smer.
+\subsection{Matrike}
+\subsection{Rotacije}
+\subsection{Translacije}
 
 % biber projekcija-teorija
 \printbibliography
