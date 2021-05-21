@@ -135,11 +135,109 @@
     \end{bmatrix}$$
     V dveh dimenzijah se lahko pretvarjamo, da je $z$ koordinata enaka $0$. S tem prvi dve vrednosti
     produkta postaneta $0$, predznak zadnje pa nam pove orientacijo trikotnika, ki ga ta dva vektorja 
-    določata in dvakratnik njegove ploščine. Predznak lahko uporabimo za določanje konveksnosti likov
-    s podanimi oglišči ali pa če stranica 3D objekta gleda v našo smer.
+    določata in dvakratnik njegove ploščine. S tem predznakom lahko ugotovimo ali stranica 3D objekta gleda v našo smer.
+    \cite{CrossProdWiki}
 \subsection{Matrike}
+    Matrika je enostavno rečeno preglednica števil. Matrike lahko seštevamo, če so enakih velikosti:
+    $$\begin{bmatrix}
+        a_{1,1} & a_{1,2} & a_{1,3} \\
+        a_{2,1} & a_{2,2} & a_{2,3} \\
+        a_{3,1} & a_{3,2} & a_{3,3} \\
+        a_{4,1} & a_{4,2} & a_{4,3} \\
+    \end{bmatrix} + \begin{bmatrix}
+        b_{1,1} & b_{1,2} & b_{1,3} \\
+        b_{2,1} & b_{2,2} & b_{2,3} \\
+        b_{3,1} & b_{3,2} & b_{3,3} \\
+        b_{4,1} & b_{4,2} & b_{4,3} \\
+    \end{bmatrix} = \begin{bmatrix}
+        a_{1,1}+b_{1,1} & a_{1,2}+b_{1,2} & a_{1,3}+b_{1,3} \\
+        a_{2,1}+b_{2,1} & a_{2,2}+b_{2,2} & a_{2,3}+b_{2,3} \\
+        a_{3,1}+b_{3,1} & a_{3,2}+b_{3,2} & a_{3,3}+b_{3,3} \\
+        a_{4,1}+b_{4,1} & a_{4,2}+b_{4,2} & a_{4,3}+b_{4,3} \\
+    \end{bmatrix}$$
+    Prav tako jih lahko množimo s skalarjem:
+    $$k \begin{bmatrix}
+        a_{1,1} & a_{1,2} & a_{1,3} \\
+        a_{2,1} & a_{2,2} & a_{2,3} \\
+        a_{3,1} & a_{3,2} & a_{3,3} \\
+        a_{4,1} & a_{4,2} & a_{4,3}
+    \end{bmatrix} = \begin{bmatrix}
+        k \cdot a_{1,1} & k \cdot a_{1,2} & k \cdot a_{1,3} \\
+        k \cdot a_{2,1} & k \cdot a_{2,2} & k \cdot a_{2,3} \\
+        k \cdot a_{3,1} & k \cdot a_{3,2} & k \cdot a_{3,3} \\
+        k \cdot a_{4,1} & k \cdot a_{4,2} & k \cdot a_{4,3}
+    \end{bmatrix}$$
+    Matriko z višino $a$ in širino $b$ lahko pomnožimo z matriko z višino $b$ in širino $c$. Rezultat je matrika
+    z višino $a$ in širino $c$. Pri tem je vrednost v vrstici $i$ v stolpcu $j$ enaka skalarnemu produktu
+    vrstice $i$ prve matrike s stolpcem $j$ druge. (Obstajajo tudi drugi tipi množenja, ampak za delo z vektorji bo ta dovolj.)
+    \cite{MatrixWiki}
+    $$\begin{bmatrix}
+        a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2}
+    \end{bmatrix} \begin{bmatrix}
+        b_{1,1} & b_{1,2} \\ b_{2,1} & b_{2,2}
+    \end{bmatrix} = \begin{bmatrix}
+        a_{1,1} \cdot b_{1,1} + a_{1,2} \cdot b_{2,1} & a_{1,1} \cdot b_{1,2} + a_{1,2} \cdot b_{2,2} \\
+        a_{2,1} \cdot b_{1,1} + a_{2,2} \cdot b_{2,1} & a_{2,1} \cdot b_{1,2} + a_{2,2} \cdot b_{2,2}
+    \end{bmatrix}$$
+    Vektor si lahko zapišemo kot matriko s širino 1. Matriko lahko potem pomnožimo z vektorjem:
+    $$\begin{bmatrix}
+        a_{1,1} & a_{1,2} & a_{1,3} \\
+        a_{2,1} & a_{2,2} & a_{2,3} \\
+        a_{3,1} & a_{3,2} & a_{3,3}
+    \end{bmatrix} \begin{bmatrix}
+        x \\ y \\ z
+    \end{bmatrix} = \begin{bmatrix}
+        a_{1,1} \cdot x + a_{1,2} \cdot y + a_{1,3} \cdot z\\
+        a_{2,1} \cdot x + a_{2,2} \cdot y + a_{2,3} \cdot z\\
+        a_{3,1} \cdot x + a_{3,2} \cdot y + a_{3,3} \cdot z
+    \end{bmatrix}$$
+    Množenje matrik ni komutativno, torej $AB = BA$ ne velja vedno, pri njihovi uporabi se je potrebno tega zavedati. 
+    Je pa asociativno, torej $ABC = (AB)C = A(BC)$.\\
+
+    Na matrikah je definiranih še veliko drugih operacij, deljenja z matriko pa med njimi ni. Namesto tega
+    lahko kvadratni matriki (z ne ničelno determinanto) izračunamo inverz, ki se zapiše kot $A^{-1}$. Velja,
+    da množenje matrike z inverzom vrne identiteto. Identiteta je matrika, ki ima po diagonali od levo zgoraj do desno
+    spodaj same enke, ostala polja pa imajo za vrednost 0. $AI = A$ velja, če je I identiteta, $A$ pa poljubna matrika.
+    \cite{MatrixWiki}
+    
 \subsection{Rotacije}
+    \begin{tikzpicture}
+        \coordinate (origin) at (0,0);
+        \coordinate (very_left) at (-4, 0);
+        \coordinate (very_right) at (5, 0);
+        \coordinate (very_top) at (0, 5);
+        \coordinate (very_bottom) at (0, -3);
+        \node[anchor=north east] at (origin) {$\left(0, 0\right)$};
+        \draw[-stealth] (very_left) -- (very_right) node[anchor=west] {$x$};
+        \draw[-stealth] (very_bottom) -- (very_top) node[anchor=west] {$y$};
+        \coordinate (unit_i) at (3, 0);
+        \coordinate (unit_j) at (0, 3);
+        \draw (unit_i) node[circle, fill,inner sep=1pt, label=below: \text{$i$}](a){};
+        \draw (unit_j) node[circle, fill,inner sep=1pt, label=right: \text{$j$}](a){};
+
+        \draw (2.598, 1.5) node[circle, fill,inner sep=1pt, label=right: \text{$i'$}](a){};
+        \coordinate (angle) at (5.196, 3);
+        \pic [draw, angle eccentricity=1.5, angle radius=2cm] {angle = unit_i--origin--angle};
+        \node at (1.2,0.4) {$\varphi$};
+        \draw (origin) -- (angle);
+        \draw (2.598,0) node[circle, fill,inner sep=1pt, label=below: \text{$i'_x$}](a){};
+        \draw (0,1.5) node[circle, fill,inner sep=1pt, label=left: \text{$i'_y$}](a){};
+        \draw[dotted] (2.598,0) -- (2.598, 1.5);
+        \draw[dotted] (0,1.5) -- (2.598, 1.5);
+
+        \draw (-1.5, 2.598) node[circle, fill,inner sep=1pt, label=left: \text{$j'$}](a){};
+        \coordinate (angle) at (-3, 5.196);
+        \pic [draw, angle eccentricity=1.5, angle radius=2cm] {angle = unit_j--origin--angle};
+        \node at (-0.3,1) {$\varphi$};
+        \draw (origin) -- (angle);
+        \draw (0, 2.598) node[circle, fill,inner sep=1pt, label=right: \text{$j'_y$}](a){};
+        \draw (-1.5,0) node[circle, fill,inner sep=1pt, label=below: \text{$j'_x$}](a){};
+        \draw[dotted] (0, 2.598) -- (-1.5, 2.598);
+        \draw[dotted] (-1.5, 0) -- (-1.5, 2.598);
+
+    \end{tikzpicture}
 \subsection{Translacije}
+\subsection{Zrcaljenje}
 
 % biber projekcija-teorija
 \printbibliography
