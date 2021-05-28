@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Oktaeder in naprej</title>
+    <title>Simpleks</title>
     <link rel="stylesheet" type="text/css" href="../../css/universal.css">
     <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../js/matrix.js"></script>
     <script src="../../js/NDEngine.js"></script>
     <script src="../../js/graphics_prep.js"></script>
-    <script src="../../js/tesseract.js"></script>
-    <script src="../../js/octahedron.js"></script>
+    <script src="../../js/icosahedron.js"></script>
 </head>
 <body>
-    <header><h1>Oktaeder in naprej</h1></header>
+    <header><h1>Ikozaeder</h1></header>
     <!-- Navigacija -->
     <nav>
       <div class="drzalo">
@@ -53,8 +52,7 @@
     </div>
 </body>
 <script>
-  dimensions = 5;
-  init(dimensions, octahedronSides(dimensions));
-  requestAnimationFrame(mainloop);
+    init(3, icosahedron_vertices());
+    requestAnimationFrame(mainloop);
 </script>
 </html>

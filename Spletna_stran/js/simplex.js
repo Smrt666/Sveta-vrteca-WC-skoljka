@@ -22,7 +22,14 @@ function createSimplex(dimensions) {
 
 
 function simplexSides(dimensions) {
+  let scale = Math.floor(Math.log(dimensions)) + 1;
+  console.log(scale);
   let vertices = createSimplex(dimensions);
+  for (let i = 0; i < vertices.length; i++) {
+    for (let j = 0; j < vertices[i].length; j++) {
+      vertices[i][j] *= scale;
+    }
+  }
   let r = [];
   for (let a = 0; a < vertices.length; a++) {
     for (let b = a+1; b < vertices.length; b++) {

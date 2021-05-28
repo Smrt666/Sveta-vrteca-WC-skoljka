@@ -10,127 +10,50 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../js/matrix.js"></script>
     <script src="../../js/NDEngine.js"></script>
+    <script src="../../js/graphics_prep.js"></script>
     <script src="../../js/simplex.js"></script>
 </head>
 <body>
-    <header><h1>Simpleks</h1></header>
-    <!-- Navigacija -->
-    <nav>
-      <div class="drzalo">
-        <div class="nav-element" id="domov"><a href="../../index.html">Uvodna stran</a></div>
-        <div class="teorija">
-          <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
-          <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
-          <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
-          <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
-          <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
-        </div>
+  <header><h1>Simpleks</h1></header>
+  <!-- Navigacija -->
+  <nav>
+    <div class="drzalo">
+      <div class="nav-element" id="domov"><a href="../../index.html">Uvodna stran</a></div>
+      <div class="teorija">
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
       </div>
-      <div class="drzalo">
-        <div class="praktika">
-          <div class="nav-element"><a href="../../Prikazi/Teserakt/index.html">Teserakt</a></div>
-          <div class="nav-element"><a href="../../Prikazi/Simpleks/index.html">Simpleks</a></div>
-          <div class="nav-element"><a href="../../Prikazi/Kocka-Teserakt-/index.html">Kocka, teserakt in naprej</a></div>
-          <div class="nav-element"><a href="../../Prikazi/Liki/index.html">Liki</a></div>
-          <div class="nav-element"><a href="../../Prikazi/Oktaeder-in-naprej/">Oktaeder in naprej</a></div>
-        </div>
-      </div>
-    </nav>
-    <!-- Konec navigacije -->
-
-    <div class="content">
-        <section>
-          <p>
-            <canvas id="canvas" style="width: 100%; height: 100%; border:1px solid #d3d3d3; background-color: white;">
-            Your browser does not support the HTML5 canvas tag.</canvas>
-          </p>
-        </section>
     </div>
+    <div class="drzalo">
+      <div class="praktika">
+        <div class="nav-element"><a href="../../Prikazi/Teserakt/index.html">Teserakt</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Simpleks/index.html">Simpleks</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Kocka-Teserakt-/index.html">Kocka, teserakt in naprej</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Liki/index.html">Liki</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Oktaeder-in-naprej/index.html">Oktaeder in naprej</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Ikozaeder/index.html">Ikozaeder</a></div>
+      </div>
+    </div>
+  </nav>
+  <!-- Konec navigacije -->
+
+  <div class="content">
+    <section>
+      <p>
+        <center>
+          <canvas id="canvas" style="max-width: 100%; max-height: 100%; border:1px solid #d3d3d3; background-color: white;">
+            Your browser does not support the HTML5 canvas tag.</canvas>
+        </center>
+      </p>
+    </section>
+  </div>
 </body>
 <script>
-    var mode = 1;
-    var last_timestamp;
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-    var can = document.getElementById("canvas");
-    can.width = width;
-    can.height = height;
-    var ctx = can.getContext("2d");
-    var r_near = 0.1;
-    var r_far = 1000.0;
-    var dimensions = 4;
-
-    var fiel_of_view = 90.0; // stopinj
-    var aspect_ratio = height / width;
-
-    var Fov_scaling_factor = 1 / Math.tan(0.5 * fiel_of_view / 180 * Math.PI);
-    var q = r_far / (r_far - r_near)
-
-    var simplex = simplexSides(dimensions);
-
-    var move = [];
-    for (let i = 0; i < dimensions; i++) {
-      move.push(0);
-    }
-    move[2] = 3.5;
-    var rotations = [];
-    var angles = [];
-    for (let i = 0; i < Math.floor(dimensions * (dimensions-1) / 2); i++) {
-      rotations.push(0);
-      angles.push(Math.PI/6);
-    }
-
-
-    function update_matrices() {
-      let index = 0;
-      for (let i = 0; i < dimensions; i++) { // od vsake osi
-        for (let j = i+1; j < dimensions; j++) { // proti vsaki višje dimenzijski
-          let matrix = [];
-          for (let count = 0; count < dimensions; count++) { // vrstica
-            let m = [];
-            for (let count2 = 0; count2 < dimensions; count2++) { // nastavim stolpce na 0 ali 1
-              if (count == count2) {
-                m.push(1);
-              } else {
-                m.push(0);
-              }
-            }
-            if (count == i) { // če vrtimo od tu
-              m[i] = Math.cos(angles[index]);
-              m[j] = -Math.sin(angles[index]);
-            }
-            if (count == j) { // če vrtimo sem
-              m[i] = Math.sin(angles[index]);
-              m[j] = Math.cos(angles[index]);
-            }
-            matrix.push(m);
-          }
-          rotations[index] = matrix;
-          index++;
-        }
-      }
-      rotate = rotations[rotations.length-1];
-      for (let i = rotations.length-2; i >= 0; i--) {
-        // console.log(matrix_str(rotations[i]));
-        rotate = matrix_mul(rotate, rotations[i]);
-      }
-    }
-
-    function update_angles() {
-      for (let i = 0; i < angles.length; i++) {
-        angles[i] = (angles[i] + 0.002 * (i + 1)) % (2*Math.PI);
-      }
-    }
-    
-    function mainloop(timestamp) {
-      update_angles();
-      update_matrices();
-      
-      draw(simplex, ctx, move, rotate);
-      
-      last_timestamp = timestamp;
-      requestAnimationFrame(mainloop);
-    }
+    dimensions = 5;
+    init(dimensions, simplexSides(dimensions));
     requestAnimationFrame(mainloop);
-  </script>
+</script>  
 </html>

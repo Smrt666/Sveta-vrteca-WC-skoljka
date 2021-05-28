@@ -39,6 +39,8 @@ else:
              "Prikazi\\Simpleks\\index.html",
              "Prikazi\\Teserakt\\index.html",
              "Prikazi\\Liki\\index.html",
-             "Teorija\\Kompleksna_stevila\\index.html"]
+             "Prikazi\\Ikozaeder\\index.html",
+             "Teorija\\Kompleksna_stevila\\index.html",
+             ]
     for file in files:
         insert_navigation(path + file)
