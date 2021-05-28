@@ -138,6 +138,8 @@ dmypy.json
 *.gz
 *.aux
 *.dvi
+*.lof
+*.out
 view.js
 tasks.json
 *.doc
