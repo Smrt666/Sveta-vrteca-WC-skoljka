@@ -95,7 +95,7 @@ function project_objects(objects, move, rotate) {
 }
 
 function draw_rectangle(surface, p) {
-        ctx.beginPath();
+        surface.beginPath();
         surface.moveTo(p[0], p[0]);
         for (let i = 0; i < p.length; i++) {
                 surface.lineTo(p[i][0], p[i][1]);
