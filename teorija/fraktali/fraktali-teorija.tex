@@ -19,7 +19,7 @@
 
 \section{Fraktali}
     \subsection{Definicija fraktala}
-        Fraktali zaradi nespecifičnosti in kompleksnosti teh oblik niso uradno definirani, vendar obstajajo nekatere bolj splošne definicije z nekaj pomankljivostmi.
+        Fraktali zaradi nespecifičnosti in kompleksnosti teh oblik niso uradno definirani, vendar obstajajo nekatere bolj splošne definicije z nekaj pomanjkljivostmi.
         Najpreprostejša razlaga fraktala izhaja iz samopodobnih lastnosti teh figur, katere vidimo pri najpreprostejših vrstah fraktalov. 
         Eden od teh je trikotnik Sierpinskega, prikazan na spodnji sliki. Glavna struktura je trikotnik, ki je razdeljen na 3 manjše trikotnike s polovično dolžino stranice. 
         S ponavljanjem delitve na novo nastalih trikotnikih v neskončnost dobimo prikazan fraktal.
@@ -35,15 +35,15 @@
         Samopodobnost se seveda nahaja v naravi, vendar ni pogosta.
         Benoit Mandelbrot, kot matematik 20. stoletja, ni bil zadovoljen z posploševanjem grobih oblik narave v preprostejše oblike kot krivulje.
         Bil je mnenja, da so fraktali lahko orodje s katerim natančneje opišemo naravo.
-        V naravi oblike niso pravilne, saj se ob povečavi ta oblika ne posploši, vendar pa je groba na vseh ravneh.
+        V naravi oblike niso pravilne, saj se ob povečavi ta oblika ne posploši, ampak pa je groba na vseh ravneh.
         Ideja pojava grobosti na vseh povečavah oblike je skoraj enaka ideji fraktala, da je oblika prvotnega telesa vidna na vseh ravneh.
-        V definicijo je bila vpeljala ideja fraktalne dimezije (o kateri je napisano več v naslednjem podpoglavju), ki nam omogoči, razširitev fraktalov na nenavadne oblike, ki ohranjajo grobost ali nepravilnost pri vseh povečavah.
+        V definicijo je bila vpeljala ideja fraktalne dimenzije (o kateri je napisano več v naslednjem podpoglavju), ki nam omogoči, razširitev fraktalov na nenavadne oblike, ki ohranjajo grobost ali nepravilnost pri vseh povečavah.
         Mandelbrot je v svoji knjigi "The Fractal Geometry of Nature" fraktale definiral kot oblike, katerih "Hausdorffova dimenzija" (dimenzije katerih vrednost je lahko realno število) presega "topološko dimenzijo" (dimenzije celih vrednosti).
         Na žalost tudi ta definicija sama po sebi ni popolna, saj se pojavijo izjeme, ki imajo Hausendorffovo dimenzijo enako topološki dimenziji.
         \cite{FractalDefinitionVideo}
         \cite{HausdorffDimension}\\
 
-        Z vsem tem je fraktal mogoče neformalno definirati kot množico, ki ima vsaj nekatere od naslednjih lastosti:
+        Z vsem tem je fraktal mogoče neformalno definirati kot množico, ki ima vsaj nekatere od naslednjih lastnosti:
         \cite{irvsic2015fraktalna}
         \begin{itemize}
             \item je samopodobna
@@ -71,7 +71,7 @@
 
         \addvspace{0.3cm}
         To lahko storimo tudi z kvadratom, ki ima 2 dimenziji in dolžino stranice $d$.
-        Če prvotnemu kvadratu zmanjšamo stranico na $\frac{d}{2}$, dobimo štriri nove kvadrate s četrtino ploščine.
+        Če prvotnemu kvadratu zmanjšamo stranico na $\frac{d}{2}$, dobimo štri nove kvadrate s četrtino ploščine.
 
         \addvspace{0.5cm}
         \begin{tikzpicture}
@@ -97,11 +97,11 @@
         Viden je vzorec, število manjših kopij se s povečanjem dimenzije za 1 poveča za obratno vrednost faktorja krčenja.
         Če to posplošimo v formulo, kjer je $N$ število kopij, $D$ dimenzija in $r$ faktor krčenja ($0<r<1$), dobimo naslednje:
         \[N=\left(\frac{1}{r}\right)^D\]
-        V primeru, da kopijo poskušamo razširiti je $r$ faktor širjenja ($r>1$), pa dobimo naslednji izraz:
+        V primeru, da kopijo poskušamo razširiti je $r$ faktor širjenja ($1<r$), pa dobimo naslednji izraz:
         \[N=r^D\]
-        Ko izrazimo dimenzijo pa se nam pojavi naslednja formula:
-        \[D=\frac{\log{N}}{\log{\left(\frac{1}{r}\right)}}\]\\
-        Ali:
+        Ko izrazimo dimenzijo pa se nam pojavi naslednja formula ($0<r<1$):
+        \[D=-\frac{\log{N}}{\log{r}}\]\\
+        Ali ($1<r$):
         \[D=\frac{\log{N}}{\log{r}}\]
 
         \addvspace{1cm}
@@ -139,21 +139,21 @@
 \section{Risanje fraktalov}
     \subsection{Iterativni funkcijski sistem}
         Iterativni funkcijski sistem je eden od načinov prikazovanja fraktalov, pri čemer je končni rezultat po navadi samopodobni fraktal.
-        Ideja za delovanjem sistema je sestavljenost frarktala iz mnogih enakih podenot na katerih je bila uporabljena določena funkcija.
+        Ideja za delovanjem sistema je sestavljenost fraktala iz mnogih enakih podenot na katerih je bila uporabljena določena funkcija.
         Večina teh funkcij je kontraktivnih, kar zmanjšuje razdalje med točkami in posledično tudi oblike.
         Od tod samopodobnostne lastnosti tega načina prikazovanja.
         \cite{IFS}\\
 
         Eden najzanimivejših primerov Iterativnega funkcijskega sistema je igra kaosa, kjer iz na pogled čisto naključne igre dobimo fraktalne oblike.
         Za risanje trikotnika Sierpinskega sledimo naslednjim navodilom.
-        Kot osnovno obliko si izberemo trikotnik in v ravnino narišemo samo ogljišča tega trikotnika.
+        Kot osnovno obliko si izberemo trikotnik in v ravnino narišemo samo oglišča tega trikotnika.
         Nato si v ravnini izbermo poljubno točko (lahko je znotraj ali zunaj trikotnika).
-        Naključno izberemo eno od treh ogljišč in se premaknemo na polovico daljice, ki je nastala med poljubno točko in naključnim ogljiščem.
-        Spet naključno izberemo eno od treh ogljišč, vendar se tokrat pomaknemo na polovico daljice med novonastalo točko in naključnim ogljiščem.
+        Naključno izberemo eno od treh oglišč in se premaknemo na polovico daljice, ki je nastala med poljubno točko in naključnim ogliščem.
+        Spet naključno izberemo eno od treh oglišč, vendar se tokrat pomaknemo na polovico daljice med novonastalo točko in naključnim ogliščem.
         To ponavljamo za vse novonastale točke in se nam po določenem času nariše trikotnik Sierpinskega, saj je možnost, da točka pristane v praznini trikotnika Sierpinskega enaka nič (razen če je bila tja postavljena prvotna točka).
         \cite{ChaosGame}\\
 
-        Če podobno ponovimo na kvadratu, le da istega ogljišča ne smemo izbrati dvakrat zapored se nam pojavi naslednji fraktal:
+        Če podobno ponovimo na kvadratu, le da istega oglišča ne smemo izbrati dvakrat zapored se nam pojavi naslednji fraktal:
         \centerline{\includegraphics[scale=0.6]{square-fractal.PNG}}
         \begingroup
         \captionof{figure}{Igra kaosa na kvadratu. \emph{Vir: }\url{https://www.wikiwand.com/en/Chaos_game}}
@@ -164,7 +164,7 @@
         Sisteme je ustvaril Aristid Lindenmayer, biolog in botanist, ko je iskal način prikazovanja rasti celičnih organizmov in rastlin.
         Le kot dodatek je zaradi rekurzivne narave teh sistemov danes mogoče z njimi ustvariti tudi fraktale.
         L-sistemi za delovanje potrebujejo "abecedo" ali spremenljivke in konstante, aksiom ali začetni niz simbolov ter pravila, ki prehodnim nizom spremenljivk določijo nov niz elementov "abecede".
-        Z iteracijo ustvarjamo izhodni niz, katerega pomen iterpretiramo kot navodila za risanje določene oblike.
+        Z iteracijo ustvarjamo izhodni niz, katerega pomen interpretiramo kot navodila za risanje določene oblike.
         \cite{LSystem}\\
 
         Za primer lahko vzamemo sistem z spremenljivkama $A$ in $B$, aksiomom $A$ in pravili $A \rightarrow AB$ in $B \rightarrow A$. ($n$ predstavlja število iteracij):
@@ -194,8 +194,7 @@
     \subsection{Končno delitveno pravilo}
         Končno delitveno pravilo je rekurzivni način deljenja večkotnikov in drugih dvodimenzionalnih oblik na manjše dele.
         To nam omogoča izdelovanje geometričnih fraktalov, vendar nam vseeno dopušča delne spremembe pri vsakem koraku.
-        Končno delitveno pravilo razdeli določeno teselacijo ali tlakovanje (pokritje ravnine z geometriskimi liki) in jo spremeni v novo teselacijo iz manjših večkotnikov.
-        Končno je zgolj takrat, ko je različnih načinov deljenja večkotnikov.
+        Končno delitveno pravilo razdeli določeno teselacijo ali tlakovanje (pokritje ravnine z geometrijskimi liki) in jo spremeni v novo teselacijo iz manjših večkotnikov.
         En način deljenja večkotnika imenujemo vrsta ploščice in en način deljenja roba oblike vrsta roba.
         \cite{FSR}
         \centerline{\includegraphics[scale=0.3]{fsr-fractal.png}}
