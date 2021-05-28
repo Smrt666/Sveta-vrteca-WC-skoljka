@@ -17,6 +17,12 @@ function init(d, obj) {
   dimensions = d;
   object = obj;
 
+  if (object.length < 500) {
+    draw_vertices = true;
+  } else {
+    draw_vertices = false;
+  }
+
   fiel_of_view = 90.0; // stopinj
   aspect_ratio = height / width;
 

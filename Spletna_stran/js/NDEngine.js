@@ -109,12 +109,16 @@ function project_objects(objects, move, rotate) {
 function draw_rectangle(surface, p, move) {
         surface.beginPath();
         surface.moveTo(p[0], p[0]);
-        let scf = 50;
         for (let i = 0; i < p.length; i++) {
                 surface.lineTo(p[i][0], p[i][1]);
-                let d = scf / distance2(p[i], move);
-                surface.fillRect(p[i][0] - d, p[i][1] - d * 2 / 3, 2 * d, d * 4 / 3);
-                surface.fillRect(p[i][0] - d * 2 / 3, p[i][1] - d, d * 4 / 3, 2 * d);
+        }
+        if (draw_vertices) {
+                let scf = 50;
+                for (let i = 0; i < p.length; i++) {
+                        let d = scf / distance2(p[i], move);
+                        surface.fillRect(p[i][0] - d, p[i][1] - d * 2 / 3, 2 * d, d * 4 / 3);
+                        surface.fillRect(p[i][0] - d * 2 / 3, p[i][1] - d, d * 4 / 3, 2 * d);
+                }
         }
         surface.lineTo(p[0][0], p[0][1]);
         surface.stroke();
