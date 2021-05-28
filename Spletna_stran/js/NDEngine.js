@@ -113,7 +113,6 @@ function draw_rectangle(surface, p, move) {
         for (let i = 0; i < p.length; i++) {
                 surface.lineTo(p[i][0], p[i][1]);
                 let d = scf / distance2(p[i], move);
-                console.log(d);
                 surface.fillRect(p[i][0] - d, p[i][1] - d * 2 / 3, 2 * d, d * 4 / 3);
                 surface.fillRect(p[i][0] - d * 2 / 3, p[i][1] - d, d * 4 / 3, 2 * d);
         }
