@@ -40,7 +40,7 @@ function clear() {
 }
 
 function forward(d) {
-    move_to(trutle_x + Math.sin(180 * trutle_heading / Math.PI), trutle_y + Math.cos(180 * trutle_heading / Math.PI));
+    move_to(trutle_x + d * Math.sin(180 * trutle_heading / Math.PI), trutle_y + d * Math.cos(180 * trutle_heading / Math.PI));
 }
 
 function stroke() { // izrišeš
