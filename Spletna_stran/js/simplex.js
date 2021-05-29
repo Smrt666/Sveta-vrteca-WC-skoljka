@@ -23,30 +23,12 @@ function createSimplex(dimensions) {
 
 function simplexSides(dimensions) {
   let scale = Math.floor(Math.log(dimensions)) + 1;
-  console.log(scale);
   let vertices = createSimplex(dimensions);
   for (let i = 0; i < vertices.length; i++) {
     for (let j = 0; j < vertices[i].length; j++) {
       vertices[i][j] *= scale;
     }
   }
-  let r = [];
-  for (let a = 0; a < vertices.length; a++) {
-    for (let b = a+1; b < vertices.length; b++) {
-      for (let c = b+1; c < vertices.length; c++) {
-        let ab = distance(vertices[a], vertices[b]);
-        let ac = distance(vertices[a], vertices[c]);
-        let bc = distance(vertices[b], vertices[c]);
-        let d1 = ab - ac;
-        let d2 = ac - bc;
-        if (d1 + d2 < 0.000001) {
-          let tmp = [vertices[a], vertices[b], vertices[c]];
-          tmp.sort();
-          r.push(tmp);
-        }
-      }
-    }
-  }
-  let tmps = new Set(r);
-  return Array.from(tmps);
+  let r = triangular_sides(vertices);
+  return [r, vertices];
 }

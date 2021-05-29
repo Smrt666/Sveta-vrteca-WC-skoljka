@@ -15,9 +15,11 @@ function init(d, obj) {
   r_far = 1000.0;
 
   dimensions = d;
-  object = obj;
+  vertices = obj[1];
+  sides = obj[0];
 
-  if (object.length < 500) {
+  // console.log(vertices.length);
+  if (vertices.length < 50) {
     draw_vertices = true;
   } else {
     draw_vertices = false;
@@ -82,7 +84,7 @@ function update_matrices() {
 
 function update_angles() {
   for (let i = 0; i < angles.length; i++) {
-    angles[i] = (angles[i] + 0.002 * (i + 1)) % (2 * Math.PI);
+    angles[i] = (angles[i] + (0.002 * (i + 1)) % 0.009845) % (2 * Math.PI);
   }
 }
 
@@ -90,7 +92,7 @@ function mainloop(timestamp) {
   update_angles();
   update_matrices();
 
-  draw(object, ctx, move, rotate);
+  draw(vertices, sides, ctx, move, rotate);
 
   last_timestamp = timestamp;
   requestAnimationFrame(mainloop);
