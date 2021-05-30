@@ -7,6 +7,7 @@
     <title>Teserakt</title>
     <link rel="stylesheet" type="text/css" href="../../css/universal.css">
     <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
+    <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../js/matrix.js"></script>
     <script src="../../js/NDEngine.js"></script>
@@ -53,12 +54,12 @@
                 <div>
                   <button onclick="javascript: mode=1;">Samodejno vrtenje</button>
                   <button onclick="javascript: mode=0; koti();">Določi kote.</button>
-                  <button onclick="javascript: angle0=angle1=angle2=angle3=angle4=angle5=Math.PI/6; koti();">Ponastavi kote.</button>
+                  <button onclick="javascript: angles[0]=angles[1]=angles[2]=angles[3]=angles[4]=angles[5]=Math.PI/6; koti();">Ponastavi kote.</button>
                 </div>
                 </div>
                 <p>
                   <center>
-                    <canvas id="canvas" style="max-width: 100%; max-height: 100%; border:1px solid #d3d3d3; background-color: white;">
+                    <canvas id="canvas">
                     Your browser does not support the HTML5 canvas tag.</canvas>
                   </center>
                 </p>

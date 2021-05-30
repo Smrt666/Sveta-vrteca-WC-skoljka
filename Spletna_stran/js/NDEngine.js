@@ -161,7 +161,7 @@ function draw_rectangles(sides, points, surface) {
   if (draw_vertices) {
     let scf = 30;
     for (let i = 0; i < points.length; i++) {
-      let d = scf / R2(points[i]);
+      let d = vertex_size / R2(points[i]);
       surface.fillRect(points[i][0] - d, points[i][1] - d * 2 / 3, 2 * d, d * 4 / 3);
       surface.fillRect(points[i][0] - d * 2 / 3, points[i][1] - d, d * 4 / 3, 2 * d);
     }
@@ -178,7 +178,7 @@ function draw_edges(edges, points, surface) {
   if (draw_vertices) {
     let scf = 30;
     for (let i = 0; i < points.length; i++) {
-      let d = scf / R2(points[i]);
+      let d = vertex_size / R2(points[i]);
       surface.fillRect(points[i][0] - d, points[i][1] - d * 2 / 3, 2 * d, d * 4 / 3);
       surface.fillRect(points[i][0] - d * 2 / 3, points[i][1] - d, d * 4 / 3, 2 * d);
     }

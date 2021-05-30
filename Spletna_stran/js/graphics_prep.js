@@ -13,6 +13,8 @@ function init(d, obj) {
   ctx = can.getContext("2d");
   r_near = 0.1;
   r_far = 1000.0;
+  vertex_size = width * 0.04;
+  console.log(vertex_size);
 
   dimensions = d;
   vertices = obj[1];
