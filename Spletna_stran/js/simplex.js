@@ -32,3 +32,15 @@ function simplexSides(dimensions) {
   let r = triangular_sides(vertices);
   return [r, vertices];
 }
+
+function simplexEdges(dimensions) {
+  let scale = Math.floor(Math.log(dimensions)) + 1;
+  let vertices = createSimplex(dimensions);
+  for (let i = 0; i < vertices.length; i++) {
+    for (let j = 0; j < vertices[i].length; j++) {
+      vertices[i][j] *= scale;
+    }
+  }
+  let r = find_edges(vertices);
+  return [r, vertices];
+}

@@ -31,3 +31,9 @@ function octahedronSides(dimensions) {
   let r = triangular_sides(vertices);
   return [r, vertices];
 }
+
+function octahedronEdges(dimensions) {
+  let vertices = createOctahedron(dimensions);
+  let r = find_edges(vertices);
+  return [r, vertices];
+}

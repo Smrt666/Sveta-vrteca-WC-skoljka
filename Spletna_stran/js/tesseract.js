@@ -65,3 +65,9 @@ function tesseractSides(dimensions) {
   }
   return [r, vertices];
 }
+
+function tesseractEdges(dimensions) {
+  let vertices = createTesseract(dimensions);
+  let r = find_edges(vertices);
+  return [r, vertices];
+}

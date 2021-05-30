@@ -35,6 +35,28 @@ function triangular_sides(vertices) {
   return r;
 }
 
+function find_edges(vertices) {
+  let r = [];
+  let edge_len = Infinity;
+  for (let a = 0; a < vertices.length; a++) {
+    for (let b = a + 1; b < vertices.length; b++) {
+      let d = distance(vertices[a], vertices[b]);
+      if (d < edge_len) {
+        edge_len = d;
+      }
+    }
+  }
+  for (let a = 0; a < vertices.length; a++) {
+    for (let b = a + 1; b < vertices.length; b++) {
+      let ab = distance(vertices[a], vertices[b]) - edge_len;
+      if (Math.abs(ab) < 0.001) {
+        let tmp = [a, b];
+        r.push(tmp);
+      }
+    }
+  }
+  return r;
+}
 
 function R2(point) {
   let s = 0;
@@ -147,9 +169,26 @@ function draw_rectangles(sides, points, surface) {
   surface.stroke();
 }
 
+function draw_edges(edges, points, surface) {
+  surface.beginPath();
+  for (let s = 0; s < edges.length; s++) {
+    surface.moveTo(points[edges[s][0]][0], points[edges[s][0]][1]);
+    surface.lineTo(points[sides[s][1]][0], points[sides[s][1]][1]);
+  }
+  if (draw_vertices) {
+    let scf = 30;
+    for (let i = 0; i < points.length; i++) {
+      let d = scf / R2(points[i]);
+      surface.fillRect(points[i][0] - d, points[i][1] - d * 2 / 3, 2 * d, d * 4 / 3);
+      surface.fillRect(points[i][0] - d * 2 / 3, points[i][1] - d, d * 4 / 3, 2 * d);
+    }
+  }
+  surface.stroke();
+}
+
 function draw(vertices, sides, ctx, move, rotate) {
   let td = project_vertices(vertices, move, rotate);
   ctx.clearRect(0, 0, can.width, can.height);
-  draw_rectangles(sides, td, ctx)
+  draw_edges(sides, td, ctx);
 
 }
