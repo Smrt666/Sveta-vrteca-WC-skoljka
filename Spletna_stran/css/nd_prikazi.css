@@ -3,7 +3,7 @@ canvas{
   max-height: 100%; 
   border:1px solid #8a8888; 
   border-radius: 10px;
-  background-color: inherit + 10;
+  background-color: inherit;
 }
 
 .value-holder{
