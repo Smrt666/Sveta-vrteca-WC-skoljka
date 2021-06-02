@@ -40,7 +40,13 @@ else:
              "Prikazi\\Teserakt\\index.html",
              "Prikazi\\Liki\\index.html",
              "Prikazi\\Ikozaeder\\index.html",
+             "Prikazi\\Dodekaeder\\index.html",
              "Teorija\\Kompleksna_stevila\\index.html",
              ]
     for file in files:
-        insert_navigation(path + file)
+        try:
+            insert_navigation(path + file)
+        except:
+            print(f"Failed to insert navigation in {file}.")
+
+input("Press Enter to continue.")
