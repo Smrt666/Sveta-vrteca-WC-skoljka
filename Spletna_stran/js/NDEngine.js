@@ -173,7 +173,7 @@ function draw_edges(edges, points, surface) {
   surface.beginPath();
   for (let s = 0; s < edges.length; s++) {
     surface.moveTo(points[edges[s][0]][0], points[edges[s][0]][1]);
-    surface.lineTo(points[sides[s][1]][0], points[sides[s][1]][1]);
+    surface.lineTo(points[edges[s][1]][0], points[edges[s][1]][1]);
   }
   if (draw_vertices) {
     let scf = 30;

@@ -17,7 +17,11 @@ function init(d, obj) {
 
   dimensions = d;
   vertices = obj[1];
-  sides = obj[0];
+  edges = obj[0];
+
+  isMouseDown = false;
+  mouseX = 0;
+  mouseY = 0;
 
   // console.log(vertices.length);
   if (vertices.length < 50) {
@@ -45,6 +49,33 @@ function init(d, obj) {
   for (let i = 0; i < Math.floor(dimensions * (dimensions - 1) / 2); i++) {
     rotations.push(0);
     angles.push(Math.PI / 6);
+  }
+
+  slider_mode = 0;
+  if (navigator.userAgent.toLowerCase().match(/mobile/i)) {
+    slider_mode = 1;
+  }
+
+  if (slider_mode == 0) {
+    slider_values = [];
+    sliders = [];
+    ctxs = [];
+    for (let i = 0; i < rotations.length; i++) {
+      slider_values.push(0);
+      sliders.push(insertSlider(i));
+      ctxs.push(sliders[i].getContext("2d"));
+      updateSlider(sliders[i], ctxs[i], i, true);
+    }
+  } else {
+    slider_values = [];
+    sliders = [];
+    ctxs = [];
+    for (let i = 0; i < rotations.length; i++) {
+      slider_values.push(0);
+      sliders.push(normal_slider(i));
+      ctxs.push(undefined);
+      updateSlider(sliders[i], ctxs[i], i, true);
+    }
   }
 }
   
@@ -84,17 +115,85 @@ function update_matrices() {
 }
 
 function update_angles() {
-  for (let i = 0; i < angles.length; i++) {
-    angles[i] = (angles[i] + (0.002 * (i + 1)) % 0.009845) % (2 * Math.PI);
+  if (mode == 0) { 
+    for (let i = 0; i < angles.length; i++) {
+      angles[i] = (angles[i] + (0.002 * (i + 1)) % 0.009845) % (2 * Math.PI);
+    }
+  } else {
+    angles = slider_values;
   }
 }
 
 function mainloop(timestamp) {
+  updateSliders();
   update_angles();
   update_matrices();
 
-  draw(vertices, sides, ctx, move, rotate);
+  //console.log(move);
+  draw(vertices, edges, ctx, move, rotate);
 
   last_timestamp = timestamp;
   requestAnimationFrame(mainloop);
+}
+
+function insertSlider(i) {
+  nastavitve = document.getElementById("nastavitve");
+  let circ_slider = document.createElement("canvas");
+  circ_slider.setAttribute("id", "CSlider" + i);
+  nastavitve.appendChild(circ_slider);
+  circ_slider.setAttribute("width", 100);
+  circ_slider.setAttribute("height", 100);
+  circ_slider.style = "border: none; margin: 10px";
+  return circ_slider;
+}
+
+function normal_slider(i) {
+  nastavitve = document.getElementById("nastavitve");
+  let circ_slider = document.createElement("input");
+  circ_slider.setAttribute("id", "CSlider" + i);
+  circ_slider.setAttribute("type", "range");
+  circ_slider.setAttribute("min", "-360");
+  circ_slider.setAttribute("max", "360");
+  circ_slider.setAttribute("value", "45");
+  nastavitve.appendChild(circ_slider);
+  return circ_slider;
+}
+
+onmousemove = function (e) {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+}
+
+
+onmousedown = function (e) {
+  isMouseDown = true;
+}
+onmouseup = function (e) {
+  isMouseDown = false;
+}
+
+function updateSliders() {
+  for (let i = 0; i < sliders.length; i++) {
+    updateSlider(sliders[i], ctxs[i], i);
+  }
+}
+
+function updateSlider(slider, ctx, i, b) {
+  if (slider_mode == 0) {
+    let ltx = slider.getBoundingClientRect().left;
+    let lty = slider.getBoundingClientRect().top;
+    //console.log(ltx, lty);
+    
+    if (((ltx < mouseX && mouseX < ltx + 100) && (lty < mouseY && mouseY < lty + 100) && isMouseDown) || b) {
+      ctx.beginPath();
+      ctx.clearRect(0, 0, 100, 100);
+      ctx.arc(50, 50, 49, 0, 2*Math.PI);
+      slider_values[i] = Math.atan2(mouseY-lty-50, mouseX-ltx-50);
+      ctx.moveTo(50, 50);
+      ctx.lineTo(49 * Math.cos(slider_values[i]) + 50, 49 * Math.sin(slider_values[i]) + 50);
+      ctx.stroke();
+    }
+  } else if (slider_mode == 1) {
+    slider_values[i] = slider.value * Math.PI / 180;
+  }
 }
