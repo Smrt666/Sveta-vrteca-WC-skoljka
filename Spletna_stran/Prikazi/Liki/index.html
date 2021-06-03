@@ -45,8 +45,10 @@
          <span class="value-holder" id="sides-value">petkotnik</span> <br>
       </p>
       <p>
-        <canvas id="canvas">
-          Your browser does not support the HTML5 canvas tag.</canvas>
+        <center>
+          <canvas id="canvas">
+            Your browser does not support the HTML5 canvas tag.</canvas>
+        </center>
       </p>
     </section>
   </div>
@@ -66,8 +68,8 @@
   var stevilke = ["nič", "ena", "dva", "tri", "štiri", "pet", "šest", "sedem", "osem", "devet", "deset", "enajst", "dvanajst", "trinajst", "štirinajst", "petnajst", "šestnajst", "sedemnajst", "osemnajst", "devetnajst", "dvajset", "enaindvajset", "dvaindvajset", "triindvajset", "štiriindvajset", "petindvajset", "šestindvajset", "sedemindvajset", "osemindvajset", "devetindvajset", "trideset", "enaintrideset", "dvaintrideset", "triintrideset", "štiriintrideset", "petintrideset", "šestintrideset", "sedemintrideset", "osemintrideset", "devetintrideset"];
   var value_shower = document.getElementById("sides-value");
   var last_timestamp;
-  var width = window.innerWidth;
-  var height = window.innerHeight;
+  var width = Math.min(window.innerWidth, window.innerHeight);
+  var height = width;
   var can = document.getElementById("canvas");
   can.width = width;
   can.height = height;
