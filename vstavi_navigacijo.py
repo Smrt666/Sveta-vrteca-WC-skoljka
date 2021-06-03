@@ -37,10 +37,11 @@ else:
     files = ["Prikazi\\Kocka-Teserakt-\\index.html",
              "Prikazi\\Oktaeder-in-naprej\\index.html",
              "Prikazi\\Simpleks\\index.html",
-             "Prikazi\\Teserakt\\index.html",
+             #"Prikazi\\Teserakt\\index.html",
              "Prikazi\\Liki\\index.html",
              "Prikazi\\Ikozaeder\\index.html",
              "Prikazi\\Dodekaeder\\index.html",
+             "Prikazi\\600-cell\\index.html",
              "Teorija\\Kompleksna_stevila\\index.html",
              ]
     for file in files:

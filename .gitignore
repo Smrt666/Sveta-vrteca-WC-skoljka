@@ -153,3 +153,4 @@ tasks.json
 *.fdb_latexmk
 *.toc
 *.zip
+120-cell_vertices.txt

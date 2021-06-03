@@ -17,7 +17,7 @@ function init(d, obj) {
 
   dimensions = d;
   vertices = obj[1];
-  sides = obj[0];
+  edges = obj[0];
 
   isMouseDown = false;
   mouseX = 0;
@@ -112,7 +112,8 @@ function mainloop(timestamp) {
   update_angles();
   update_matrices();
 
-  draw(vertices, sides, ctx, move, rotate);
+  //console.log(move);
+  draw(vertices, edges, ctx, move, rotate);
 
   last_timestamp = timestamp;
   requestAnimationFrame(mainloop);

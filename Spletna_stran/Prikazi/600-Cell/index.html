@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="sl">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>600-Cell</title>
   <link rel="stylesheet" type="text/css" href="../../css/universal.css">
-  <link rel="stylesheet" type="text/css" href="../../css/teorija.css">
+  <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
+  <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <title>Kompleksna števila</title>
+  <script src="../../js/orodja.js"></script>
+  <script src="../../js/matrix.js"></script>
+  <script src="../../js/NDEngine.js"></script>
+  <script src="../../js/graphics_prep.js"></script>
+  <script src="../../js/600-cell.js"></script>
 </head>
+
 <body>
   <header>
-    <h1>Kompleksna števila</h1>
+    <h1>600-Cell</h1>
   </header>
   <!-- Navigacija -->
   <nav>
@@ -41,9 +49,25 @@
 
   <div class="content">
     <section>
-      <h2>Definicija kompleksnih števil</h2>
-      <p>Kompleksna števila...</p>
+      <center>
+        <div id="nastavitve"></div>
+      </center>
+    </section>
+    <section>
+      <p>
+        <center>
+          <canvas id="canvas">
+            Your browser does not support the HTML5 canvas tag.</canvas>
+        </center>
+      </p>
     </section>
   </div>
 </body>
+<script>
+  dimensions = 4;
+  init(dimensions, create600Cell());
+  requestAnimationFrame(mainloop);
+  Fov_scaling_factor = Fov_scaling_factor * 2;
+</script>
+
 </html>
