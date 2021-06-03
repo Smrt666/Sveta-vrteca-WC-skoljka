@@ -12,7 +12,7 @@ function pendown() {
     draw();
 }
 
-function punup() {
+function penup() {
     turtle_pen = "up";
     stroke();
 }
@@ -40,7 +40,7 @@ function clear() {
 }
 
 function forward(d) {
-    move_to(trutle_x + d * Math.sin(180 * trutle_heading / Math.PI), trutle_y + d * Math.cos(180 * trutle_heading / Math.PI));
+    move_to(trutle_x + d * Math.sin(trutle_heading * Math.PI/180), trutle_y + d * Math.cos(trutle_heading * Math.PI/180));
 }
 
 function stroke() { // izrišeš
@@ -50,4 +50,14 @@ function stroke() { // izrišeš
 function draw() { // začneš risanje
     turtle_ctx.beginPath();
     turtle_ctx.moveTo(trutle_x, trutle_y);
+}
+
+function pos(){
+    return [trutle_x, trutle_y];
+}
+
+function reset(){ 
+    trutle_x = 0;
+    trutle_y = 0;
+    trutle_heading = 0;
 }

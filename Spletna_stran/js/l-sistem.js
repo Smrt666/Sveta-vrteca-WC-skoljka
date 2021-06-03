@@ -14,19 +14,10 @@ function generate(sequence, rules, n){
     return sequence;
 }
 
-function string(array){
-    let result = '';
-    for (let i = 0; i < array.length; i++){
-        result += array[i];
-    }
-    return result;
-}
-
-paragraph = document.getElementById('l-system');
-
-let axiom = ['AB', 'A'];
-let rules = {'AB' : ['AB', 'AB'], 'B' : ['A']};
-
-// console.log(generate(axiom, rules, 1));
-
-paragraph.innerHTML = string(generate(axiom, rules, 1));
+// function string(array){
+//     let result = '';
+//     for (let i = 0; i < array.length; i++){
+//         result += array[i];
+//     }
+//     return result;
+// }
