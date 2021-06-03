@@ -65,51 +65,76 @@ function allConnections(vertices) {
   return r;
 }
 
-function vr_change() {
+function sign_and_permutations(arr) {
+  let r = [];
+  let repeat_checker = new Set();
+  let tmp = permutations(arr);
+  for (let i = 0; i < tmp.length; i++) {
+    let tmp2 = minuses(tmp[i]);
+    for (let j = 0; j < tmp2.length; j++) {
+      let tmptmp = tmp2[j];
+      let tmptmps = tmptmp.toString();
+      if (!repeat_checker.has(tmptmps)) {
+        r.push(tmptmp);
+        repeat_checker.add(tmptmps);
+      }
+    }
+  }
+  return r;
+}
+
+function sign_and_even_permutations(arr) {
+  let r = [];
+  let repeat_checker = new Set();
+  let tmp = even_permutations(arr);
+  for (let i = 0; i < tmp.length; i++) {
+    let tmp2 = minuses(tmp[i]);
+    for (let j = 0; j < tmp2.length; j++) {
+      let tmptmp = tmp2[j];
+      let tmptmps = tmptmp.toString();
+      if (!repeat_checker.has(tmptmps)) {
+        r.push(tmptmp);
+        repeat_checker.add(tmptmps);
+      }
+    }
+  }
+  return r;
+}
+
+function cell120_vertices() {
   let r = [];
   let repeat_checker = new Set();
 
+  // izgradnja opisana na: https://talata.istvan.ymmf.hu/2018_tavasz/120_cell_wikipedia.pdf
+
   let phi = (1 + Math.sqrt(5)) / 2;
-  let chs = [[0, 0, 2, 2],
-             [1, 1, 1, Math.sqrt(5)],
-             [phi**-2, phi, phi, phi],
-             [1/phi, 1/phi, 1/phi, phi**2]];
-  let even_chs = [[0, phi**-2, 1, phi**2],
-                  [0, phi**-1, phi, Math.sqrt(5)],
-                  [1/phi, 1, phi, 2]];
-  for (let i = 0; i < chs.length; i++) {
-    let minus_tmp = minuses(chs[i]); // [chs[i]]; // 
-    for (let j = 0; j < minus_tmp.length; j++) {
-      let perms = permutations(minus_tmp[j]); // [minus_tmp[j]]; // permutations(minus_tmp[j]);
-      for (let k = 0; k < perms.length; k++) {
-        let tmp = perms[k];
-        let stmp = tmp.toString();
-        if (!repeat_checker.has(stmp)) {
-          r.push(tmp);
-          repeat_checker.add(stmp);
-        }
-      }
-    }
-  }
-  for (let i = 0; i < even_chs.length; i++) {
-    let minus_tmp = [even_chs[i]]; // minuses(chs[i]);
-    for (let j = 0; j < minus_tmp.length; j++) {
-      let perms = permutations(minus_tmp[j]); // [minus_tmp[j]]; // permutations(minus_tmp[j]);
-      for (let k = 0; k < perms.length; k++) {
-        let tmp = perms[k];
-        if (differences(minus_tmp[j], tmp) % 2 === 1) {
-          //console.log("non-even");
-          //continue;
-        }
-        let stmp = tmp.toString();
-        if (!repeat_checker.has(stmp)) {
-          r.push(tmp);
-          repeat_checker.add(stmp);
-        }
-      }
-    }
+
+  let first = [0, 0, 2, 2];
+  let second = [[1, 1, 1, Math.sqrt(5)],
+                [phi**-2, phi, phi, phi],
+                [1/phi, 1/phi, 1/phi, phi**2]];
+
+  let third = [[0, phi**-2, 1, phi**2],
+               [0, 1/phi, phi, Math.sqrt(5)],
+               [1/phi, 1, phi, 2]];
+
+  let r1 = sign_and_permutations(first);
+  r = r.concat(r1);
+  // console.log(r1);
+
+  let r2s = [];
+  for (let k = 0; k < second.length; k++) {
+    let tmp = sign_and_permutations(second[k]);
+    r = r.concat(tmp);
+    // console.log(tmp);
   }
 
+  let r3s = [];
+  for (let k = 0; k < third.length; k++) {
+    let tmp = sign_and_even_permutations(third[k]);
+    r = r.concat(tmp);
+    // console.log(tmp);
+  }
   return r;
 }
 
@@ -121,29 +146,10 @@ function arr_sum(arr1, arr2) {
   return r;
 }
 
-function cell120_vertices() {
-  let cell24_vertices = createOctahedron(4);
-  let chs = vr_change();
-  let r = [];
-  let repeat_checker = new Set();
-  for (let i = 0; i < chs.length; i++) {
-    for (let j = 0; j < cell24_vertices.length; j++) {
-      // console.log(cell24_vertices[j], chs[i]);
-      let tmp = arr_sum(cell24_vertices[j], chs[i]);
-      let stmp = tmp.toString();
-      if (!repeat_checker.has(stmp)) {
-        r.push(tmp);
-        repeat_checker.add(stmp);
-      }
-    }
-  }
-  return chs;
-  
-}
 
 function create120Cell() {
   let vertices = cell120_vertices();
-  console.log(vertices);
+  // console.log(vertices);
   let edges = find_edges(vertices);
   return [edges, vertices];
 }

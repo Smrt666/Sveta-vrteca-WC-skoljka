@@ -44,6 +44,8 @@ function cell600_vertices() {
   let r = [];
   let phi = (1 + Math.sqrt(5)) / 2;
 
+  // zgradba opisana na: https://www.mobilewiki.org/en/600-cell-6648488280
+
   let first16 = [];
   let tmp = minuses([1/2, 1/2, 1/2, 1/2]);
   for (let i = 0; i < tmp.length; i++) {
