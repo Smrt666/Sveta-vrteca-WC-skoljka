@@ -15,6 +15,7 @@
   <script src="../../js/NDEngine.js"></script>
   <script src="../../js/graphics_prep.js"></script>
   <script src="../../js/120-cell.js"></script>
+  <script src="../../js/angles.js"></script>
 </head>
 
 <body>
@@ -66,7 +67,7 @@
 </body>
 <script>
   dimensions = 4;
-  init(dimensions, create120Cell());
+  init(dimensions, create120Cell(), [undefined, undefined, undefined, undefined, "120-Cell", undefined]);
   requestAnimationFrame(mainloop);
   Fov_scaling_factor = Fov_scaling_factor / 2;
 </script>

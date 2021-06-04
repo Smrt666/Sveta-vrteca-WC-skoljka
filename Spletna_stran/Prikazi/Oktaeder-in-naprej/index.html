@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Oktaeder in naprej</title>
-    <link rel="stylesheet" type="text/css" href="../../css/universal.css">
-    <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
-    <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="../../js/matrix.js"></script>
-    <script src="../../js/NDEngine.js"></script>
-    <script src="../../js/graphics_prep.js"></script>
-    <script src="../../js/tesseract.js"></script>
-    <script src="../../js/octahedron.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Oktaeder in naprej</title>
+  <link rel="stylesheet" type="text/css" href="../../css/universal.css">
+  <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
+  <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../js/matrix.js"></script>
+  <script src="../../js/NDEngine.js"></script>
+  <script src="../../js/graphics_prep.js"></script>
+  <script src="../../js/tesseract.js"></script>
+  <script src="../../js/octahedron.js"></script>
+  <script src="../../js/angles.js"></script>
 </head>
 <body>
     <header><h1>Oktaeder in naprej</h1></header>
@@ -62,7 +63,7 @@
 </body>
 <script>
   dimensions = 4; // naj ostane pod 9
-  init(dimensions, octahedronEdges(dimensions));
+  init(dimensions, octahedronEdges(dimensions), [undefined, undefined, undefined, "octahedron", "24-Cell", undefined]);
   requestAnimationFrame(mainloop);
 </script>
 </html>

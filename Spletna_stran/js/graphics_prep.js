@@ -1,4 +1,15 @@
-function init(d, obj) { 
+function init(d, obj, obj_type_names) {
+  type_names = obj_type_names;
+  if (obj_type_names) {
+    if (d < obj_type_names.length) {
+      object_type = obj_type_names[d];
+    } else {
+      object_type = obj_type_names[obj_type_names.length - 1];
+    }
+  } else {
+    object_type = undefined;
+  }
+  // console.log(object_type, obj_type_names);
   mode = 1;
   last_timestamp = 0;
   width = window.innerWidth;
@@ -61,7 +72,7 @@ function init(d, obj) {
     sliders = [];
     ctxs = [];
     for (let i = 0; i < rotations.length; i++) {
-      slider_values.push(0);
+      slider_values.push(Math.PI / 6);
       sliders.push(insertSlider(i));
       ctxs.push(sliders[i].getContext("2d"));
       updateSlider(sliders[i], ctxs[i], i, true);
@@ -77,8 +88,31 @@ function init(d, obj) {
       updateSlider(sliders[i], ctxs[i], i, true);
     }
   }
+  reset_angles();
+  angles = [...slider_values];
+  updateSliders();
+
+  nastavitve = document.getElementById("nastavitve");
+  nastavitve.appendChild(document.createElement("br"));
+  let auto_rotate_button = document.createElement("input");
+  auto_rotate_button.setAttribute("id", "auto_rotate_button");
+  auto_rotate_button.setAttribute("type", "button");
+  auto_rotate_button.setAttribute("value", "Samodejno vrtenje");
+  auto_rotate_button.setAttribute("onclick", "mode_change()");
+  nastavitve.appendChild(auto_rotate_button);
 }
-  
+
+function mode_change() {
+  let btn = document.getElementById("auto_rotate_button");
+  if (mode == 1) {
+    mode = 0;
+    btn.setAttribute("value", "Določi usmerjenost");
+  } else {
+    mode = 1;
+    btn.setAttribute("value", "Samodejno vrtenje");
+  }
+}
+
 
 function update_matrices() {
   let index = 0;
@@ -116,9 +150,7 @@ function update_matrices() {
 
 function update_angles() {
   if (mode == 0) { 
-    for (let i = 0; i < angles.length; i++) {
-      angles[i] = (angles[i] + (0.002 * (i + 1)) % 0.009845) % (2 * Math.PI);
-    }
+    angles_auto_rotate();
   } else {
     angles = slider_values;
   }
@@ -179,22 +211,30 @@ function updateSliders() {
 }
 
 function updateSlider(slider, ctx, i, b) {
-  if (slider_mode == 0) {
-    let ltx = slider.getBoundingClientRect().left;
-    let lty = slider.getBoundingClientRect().top;
-    //console.log(ltx, lty);
-    
-    if (((ltx < mouseX && mouseX < ltx + 100) && (lty < mouseY && mouseY < lty + 100) && isMouseDown) || b) {
+  if (mode == 1) {
+    if (slider_mode == 0) {
+      let ltx = slider.getBoundingClientRect().left;
+      let lty = slider.getBoundingClientRect().top;
+      //console.log(ltx, lty);
       ctx.beginPath();
       ctx.clearRect(0, 0, 100, 100);
-      ctx.arc(50, 50, 49, 0, 2*Math.PI);
-      slider_values[i] = Math.atan2(mouseY-lty-50, mouseX-ltx-50);
+      ctx.arc(50, 50, 49, 0, 2 * Math.PI);
       ctx.moveTo(50, 50);
       ctx.lineTo(49 * Math.cos(slider_values[i]) + 50, 49 * Math.sin(slider_values[i]) + 50);
       ctx.stroke();
+      if (((ltx < mouseX && mouseX < ltx + 100) && (lty < mouseY && mouseY < lty + 100) && isMouseDown) || b) {
+        slider_values[i] = Math.atan2(mouseY-lty-50, mouseX-ltx-50);
+      }
+    } else if (slider_mode == 1) {
+      slider_values[i] = slider.value * Math.PI / 180;
     }
-  } else if (slider_mode == 1) {
-    slider_values[i] = slider.value * Math.PI / 180;
+  } else {
+    ctx.beginPath();
+    ctx.clearRect(0, 0, 100, 100);
+    ctx.arc(50, 50, 49, 0, 2 * Math.PI);
+    ctx.moveTo(50, 50);
+    ctx.lineTo(49 * Math.cos(slider_values[i]) + 50, 49 * Math.sin(slider_values[i]) + 50);
+    ctx.stroke();
   }
 }
 

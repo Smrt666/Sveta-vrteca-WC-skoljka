@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Simpleks</title>
-    <link rel="stylesheet" type="text/css" href="../../css/universal.css">
-    <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
-    <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="../../js/matrix.js"></script>
-    <script src="../../js/NDEngine.js"></script>
-    <script src="../../js/graphics_prep.js"></script>
-    <script src="../../js/icosahedron.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Simpleks</title>
+  <link rel="stylesheet" type="text/css" href="../../css/universal.css">
+  <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
+  <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../js/matrix.js"></script>
+  <script src="../../js/NDEngine.js"></script>
+  <script src="../../js/graphics_prep.js"></script>
+  <script src="../../js/icosahedron.js"></script>
+  <script src="../../js/angles.js"></script>
 </head>
 <body>
     <header><h1>Ikozaeder</h1></header>
@@ -60,7 +61,7 @@
     </div>
 </body>
 <script>
-    init(3, icosahedron_edges());
+    init(3, icosahedron_edges(), [undefined, undefined, undefined, "icosahedron", undefined]);
     requestAnimationFrame(mainloop);
 </script>
 </html>
