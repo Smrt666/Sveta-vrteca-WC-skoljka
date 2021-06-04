@@ -1,5 +1,7 @@
-function init(d, obj, obj_type_names) {
+function init(d, obj, obj_type_names, obj_generator, d_range) {
+  object_generator = obj_generator;
   type_names = obj_type_names;
+  dimension_range = d_range;
   if (obj_type_names) {
     if (d < obj_type_names.length) {
       object_type = obj_type_names[d];
@@ -15,6 +17,9 @@ function init(d, obj, obj_type_names) {
   width = window.innerWidth;
   height = window.innerHeight;
   can = document.getElementById("canvas");
+  if (Math.min(width, height) == height) {
+    height *= 0.8;
+  }
   can.width = Math.min(width, height);
   can.height = Math.min(height, width);
   width = Math.min(width, height);
@@ -45,6 +50,9 @@ function init(d, obj, obj_type_names) {
   aspect_ratio = height / width;
 
   Fov_scaling_factor = 1 / Math.tan(0.5 * fiel_of_view / 180 * Math.PI);
+  if (dimensions == 2) {
+    Fov_scaling_factor /= 2;
+  }
   q = r_far / (r_far - r_near)
   
   // vector of translation
@@ -93,13 +101,42 @@ function init(d, obj, obj_type_names) {
   updateSliders();
 
   nastavitve = document.getElementById("nastavitve");
-  nastavitve.appendChild(document.createElement("br"));
+  newline_after_sliders = document.createElement("br");
+  newline_after_sliders.setAttribute("id", "newline_after_sliders");
+  nastavitve.appendChild(newline_after_sliders);
+
+  let angles_reset_button = document.createElement("input");
+  angles_reset_button.setAttribute("id", "angles_reset_button");
+  angles_reset_button.setAttribute("type", "button");
+  angles_reset_button.setAttribute("value", "Ponastavi kote");
+  angles_reset_button.setAttribute("onclick", "reset_angles(); angles = [...slider_values]; updateSliders();");
+  nastavitve.appendChild(angles_reset_button);
+
   let auto_rotate_button = document.createElement("input");
   auto_rotate_button.setAttribute("id", "auto_rotate_button");
   auto_rotate_button.setAttribute("type", "button");
   auto_rotate_button.setAttribute("value", "Samodejno vrtenje");
   auto_rotate_button.setAttribute("onclick", "mode_change()");
   nastavitve.appendChild(auto_rotate_button);
+
+  if (dimension_range) {
+    if (dimension_range[1] - dimension_range[0] > 1) {
+      select_next_simulation_dimensions = document.createElement("input");
+      select_next_simulation_dimensions.setAttribute("id", "dimensions");
+      select_next_simulation_dimensions.setAttribute("type", "number");
+      select_next_simulation_dimensions.setAttribute("min", "" + dimension_range[0]);
+      select_next_simulation_dimensions.setAttribute("max", "" + dimension_range[1]);
+      select_next_simulation_dimensions.setAttribute("value", "" + dimensions);
+      nastavitve.appendChild(select_next_simulation_dimensions);
+
+      new_dimension_button = document.createElement("input");
+      new_dimension_button.setAttribute("id", "new_dimension_button");
+      new_dimension_button.setAttribute("type", "button");
+      new_dimension_button.setAttribute("value", "Vstopi v novo dimenzijo");
+      new_dimension_button.setAttribute("onclick", "reset_all(select_next_simulation_dimensions.value)");
+      nastavitve.appendChild(new_dimension_button);
+    }
+  }
 }
 
 function mode_change() {
@@ -113,6 +150,10 @@ function mode_change() {
   }
 }
 
+function reset_all(d) {
+  clear_settings();
+  init(d, object_generator(d), type_names, object_generator, dimension_range);
+}
 
 function update_matrices() {
   let index = 0;
@@ -245,4 +286,9 @@ function clear_settings() {
     sliders[i].remove();
   }
   sliders = [];
+  select_next_simulation_dimensions.remove();
+  new_dimension_button.remove();
+  angles_reset_button.remove();
+  auto_rotate_button.remove();
+  newline_after_sliders.remove();
 }
