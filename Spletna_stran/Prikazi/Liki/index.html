@@ -41,7 +41,7 @@
 
   <div class="content">
     <section>
-      <p><input type="range" min="3" max="36" value="5" class="slider" id="sides" style="width: 80%;">
+      <p><input type="range" min="3" max="37" value="5" class="slider" id="sides" style="width: 80%;">
          <span class="value-holder" id="sides-value">petkotnik</span> <br>
       </p>
       <p>
@@ -62,10 +62,13 @@
       if (n == 4) {
         value_shower.innerHTML = "kvadrat";
       }
+      if (n == 37) {
+        value_shower.innerHTML = "krog";
+      }
       draw(n);
     });
   }
-  var stevilke = ["nič", "ena", "dva", "tri", "štiri", "pet", "šest", "sedem", "osem", "devet", "deset", "enajst", "dvanajst", "trinajst", "štirinajst", "petnajst", "šestnajst", "sedemnajst", "osemnajst", "devetnajst", "dvajset", "enaindvajset", "dvaindvajset", "triindvajset", "štiriindvajset", "petindvajset", "šestindvajset", "sedemindvajset", "osemindvajset", "devetindvajset", "trideset", "enaintrideset", "dvaintrideset", "triintrideset", "štiriintrideset", "petintrideset", "šestintrideset", "sedemintrideset", "osemintrideset", "devetintrideset"];
+  var stevilke = ["nič", "ena", "dva", "tri", "štiri", "pet", "šest", "sedem", "osem", "devet", "deset", "enajst", "dvanajst", "trinajst", "štirinajst", "petnajst", "šestnajst", "sedemnajst", "osemnajst", "devetnajst", "dvajset", "enaindvajset", "dvaindvajset", "triindvajset", "štiriindvajset", "petindvajset", "šestindvajset", "sedemindvajset", "osemindvajset", "devetindvajset", "trideset", "enaintrideset", "dvaintrideset", "triintrideset", "štiriintrideset", "petintrideset", "šestintrideset", "krog"];
   var value_shower = document.getElementById("sides-value");
   var last_timestamp;
   var width = Math.min(window.innerWidth, window.innerHeight);
@@ -83,7 +86,9 @@
   var n = sides();
 
   function draw(n) {
-    if (n >= 2) {
+    if (n == 37) {
+      draw(360);
+    }else if (n >= 2) {
       let p = [];
       let angle = 0;
       for (let i = 0; i < n; i++) {
