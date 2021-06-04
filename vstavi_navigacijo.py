@@ -43,6 +43,7 @@ else:
              "Prikazi\\Dodekaeder\\index.html",
              "Prikazi\\600-cell\\index.html",
              "Prikazi\\120-cell\\index.html",
+             "Prikazi\\Fraktali\\index.html",
              "Teorija\\Kompleksna_stevila\\index.html",
              ]
     for file in files:
