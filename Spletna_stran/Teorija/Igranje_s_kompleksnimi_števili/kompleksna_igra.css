@@ -1,0 +1,9 @@
+.textfield{
+  background-color: inherit;
+  color: inherit;
+  padding: 10px;
+  font-size: 20px;
+  width: 100%;
+  max-width: 800px;
+  min-height: 50px;
+}
