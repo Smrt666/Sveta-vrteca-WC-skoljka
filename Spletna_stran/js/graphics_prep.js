@@ -197,3 +197,12 @@ function updateSlider(slider, ctx, i, b) {
     slider_values[i] = slider.value * Math.PI / 180;
   }
 }
+
+function clear_settings() {
+  slider_values = [];
+  ctxs = [];
+  for (let i = sliders.length - 1; i >= 0; i--) {
+    sliders[i].remove();
+  }
+  sliders = [];
+}
