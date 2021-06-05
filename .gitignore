@@ -154,3 +154,4 @@ tasks.json
 *.toc
 *.zip
 120-cell_vertices.txt
+settings.json

@@ -150,9 +150,15 @@ function mode_change() {
   }
 }
 
-function reset_all(d) {
-  clear_settings();
-  init(d, object_generator(d), type_names, object_generator, dimension_range);
+function reset_all(d, nujno) {
+  if (dimension_range || nujno) {
+    if ((d >= dimension_range[0] && d <= dimension_range[1] && (d % 1 == 0)) || nujno) {
+      clear_settings();
+      init(d, object_generator(d), type_names, object_generator, dimension_range);
+    } else {
+      alert("Ni nujno najboljša ideja. Če pa si res želiš, poženi iz konzole: reset_all(" + d + ", true)");
+    }
+  }
 }
 
 function update_matrices() {
