@@ -43,28 +43,48 @@
 	</nav>
 	<!-- Konec navigacije -->
 	
-	<div id="input-holder">
-		<input type="text" id="input1">
-		<input type="text" id="input2">
-		<input type="text" id="input3">
-		<!-- <input type="text" id="input4">
-		<input type="text" id="input5"> -->
+	<div class="content">
+		<div id="definitions">
+			<input type="text">
+			<input type="text">
+			<input type="text">
+			<input type="text">
+		</div>
+		<input type="text" id="axiom">
+		<div id="rules">
+			<input type="text">
+			<input type="text">
+			<input type="text">
+		</div>
+		<button onclick="setup()">Generate</button><br>
+		<canvas width='400' height='400' id="canvas"></canvas>
 	</div>
-	<button onclick="startup()">Generate</button><br>
-	<canvas width='400' height='400' id="canvas"></canvas>
 </body>
 <script>
 	let can = document.getElementById('canvas');
 	init(can);
 
-	function startup(){
-		let str1 = document.getElementById('input1').value;
-		let str2 = document.getElementById('input2').value;
-		let str3 = document.getElementById('input3').value;
-		
-		let axiom = str1;
-		let tmp2 = str2.split("=");
-		let tmp3 = str3.split("=");
+	function setup(){
+		let defsChildren = document.getElementById('definitions').getElementsByTagName('input');
+		let rulesChildren = document.getElementById('rules').getElementsByTagName('input');
+
+		let axiom = document.getElementById('axiom').value;
+		let defs = {};
+		let rules = {};
+
+		for(let i = 0; i < defsChildren.length; i++){ //definitions input turned into dictionary
+			defArray = defsChildren[i].value.split('=');
+			if(defArray[0] && defArray[1] != undefined){
+				defs[defArray[0]] = defArray[1];
+			}
+		}
+
+		for(let i = 0; i < rulesChildren.length; i++){ //turn input into rules format
+			ruleArray = rulesChildren[i].value.split('=');
+			if(ruleArray[0] && ruleArray[1] != undefined){
+				
+			}
+		}
 	}
 
 	// let axiom = ["F", "+", "G", "+", "G"]; //sierpinski triangle
