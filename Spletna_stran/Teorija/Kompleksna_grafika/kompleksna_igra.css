@@ -7,3 +7,11 @@
   max-width: 800px;
   min-height: 50px;
 }
+
+canvas{
+  max-width: 100%; 
+  max-height: 100%; 
+  border:1px solid #8a8888; 
+  border-radius: 10px;
+  background-color: inherit;
+}
