@@ -195,9 +195,9 @@ function update_matrices() {
   }
 }
 
-function update_angles() {
+function update_angles(t) {
   if (mode == 0) { 
-    angles_auto_rotate();
+    angles_auto_rotate(t);
   } else {
     angles = slider_values;
   }
