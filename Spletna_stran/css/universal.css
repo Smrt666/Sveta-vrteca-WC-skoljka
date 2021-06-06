@@ -87,6 +87,12 @@ nav{
   align-items: center; */
 }
 
+footer{
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin: 150px 10%;
+}
+
 @media(prefers-color-scheme: dark){
   body{
     background-color: rgb(56, 56, 56);
@@ -109,6 +115,12 @@ nav{
       color: lightgreen;
   }
 
+  a{
+    color: aqua;
+  }
+  a:hover{
+    color: rgb(0, 219, 219);
+  }
   #domov{
     background-color: rgb(60, 60, 60);
   }
