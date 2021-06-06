@@ -294,10 +294,19 @@ function run() {
   function mainloop() {
     for (let i = 0; i < looping_operations.length; i++) {
       let new_numbers = [];
+      let repeat_checker = new Set();
       for (let j = 0; j < all_numbers.length; j++) {
-        new_numbers = new_numbers.concat(looping_operations[i][0](all_numbers[j], looping_operations[i][1]));
+        let tmp = looping_operations[i][0](all_numbers[j], looping_operations[i][1]);
+        for (let i = 0; i < tmp.length; i++) {
+          let stmp = tmp[i].toString();
+          if (!repeat_checker.has(stmp)) {
+            repeat_checker.add(stmp);
+            new_numbers.push(tmp[i]);
+          }
+        }
         if (new_numbers.length >= 10000) {
           running = false;
+          // console.log(new_numbers);
           document.getElementById("pogon").value = "Poženi";
           alert("Pri računanju je nastalo preveč točk.");
           return;
@@ -336,5 +345,16 @@ function run() {
     }
   }
 
-  requestAnimationFrame(mainloop);
+  if (running && looping_operations.length) {
+    let fps = parseFloat(fps_set.value);
+    if ((fps > 60) || (fps < 0.2)) {
+      fps = 10;
+    }
+    setTimeout(() => {
+      requestAnimationFrame(mainloop);
+    }, 1000 / fps);
+  } else {
+    document.getElementById("pogon").value = "Poženi";
+    running = false;
+  }
 }
