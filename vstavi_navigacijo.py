@@ -46,6 +46,7 @@ else:
              "Prikazi\\Fraktali\\index.html",
              "Teorija\\Kompleksna_stevila\\index.html",
              "Teorija\\Kompleksna_grafika\\index.html",
+             "Teorija\\Projekcija\\index.html",
              ]
     for file in files:
         try:
