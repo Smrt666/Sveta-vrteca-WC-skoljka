@@ -6,6 +6,36 @@ function middle(v1, v2) {
   return s;
 }
 
+function find_edges2(vertices) {
+  let r = [];
+  let edge_len = Infinity;
+  let count = {};
+  for (let i = 0; i < vertices.length; i++) {
+    count[i] = 6;
+  }
+  for (let a = 1; a < vertices.length; a++) {
+    let d = distance(vertices[a], vertices[0]);
+    if (d < edge_len) {
+      edge_len = d;
+    }
+  }
+  for (let a = 0; a < vertices.length; a++) {
+    for (let b = a + 1; b < vertices.length; b++) {
+      let ab = distance(vertices[a], vertices[b]) - edge_len;
+      if (Math.abs(ab) < 0.001) {
+        count[a]--;
+        count[b]--;
+        let tmp = [a, b];
+        r.push(tmp);
+      }
+      if (count[a] <= 0) {
+        break;
+      }
+    }
+  }
+  return r;
+}
+
 function iteration(p, n) {
   let t = [0, 0, 0, 0, 0, 0];
   t[0] = middle(p[0], p[1]);
@@ -43,7 +73,7 @@ function fractal(n) {
   p[3] = [0, 0.9428090415820634, -0.3333333333333333];
 
   let points = iteration(p, n).concat(p);
-  let edges = find_edges(points);
+  let edges = find_edges2(points);
 
   return [edges, points];
 }
