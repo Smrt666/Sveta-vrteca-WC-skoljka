@@ -38,15 +38,19 @@ function reset_angles() {
       slider_values[5] = Math.PI / 2;
     } else {
       for (let i = 0; i < slider_values.length; i++) {
-        slider_values[i] = Math.random() * Math.PI;
+        slider_values[i] = Math.random() * 2 * Math.PI;
       }
     }
   } else {
     if (object_type == "n-cube") {
       for (let i = 0; i < slider_values.length; i++) {
-        slider_values[i] = Math.random() * Math.PI;
+        slider_values[i] = Math.random() * 2 * Math.PI;
       }
       slider_values[slider_values.length - 1] = Math.PI * 7 / 24;
+    } else {
+      for (let i = 0; i < slider_values.length; i++) {
+        slider_values[i] = Math.random() * 2 * Math.PI;
+      }
     }
   }
 }

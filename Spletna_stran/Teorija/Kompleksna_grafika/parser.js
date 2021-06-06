@@ -209,9 +209,42 @@ function read_operations(id) {
 }
 
 function to_csystem(c) {
-  return [(c[0] / 20 + 1) * width / 2, (c[1] / 20 + 1) * width / 2];
+  return [(c[0] / 20 + 1) * width / 2, (-c[1] / 20 + 1) * width / 2];
 }
 running = false;
+
+function coordinate_system() {
+  ctx.beginPath();
+  ctx.fillStyle = "black";
+  let p = to_csystem([0, -20]);
+  ctx.moveTo(p[0], p[1])
+  p = to_csystem([0, 20]);
+  ctx.lineTo(p[0], p[1]);
+
+  p = to_csystem([-20, 0]);
+  ctx.moveTo(p[0], p[1])
+  p = to_csystem([20, 0]);
+  ctx.lineTo(p[0], p[1]);
+
+  p = to_csystem([10, -1.5]);
+  ctx.font = "20px Arial"
+  ctx.fillText("10", p[0] - 10, p[1]);
+  p = to_csystem([10, 0]);
+  ctx.moveTo(p[0], p[1] - 3);
+  ctx.lineTo(p[0], p[1] + 3);
+
+  p = to_csystem([0.5, 10]);
+  ctx.font = "20px Arial"
+  ctx.fillText("10i", p[0], p[1] + 6);
+  p = to_csystem([0, 10]);
+  ctx.moveTo(p[0] - 3, p[1]);
+  ctx.lineTo(p[0] + 3, p[1]);
+
+  p = to_csystem([0, 0]);
+  ctx.font = "20px Arial"
+  ctx.fillText("0", p[0] - 14, p[1] + 18);
+  ctx.stroke();
+}
 
 function run() {
   let fps_set = document.getElementById("fps");
@@ -240,6 +273,7 @@ function run() {
   
   ctx.beginPath();
   ctx.clearRect(0, 0, width, height);
+  coordinate_system();
   ctx.fillStyle = "green";
   for (let i = 0; i < all_numbers.length; i++) {
     let xy = to_csystem(all_numbers[i]);
@@ -260,10 +294,19 @@ function run() {
   function mainloop() {
     for (let i = 0; i < looping_operations.length; i++) {
       let new_numbers = [];
+      let repeat_checker = new Set();
       for (let j = 0; j < all_numbers.length; j++) {
-        new_numbers = new_numbers.concat(looping_operations[i][0](all_numbers[j], looping_operations[i][1]));
+        let tmp = looping_operations[i][0](all_numbers[j], looping_operations[i][1]);
+        for (let i = 0; i < tmp.length; i++) {
+          let stmp = tmp[i].toString();
+          if (!repeat_checker.has(stmp)) {
+            repeat_checker.add(stmp);
+            new_numbers.push(tmp[i]);
+          }
+        }
         if (new_numbers.length >= 10000) {
           running = false;
+          // console.log(new_numbers);
           document.getElementById("pogon").value = "Poženi";
           alert("Pri računanju je nastalo preveč točk.");
           return;
@@ -274,6 +317,7 @@ function run() {
 
     ctx.beginPath();
     ctx.clearRect(0, 0, width, height);
+    coordinate_system();
     ctx.fillStyle = "green";
     for (let i = 0; i < all_numbers.length; i++) {
       let xy = to_csystem(all_numbers[i]);
@@ -301,5 +345,16 @@ function run() {
     }
   }
 
-  requestAnimationFrame(mainloop);
+  if (running && looping_operations.length) {
+    let fps = parseFloat(fps_set.value);
+    if ((fps > 60) || (fps < 0.2)) {
+      fps = 10;
+    }
+    setTimeout(() => {
+      requestAnimationFrame(mainloop);
+    }, 1000 / fps);
+  } else {
+    document.getElementById("pogon").value = "Poženi";
+    running = false;
+  }
 }

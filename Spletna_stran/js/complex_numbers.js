@@ -73,6 +73,8 @@ function complex_exponentation(c1, c2) {
   let repeat_checker = new Set();
   let repeat_checker2 = new Set();
   let solutions = [];
+  let prev = [undefined, undefined];
+  let diff = [0, 0];
   for (let arg = Math.atan2(b, a); !repeat_checker.has(pcround(arg)) && solutions.length < 10000; arg += 2 * Math.PI) {
     let r = (a**2 + b**2) ** (c / 2) * Math.E ** (- d * arg);
     let resarg = c * arg + 1 / 2 * d * Math.log(a ** 2 + b ** 2);
@@ -86,6 +88,24 @@ function complex_exponentation(c1, c2) {
     }
     repeat_checker2.add(sols);
     solutions.push(sol);
+
+    if (prev[0] && prev[1]) {
+      if (prev[0] == sol[0]) {
+        diff[0]++;
+      } else {
+        diff[0] = 0;
+      }
+      if (prev[1] == sol[1]) {
+        diff[1]++;
+      } else {
+        diff[1] = 0;
+      }
+      prev[0] = sol[0];
+      prev[1] = sol[1];
+      if ((diff[0] > 20 && diff[1] == 0) && (diff[1] > 20 && diff[0] == 0)) {
+        break;
+      }
+    }
   }
 
   return solutions;
