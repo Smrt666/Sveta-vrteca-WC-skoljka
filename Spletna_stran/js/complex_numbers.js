@@ -3,7 +3,7 @@ function complex_sum(c1, c2) {
 }
 
 function complex_diff(c1, c2) {
-  return [[c1[0] + c2[0], c1[1] + c2[1]]];
+  return [[c1[0] - c2[0], c1[1] - c2[1]]];
 }
 
 function complex_mul(c1, c2) {
@@ -55,7 +55,7 @@ function complex_to_real_power(c, p) {
 
   let results = [];
   for (let i = 0; i < solution_args.length; i++) {
-    results.push([na4_mesta(r * Math.cos(solution_args[i])), na4_mesta(r * Math.sin(solution_args[i]))]);
+    results.push([r * Math.cos(solution_args[i]), r * Math.sin(solution_args[i])]);
   }
 
   return results;
@@ -81,8 +81,8 @@ function complex_exponentation(c1, c2) {
     let realunit = Math.cos(resarg);
     let imagunit = Math.sin(resarg);
     // console.log(r*realunit, r*imagunit);
-    let sol = [na4_mesta(r * realunit), na4_mesta(r * imagunit)];
-    let sols = sol.toString();
+    let sol = [r * realunit, r * imagunit];
+    let sols = [pcround(sol[0]), pcround(sol[1])].toString();
     if (repeat_checker2.has(sols)) {
       break;
     }
