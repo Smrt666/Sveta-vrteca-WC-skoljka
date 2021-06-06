@@ -209,9 +209,42 @@ function read_operations(id) {
 }
 
 function to_csystem(c) {
-  return [(c[0] / 20 + 1) * width / 2, (c[1] / 20 + 1) * width / 2];
+  return [(c[0] / 20 + 1) * width / 2, (-c[1] / 20 + 1) * width / 2];
 }
 running = false;
+
+function coordinate_system() {
+  ctx.beginPath();
+  ctx.fillStyle = "black";
+  let p = to_csystem([0, -20]);
+  ctx.moveTo(p[0], p[1])
+  p = to_csystem([0, 20]);
+  ctx.lineTo(p[0], p[1]);
+
+  p = to_csystem([-20, 0]);
+  ctx.moveTo(p[0], p[1])
+  p = to_csystem([20, 0]);
+  ctx.lineTo(p[0], p[1]);
+
+  p = to_csystem([10, -1.5]);
+  ctx.font = "20px Arial"
+  ctx.fillText("10", p[0] - 10, p[1]);
+  p = to_csystem([10, 0]);
+  ctx.moveTo(p[0], p[1] - 3);
+  ctx.lineTo(p[0], p[1] + 3);
+
+  p = to_csystem([0.5, 10]);
+  ctx.font = "20px Arial"
+  ctx.fillText("10i", p[0], p[1] + 6);
+  p = to_csystem([0, 10]);
+  ctx.moveTo(p[0] - 3, p[1]);
+  ctx.lineTo(p[0] + 3, p[1]);
+
+  p = to_csystem([0, 0]);
+  ctx.font = "20px Arial"
+  ctx.fillText("0", p[0] - 14, p[1] + 18);
+  ctx.stroke();
+}
 
 function run() {
   let fps_set = document.getElementById("fps");
@@ -240,6 +273,7 @@ function run() {
   
   ctx.beginPath();
   ctx.clearRect(0, 0, width, height);
+  coordinate_system();
   ctx.fillStyle = "green";
   for (let i = 0; i < all_numbers.length; i++) {
     let xy = to_csystem(all_numbers[i]);
@@ -274,6 +308,7 @@ function run() {
 
     ctx.beginPath();
     ctx.clearRect(0, 0, width, height);
+    coordinate_system();
     ctx.fillStyle = "green";
     for (let i = 0; i < all_numbers.length; i++) {
       let xy = to_csystem(all_numbers[i]);
