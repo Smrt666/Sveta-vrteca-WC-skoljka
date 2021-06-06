@@ -44,6 +44,7 @@ else:
              "Prikazi\\600-cell\\index.html",
              "Prikazi\\120-cell\\index.html",
              "Prikazi\\Fraktali\\index.html",
+             "Prikazi\\Sierpinski_tetraeder\\index.html",
              "Teorija\\Kompleksna_stevila\\index.html",
              "Teorija\\Kompleksna_grafika\\index.html",
              "Teorija\\Projekcija\\index.html",
