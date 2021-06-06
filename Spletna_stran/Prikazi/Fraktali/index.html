@@ -43,28 +43,111 @@
 </nav>
 <!-- Konec navigacije -->
 	
-	<div id="input-holder">
-		<input type="text" id="input1">
-		<input type="text" id="input2">
-		<input type="text" id="input3">
-		<!-- <input type="text" id="input4">
-		<input type="text" id="input5"> -->
+	<div class="content">
+		<div id="definitions">
+			<input type="text" value="F = naprej">
+			<input type="text" value="G = naprej">
+			<input type="text" value="+ = levo120">
+			<input type="text" value="- = desno120">
+		</div>
+		<input type="text" id="axiom" value="F + G + G"><br>
+		<input type="text" id="iterations" value="7">
+		<div id="rules">
+			<input type="text" value="F = F + G - F - G + F">
+			<input type="text" value="G = G G">
+			<input type="text">
+		</div>
+		<button onclick="start()">Generate</button><br>
+		<canvas width='400' height='400' id="canvas"></canvas>
 	</div>
-	<button onclick="startup()">Generate</button><br>
-	<canvas width='400' height='400' id="canvas"></canvas>
 </body>
 <script>
-	let can = document.getElementById('canvas');
-	init(can);
+	let canvas = document.getElementById('canvas');
+	init(canvas);
 
-	function startup(){
-		let str1 = document.getElementById('input1').value;
-		let str2 = document.getElementById('input2').value;
-		let str3 = document.getElementById('input3').value;
-		
-		let axiom = str1;
-		let tmp2 = str2.split("=");
-		let tmp3 = str3.split("=");
+	function setup(){
+		let defsChildren = document.getElementById('definitions').getElementsByTagName('input');
+		let rulesChildren = document.getElementById('rules').getElementsByTagName('input');
+
+		let defs = {};
+		let rules = {};
+
+		for(let i = 0; i < defsChildren.length; i++){ //definitions input turned into dictionary
+			let defArray = defsChildren[i].value.split('=');
+			defArray = defArray.map(element => {return element.trim()}); //remove spaces on outside
+
+			if(defArray[0] && defArray[1] != undefined){ //if textbox isn't empty
+				defs[defArray[0]] = defArray[1];
+			}
+		}
+
+		for(let i = 0; i < rulesChildren.length; i++){ //rules input turned into dictionary
+			let ruleArray = rulesChildren[i].value.split('=');
+			ruleArray = ruleArray.map(element => {return element.trim()}); //remove spaces on outside
+
+			if(ruleArray[0] && ruleArray[1] != undefined){ //if textbox isn't empty
+				rules[ruleArray[0]] = ruleArray[1].split(" ");
+			}
+		}
+
+		return [rules, defs];
+	}
+
+
+	function LDraw(sequence, defs, dist, noDraw=false){
+		let meanings = { //string meanings into functions
+			"naprej" : forward,
+			"levo" : left,
+			"desno" : right,
+		}
+		let [maxX, maxY] = [0, 0];
+
+		for(let i = 0; i < sequence.length; i++){ //each element of the L-System alphabet does something with turtle
+			let current = sequence[i];
+			if(current in defs){ //if current even has a definition
+				let currentDef = defs[current].replace(/\d+/, ''); //remove integers from the definition
+				if(currentDef == "naprej"){ //if the definition is forward
+					if(noDraw){ //only move the turtle
+						meanings[currentDef](dist);
+						if(pos()[0] > maxX){maxX = pos()[0];} //finding maximum x
+						if(pos()[1] > maxY){maxY = pos()[1];} //finding maximum y
+					} else { //move and draw with turtle
+						pendown();
+						meanings[currentDef](dist);
+						penup();
+					}
+				} else { //otherwise the definition is rotation
+					let currentAngle = parseInt(defs[current].match(/\d+/)[0]); //find only integers in string
+					meanings[currentDef](currentAngle);
+				}
+			}
+		}
+		if(noDraw){ //reset after searching for max dist and return max values
+			reset();
+			return [maxX, maxY];
+		}
+	}
+
+
+	function maxDist(sequence, defs){
+		let [maxX, maxY] = LDraw(sequence, defs, 1, true);
+
+		if((maxX - canvas.width) >= (maxY - canvas.height)){ //find out in which direction is the drawing closer/further to/from the edge
+			return canvas.width / maxX; //return necessary distance to fill the entire canvas
+		} else {
+			return canvas.height / maxY; //return necessary distance to fill the entire canvas
+		}
+	}
+
+
+	function start(){
+		reset(); //clear canvas and return to origin
+		let axiom = document.getElementById('axiom').value.trim().split(" "); //turing axiom input into array with no spaces
+		let iterations = parseInt(document.getElementById('iterations').value.trim()); //remove spaces and turn into integer
+		let [rules, defs] = setup();
+
+		let sequence = generate(axiom, rules, iterations); //L-System array
+		LDraw(sequence, defs, maxDist(sequence, defs)); //drawing the L-System based on defs with distance that fills the entire canvas
 	}
 
 	// let axiom = ["F", "+", "G", "+", "G"]; //sierpinski triangle
@@ -72,81 +155,5 @@
 	// 	"F": ["F", "+", "G", "-", "F", "-", "G", "+", "F"],
 	// 	"G": ["G", "G"]
 	// };
-
-	// let sequence = generate(axiom, rules, 8);
-
-	// function max_pos(){
-	// 	let max_x = 0;
-	// 	let max_y = 0;
-
-	// 	for(let i = 0; i < sequence.length; i++){
-	// 		let current = sequence[i];
-	// 		let dist = 1;
-	// 		let angle = 120;
-
-	// 		if(current == "F"){
-	// 			forward(dist);
-	// 		}
-	// 		if(current == "G"){
-	// 			forward(dist);
-	// 		}
-	// 		if(current == "-"){
-	// 			right(angle);
-	// 		}
-	// 		if(current == "+"){
-	// 			left(angle);
-	// 		}
-
-	// 		let x = pos()[0];
-	// 		if(x > max_x){
-	// 			max_x = x;
-	// 		}
-	// 		let y = pos()[1];
-	// 		if(y > max_y){
-	// 			max_y = y;
-	// 		}
-	// 	}
-	// 	reset();
-	// 	return [max_x, max_y];
-	// }
-
-
-	// function scalar(pos){
-	// 	let x = pos[0];
-	// 	let y = pos[1];
-	// 	let x_dist = x - canvas.width;
-	// 	let y_dist = y - canvas.height;
-	// 	console.log(x, y, x_dist, y_dist)
-
-	// 	if(x_dist >= y_dist){
-	// 		return (can.width / x);
-	// 	} else {
-	// 		return (can.height / y);
-	// 	}
-	// }
-
-
-	// let dist = scalar(max_pos());
-	// let angle = 120;
-
-	// for(let i = 0; i < sequence.length; i++){
-	// 	let current = sequence[i];
-	// 	if(current == "F"){
-	// 		pendown();
-	// 		forward(dist);
-	// 		penup();
-	// 	}
-	// 	if(current == "G"){
-	// 		pendown();
-	// 		forward(dist);
-	// 		penup();
-	// 	}
-	// 	if(current == "-"){
-	// 		right(angle);
-	// 	}
-	// 	if(current == "+"){
-	// 		left(angle);
-	// 	}
-	// }
 </script>
 </html>

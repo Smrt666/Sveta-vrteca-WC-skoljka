@@ -34,7 +34,7 @@ function move_to(x, y) {
 }
 
 function clear() {
-    turtle_ctx.clearRect(0, 0, turtle_can.width, turtle_can.height);
+    turtle_ctx.clearRect(0, 0, turtle_canvas.width, turtle_canvas.height);
     turtle_ctx.beginPath();
     turtle_ctx.moveTo(trutle_x, trutle_y);
 }
@@ -59,5 +59,6 @@ function pos(){
 function reset(){ 
     trutle_x = 0;
     trutle_y = 0;
+    clear();
     trutle_heading = 0;
 }
