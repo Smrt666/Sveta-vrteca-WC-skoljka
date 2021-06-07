@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../css/universal.css">
+  <link rel="stylesheet" type="text/css" href="../../css/teorija.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <title>Fraktali</title>
+</head>
+
+<body>
+  <header>
+    <h1>Fraktali</h1>
+  </header>
+  <!-- Navigacija -->
+  <nav>
+    <div class="drzalo">
+      <div class="nav-element" id="domov"><a href="../../index.html">Uvodna stran</a></div>
+      <div class="teorija">
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_grafika/index.html">Kompleksna grafika</a></div>
+        <div class="nav-element"><a href="../../Teorija/Projekcija/index.html">Projekcija</a></div>
+        <div class="nav-element"><a href="../../Teorija/Manipulacija_prostora/index.html">Manipulacija prostora</a>
+        </div>
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+      </div>
+    </div>
+    <div class="drzalo">
+      <div class="praktika">
+        <div class="nav-element"><a href="../../Prikazi/Simpleks/index.html">Simpleks</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Kocka-Teserakt-/index.html">Kocka, teserakt in naprej</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Liki/index.html">Liki</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Oktaeder-in-naprej/index.html">Oktaeder in naprej</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Ikozaeder/index.html">Ikozaeder</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Dodekaeder/index.html">Dodekaeder</a></div>
+        <div class="nav-element"><a href="../../Prikazi/600-Cell/index.html">600-Cell</a></div>
+        <div class="nav-element"><a href="../../Prikazi/120-Cell/index.html">120-Cell</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Fraktali/index.html">L-Sistem</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Sierpinski_tetraeder/index.html">Sierpinski tetraeder</a></div>
+      </div>
+    </div>
+  </nav>
+  <!-- Konec navigacije -->
+  <!-- ..\..\..\..\..\..\Downloads\dvisvgm-2.11.1-win64\dvisvgm.exe vsota_vektorjev_ignore.dvi -->
+
+  <div class="content">
+    <section>
+      <h2>Definicija fraktala</h2>
+      <p>
+        <div style="float: right;">
+          <img src="sierpinski-triangle.png" alt="Trikotnik Sierpinskega kot primer samopodobnega fraktala."
+            style="max-width: 500px; margin: 10px;">
+          <br>Trikotnik Sierpinskega kot primer samopodobnega fraktala.<br>
+          <a href="https://www.gresham.ac.uk/search?terms=Biographer" style="max-width: 500px;">https://www.gresham.ac.uk/search?terms=Biographer</a>
+        </div>
+        Fraktali zaradi nespecifičnosti in kompleksnosti teh oblik niso uradno definirani, vendar obstajajo nekatere bolj
+        splošne definicije z nekaj pomanjkljivostmi.
+        Najpreprostejša razlaga fraktala izhaja iz samopodobnih lastnosti teh figur, ki jih vidimo pri najpreprostejših vrstah
+        fraktalov.
+        Eden od teh je trikotnik Sierpinskega, prikazan na spodnji sliki. Glavna struktura je trikotnik, ki je razdeljen na 3
+        manjše trikotnike s polovično dolžino stranice.
+        S ponavljanjem delitve na novo nastalih trikotnikih v neskončnost dobimo prikazan fraktal.
+        <cite>[Fractal] [3Blue1Brown]</cite>
+      </p>
+      <p>
+        Zaradi tehnike grajenja fraktalov iz vedno manjših podenot lahko vidimo, kako se v obliki pojavi samopodobnost, ampak za uporabo fraktalov v primerih resničnega življenja to ne zadošča.
+        Samopodobnost se seveda nahaja v naravi, vendar ni pogosta.
+        Benoit Mandelbrot, matematik 20. stoletja, ni bil zadovoljen s posploševanjem grobih oblik narave v preprostejše oblike kot krivulje.
+        Bil je mnenja, da so fraktali lahko orodje, s katerim natančneje opišemo naravo.
+        V naravi oblike niso pravilne, saj se ob povečavi ta oblika ne posploši, ampak pa je groba na vseh ravneh.
+        Ideja pojava grobosti na vseh povečavah oblike je skoraj enaka ideji fraktala, da je oblika prvotnega telesa vidna na vseh ravneh.
+        V definicijo je bila vpeljala ideja fraktalne dimenzije (o kateri je napisano več v naslednjem podpoglavju), ki nam omogoči, razširitev fraktalov na nenavadne oblike, ki ohranjajo grobost ali nepravilnost pri vseh povečavah.
+        Mandelbrot je v svoji knjigi "The Fractal Geometry of Nature" fraktale definiral kot oblike, katerih "Hausdorffova dimenzija" (dimenzije, katerih vrednost je lahko realno število) presega "topološko dimenzijo" (dimenzije celih vrednosti).
+        Na žalost tudi ta definicija sama po sebi ni popolna, saj se pojavijo izjeme, ki imajo Hausendorffovo dimenzijo enako topološki dimenziji.
+        <cite>[3Blue1Brown]</cite>
+        <cite>[Hausdorff dimension]</cite>
+      </p>
+    </section>
+  </div>
+  <footer>
+    <center>Viri</center>
+    <ul>
+      <li>3Blue1Brown. Fractals are typically not self-similar. Jan. 2017. url: <a href="https://www.youtube.com/watch?v=gB9n2gHsHN4">https://www.youtube.com/watch?v=gB9n2gHsHN4</a>.</li>
+      <li>Chaos game. Apr. 2021. url: <a href="https://en.wikipedia.org/wiki/Chaos_game">https://en.wikipedia.org/wiki/Chaos_game</a>.</li>
+      <li>Finite subdivision rule. Apr. 2021. url: <a href="https://en.wikipedia.org/wiki/Finite_subdivision_rule">https://en.wikipedia.org/wiki/Finite_subdivision_rule</a>.</li>
+      <li>Fractal. Maj 2021. url: <a href="https://en.wikipedia.org/wiki/Fractal">https://en.wikipedia.org/wiki/Fractal</a>.</li>
+      <li>Hausdorff dimension. Jan. 2021. url: <a href="https://en.wikipedia.org/wiki/Hausdorff_dimension">https://en.wikipedia.org/wiki/Hausdorff_dimension</a>.</li>
+      <li>VESNA IRŠIC. Fraktalna dimenzija. 2015.</li>
+      <li>Iterated function system. Maj 2021. url: <a href="https://en.wikipedia.org/wiki/Iterated_function_system">https://en.wikipedia.org/wiki/Iterated_function_system</a>.</li>
+      <li>L-system. Maj 2021. url: <a href="https://en.wikipedia.org/wiki/L-system">https://en.wikipedia.org/wiki/L-system</a>.</li>
+      <li>Mandelbrotova množica. Nov. 2014. url: <a href="https://sl.wikipedia.org/wiki/Mandelbrotova_mno%C5%BEica">https://sl.wikipedia.org/wiki/Mandelbrotova_mno%C5%BEica</a>.</li>
+      <li>Vu Do Math. Fractal dimensions. What, why, how to. Apr. 2020. url: <a href="https://www.youtube.com/watch?v=v273ElS1TRU">https://www.youtube.com/watch?v=v273ElS1TRU</a>.</li>
+    </ul>
+  </footer>
+</body>
+
+</html>
