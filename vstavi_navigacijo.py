@@ -47,6 +47,7 @@ else:
              "Prikazi\\Sierpinski_tetraeder\\index.html",
              "Teorija\\Kompleksna_stevila\\index.html",
              "Teorija\\Kompleksna_grafika\\index.html",
+             "Teorija\\Manipulacija_prostora\\index.html",
              "Teorija\\Projekcija\\index.html",
              ]
     for file in files:
