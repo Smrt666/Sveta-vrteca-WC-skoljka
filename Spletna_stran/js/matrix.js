@@ -175,3 +175,28 @@ function matrix_inv(matrix) {
 
         return r;
 }
+
+function matrix_pow(matrix, n) {
+        let r = [];
+        for (let i = 0; i < matrix.length; i++) {
+                let line = [];
+                for (let j = 0; j < matrix[i].length; j++) {
+                        line.push(0);
+                }
+                r.push(line);
+        }
+        for (let i = 0; i < r.length; i++) {
+                r[i][i] = 1;
+        }
+
+        let factor = matrix;
+        while (n > 0) {
+                if (n % 2 == 1) {
+                        r = matrix_mul(r, factor);
+                }
+                n = Math.floor(n / 2);
+                factor = matrix_mul(factor, factor);
+        }
+
+        return r;
+}

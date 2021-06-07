@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../css/universal.css">
+  <link rel="stylesheet" type="text/css" href="../../css/teorija.css">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <title>Manipulacija prostora</title>
+</head>
+
+<body>
+  <header>
+    <h1>Manipulacija prostora</h1>
+  </header>
+  <!-- Navigacija -->
+  <nav>
+    <div class="drzalo">
+      <div class="nav-element" id="domov"><a href="../../index.html">Uvodna stran</a></div>
+      <div class="teorija">
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_grafika/index.html">Kompleksna grafika</a></div>
+        <div class="nav-element"><a href="../../Teorija/Projekcija/index.html">Projekcija</a></div>
+        <div class="nav-element"><a href="../../Teorija/Manipulacija_prostora/index.html">Manipulacija prostora</a></div>
+        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+      </div>
+    </div>
+    <div class="drzalo">
+      <div class="praktika">
+        <div class="nav-element"><a href="../../Prikazi/Simpleks/index.html">Simpleks</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Kocka-Teserakt-/index.html">Kocka, teserakt in naprej</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Liki/index.html">Liki</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Oktaeder-in-naprej/index.html">Oktaeder in naprej</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Ikozaeder/index.html">Ikozaeder</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Dodekaeder/index.html">Dodekaeder</a></div>
+        <div class="nav-element"><a href="../../Prikazi/600-Cell/index.html">600-Cell</a></div>
+        <div class="nav-element"><a href="../../Prikazi/120-Cell/index.html">120-Cell</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Fraktali/index.html">L-Sistem</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Sierpinski_tetraeder/index.html">Sierpinski tetraeder</a></div>
+      </div>
+    </div>
+  </nav>
+  <!-- Konec navigacije -->
+  <!-- ..\..\..\..\..\..\Downloads\dvisvgm-2.11.1-win64\dvisvgm.exe vsota_vektorjev_ignore.dvi -->
+
+  <div class="content">
+    <section>
+      <h2>Manipulacija prostora</h2>
+      <p>
+        Na strani <a href="../Projekcija/index.html">projekcija</a> je opisan postopek slikanja točk na zaslon.
+        Tisti primer je poenostavljen do te mere, da mora biti zaslon na točno določenem mestu. Ker ne želimo ves čas 
+        opazovati istih točk, prav tako ne moremo premikati in obračati zaslona, premikamo po prostoru točke. Na tej strani bodo opisane rotacije - vrtenje, translacije - premiki
+        in zrcaljenje. Pred njimi sledi pa še nekaj teorije o vektorjih in matrikah.
+      </p>
+    </section>
+    <section>
+      <h2>Vektorji</h2>
+      <p>
+        Vektor je daljica, ki ima začetno in končno točko. Označimo jih s puščico nad imenom: \(\vec{v}\). Vektorja sta
+        enaka, če imata isto smer, enako dolžino in sta vzporedna. 
+      </p>
+      <p>
+        Krajevni vektorji so vektorji, ki imajo začetno točko v izhodišču koordinatnega sistema. 
+        Pogosto se jih uporablja za predstavitev točk v prostoru. Primer:
+        \(\vec{v}=\begin{bmatrix}
+        x \\ y \\ z
+        \end{bmatrix}\), če je točka del 3 dimenzionalnega prostora. Vektorje lahko seštevamo in odštevamo:
+        \(\begin{bmatrix}
+        x_1 \\ y_1 \\ z_1
+        \end{bmatrix} - \begin{bmatrix}
+        x_2 \\ y_2 \\ z_2
+        \end{bmatrix} = \begin{bmatrix}
+        x_1 - x_2 \\ y_1 - y_2 \\ z_1 - z_2
+        \end{bmatrix}\), lahko pa tudi množimo.
+      </p>
+      <p>
+        Vektorje lahko množimo na več različnih načinov. Trije najbolj poznani načini so produkt s skalarjem,
+        skalarni produkt in vektorski produkt. Produkt vektorja s skalarjem vrne prvotnemu vzporeden vektor:
+        $$k \begin{bmatrix}
+        x \\ y \\ z \\ \vdots
+        \end{bmatrix} = \begin{bmatrix}
+        k x \\ k y \\ k z \\ \vdots
+        \end{bmatrix}$$
+        Kadar imamo opravka z realnimi števili, operacija poveča ali zmanjša vektor za nek faktor.
+      </p>
+      <p>
+        Vektorski produkt je možen samo v treh in sedmih dimenzijah. Za prostore ostalih dimenzij obstajajo
+        druge operacije, ki imajo podobne lastnosti kot vektorski produkt.
+        $$\begin{bmatrix}
+        A_x \\ A_y \\ A_z
+        \end{bmatrix} \times \begin{bmatrix}
+        B_x \\ B_y \\ B_z
+        \end{bmatrix} = \begin{bmatrix}
+        A_y B_z - A_z B_y \\ A_z B_x - A_x B_z \\ A_x B_y - A_y B_x
+        \end{bmatrix}$$
+        V dveh dimenzijah se lahko pretvarjamo, da je \(z\) koordinata enaka \(0\). S tem prvi dve vrednosti
+        produkta postaneta \(0\), predznak zadnje pa nam pove orientacijo trikotnika, ki ga ta dva vektorja
+        določata in dvakratnik njegove ploščine. S tem predznakom lahko ugotovimo ali stranica 3D objekta gleda v našo smer.
+      </p>
+      <cite><a href="https://en.wikipedia.org/wiki/Cross_product">[Cross product]</a></cite>
+    </section>
+    <section>
+      <h2>Matrike</h2>
+      <p>
+      Matrika je enostavno rečeno preglednica števil. Matrike lahko seštevamo, če so enakih velikosti:
+      $$\begin{bmatrix}
+      a_{1,1} & a_{1,2} & a_{1,3} \\
+      a_{2,1} & a_{2,2} & a_{2,3} \\
+      a_{3,1} & a_{3,2} & a_{3,3} \\
+      a_{4,1} & a_{4,2} & a_{4,3} \\
+      \end{bmatrix} + \begin{bmatrix}
+      b_{1,1} & b_{1,2} & b_{1,3} \\
+      b_{2,1} & b_{2,2} & b_{2,3} \\
+      b_{3,1} & b_{3,2} & b_{3,3} \\
+      b_{4,1} & b_{4,2} & b_{4,3} \\
+      \end{bmatrix} = \begin{bmatrix}
+      a_{1,1}+b_{1,1} & a_{1,2}+b_{1,2} & a_{1,3}+b_{1,3} \\
+      a_{2,1}+b_{2,1} & a_{2,2}+b_{2,2} & a_{2,3}+b_{2,3} \\
+      a_{3,1}+b_{3,1} & a_{3,2}+b_{3,2} & a_{3,3}+b_{3,3} \\
+      a_{4,1}+b_{4,1} & a_{4,2}+b_{4,2} & a_{4,3}+b_{4,3} \\
+      \end{bmatrix}$$
+      Prav tako jih lahko množimo s skalarjem:
+      $$k \begin{bmatrix}
+      a_{1,1} & a_{1,2} & a_{1,3} \\
+      a_{2,1} & a_{2,2} & a_{2,3} \\
+      a_{3,1} & a_{3,2} & a_{3,3} \\
+      a_{4,1} & a_{4,2} & a_{4,3}
+      \end{bmatrix} = \begin{bmatrix}
+      k \cdot a_{1,1} & k \cdot a_{1,2} & k \cdot a_{1,3} \\
+      k \cdot a_{2,1} & k \cdot a_{2,2} & k \cdot a_{2,3} \\
+      k \cdot a_{3,1} & k \cdot a_{3,2} & k \cdot a_{3,3} \\
+      k \cdot a_{4,1} & k \cdot a_{4,2} & k \cdot a_{4,3}
+      \end{bmatrix}$$
+      Matriko z višino \(a\) in širino \(b\) lahko pomnožimo z matriko z višino \(b\) in širino \(c\). Rezultat je matrika
+      z višino \(a\) in širino \(c\). Pri tem je vrednost v vrstici \(i\) v stolpcu \(j\) enaka skalarnemu produktu
+      vrstice \(i\) prve matrike s stolpcem \(j\) druge. (Obstajajo tudi drugi tipi množenja, ampak za delo z vektorji bo ta
+      dovolj.)
+      </p>
+      <cite><a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">[Matrix]</a></cite>
+      <p>
+      $$\begin{bmatrix}
+      a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2}
+      \end{bmatrix} \begin{bmatrix}
+      b_{1,1} & b_{1,2} \\ b_{2,1} & b_{2,2}
+      \end{bmatrix} = \begin{bmatrix}
+      a_{1,1} \cdot b_{1,1} + a_{1,2} \cdot b_{2,1} & a_{1,1} \cdot b_{1,2} + a_{1,2} \cdot b_{2,2} \\
+      a_{2,1} \cdot b_{1,1} + a_{2,2} \cdot b_{2,1} & a_{2,1} \cdot b_{1,2} + a_{2,2} \cdot b_{2,2}
+      \end{bmatrix}$$
+      Vektor si lahko zapišemo kot matriko s širino 1. Matriko lahko potem pomnožimo z vektorjem:
+      $$\begin{bmatrix}
+      a_{1,1} & a_{1,2} & a_{1,3} \\
+      a_{2,1} & a_{2,2} & a_{2,3} \\
+      a_{3,1} & a_{3,2} & a_{3,3}
+      \end{bmatrix} \begin{bmatrix}
+      x \\ y \\ z
+      \end{bmatrix} = \begin{bmatrix}
+      a_{1,1} \cdot x + a_{1,2} \cdot y + a_{1,3} \cdot z\\
+      a_{2,1} \cdot x + a_{2,2} \cdot y + a_{2,3} \cdot z\\
+      a_{3,1} \cdot x + a_{3,2} \cdot y + a_{3,3} \cdot z
+      \end{bmatrix}$$
+      Množenje matrik ni komutativno, torej \(AB = BA\) ne velja vedno, pri njihovi uporabi se je potrebno tega zavedati.
+      Je pa asociativno, torej \(ABC = (AB)C = A(BC)\).
+      </p>
+      <cite><a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">[Matrix]</a></cite>
+      <p>
+      Na matrikah je definiranih še veliko drugih operacij, deljenja z matriko pa med njimi ni. Namesto tega
+      lahko kvadratni matriki (z ne ničelno determinanto) izračunamo inverz, ki se zapiše kot \(A^{-1}\). Velja,
+      da množenje matrike z inverzom vrne identiteto. Identiteta je matrika, ki ima po diagonali od levo zgoraj do desno
+      spodaj same enke, ostala polja pa imajo za vrednost \(0\). \(AI = A\) velja, če je \(I\) identiteta, \(A\) pa poljubna matrika.
+      </p>
+      <cite><a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">[Matrix]</a></cite>
+    </section>
+    <section>
+      <h2>Rotacije</h2>
+      <img src="rotacije_slikca.svg" alt="rotacije" style="float: right; max-width: 100%;">
+      <p>
+        Pri rotaciji za kot \(\varphi\) se enota na osi \(x\) preslika v točko \((\cos\varphi, \sin\varphi)\),
+        enota na osi \(y\) pa se preslika v točko \((-\sin\varphi, \cos\varphi)\). Kot rotacijsko matriko lahko to zapišemo:
+        $$\begin{bmatrix}
+        \cos\varphi & - \sin\varphi \\
+        \sin\varphi & \cos\varphi
+        \end{bmatrix}$$
+        Vektor zavrtimo za kot \(\varphi\) tako, da matriko pomnožimo z njim.
+        $$\begin{bmatrix}
+        \cos\varphi & - \sin\varphi \\
+        \sin\varphi & \cos\varphi
+        \end{bmatrix} \begin{bmatrix}
+        x \\ y
+        \end{bmatrix} = \begin{bmatrix}
+        x \cos\varphi - y \sin\varphi \\
+        x \sin\varphi + y \cos\varphi
+        \end{bmatrix}$$
+        Rotacijo v nasprotno smer dobimo, če vstavimo negativen \(\varphi\), kar spremeni predznak pri obeh \(\sin\).
+      </p>
+      <cite><a href="https://en.wikipedia.org/wiki/Transformation_matrix">[Transformation matrix]</a></cite>
+      <p>
+        Če želimo izvajati rotacije v višjih dimenzijah, potrebujemo večje matrike. V treh dimenzijah pravimo,
+        da zavrtimo nekaj okrog neke osi. V štirih dimenzijah vrtimo okrog ravnine, v petih okrog prostora, v šestih
+        okrog 4D hiper prostora...
+      </p>
+      <p>
+        V petih dimenzijah bi rotacijska matrika, ki vrti v smeri od \(y\) osi proti \(w\) osi izgledala takole
+        (osi si sledijo \(x\), \(y\), \(z\), \(w\), \(k\)):
+        $$\begin{bmatrix}
+        1 & 0 & 0 & 0 & 0 \\
+        0 & \cos\varphi & 0 & -\sin\varphi & 0 \\
+        0 & 0 & 1 & 0 & 0 \\
+        0 & \sin\varphi & 0 & \cos\varphi & 0 \\
+        0 & 0 & 0 & 0 & 1
+        \end{bmatrix}$$
+      </p>
+      <p>
+        Zdaj je na vrsti vprašanje, zakaj sploh uporabljati matrike, če lahko samo vzamemo dve koordinati, \(\sin\varphi\) in
+        \(\cos\varphi\)
+        ter zapišemo novo točko. Odgovor ni samo lepši zapis, ampak tudi manjše število operacij, potrebnih,
+        da vrtimo večje število točk (vektorjev). V prostoru z \(N\) dimenzijami lahko vrtimo od katerekoli osi
+        proti katerikoli drugi. To je \(\frac{N(N-1)}{2}\) različnih rotacij, če štejemo rotacije v nasprotne smeri za enake.
+        Vsakič lahko točke zavrtimo na \(\frac{N(N-1)}{2}\) načinov, kar bi pomenilo prav toliko dela. Če zapišemo vseh
+        \(\frac{N(N-1)}{2}\) rotacijskih matrik za podan kot, bi dobili za rotacijo takšen izraz:
+        \(R_1 R_2 R_3 \dots R_{\frac{N(N-1)}{2}} V\). \(V\) je v tem primeru vektor, ki ga obračamo.
+        Kot pa vemo, je množenje matrik asociativno, torej lahko vse matrike zmnožimo vnaprej, da dobimo eno rotacijsko matriko,
+        ki vsebuje vse rotacije. Potem lahko tisto eno matriko pomnožimo z vsakim vektorjem, kar nam prihrani veliko dela.
+      </p>
+      <p>
+        Ker množenje matrik ni komutativno, moramo paziti, v kakšen vrstni red jih postavimo. Tiste najbolj desno
+        bodo pomenile rotacije, ki se izvedejo najprej, tiste bolj levo, pa kasneje.
+      </p>
+      <cite><a href="https://en.wikipedia.org/wiki/3D_projection">[3D projection]</a></cite>
+    </section>
+    <section>
+      <h2>Translacije</h2>
+      <p>
+        Translacija ali premik je nekaj, kar lahko dosežemo s seštevanjem in odštevanjem vektorjev.
+        Žal pa potem ne moremo zapisati ene matrike, ki bi jo pomnožili s poljubnim vektorjem.
+        Prav tako, če imamo nek \(N\)-dimenzionalen vektor, matrika, ki bi jo pomnožili z njim, da bi ga prestavili,
+        ne obstaja. Da se izognemo tej težavi, premaknemo vektor v eno dimenzijo višje ter mu nastavimo novo koordinato na \(1\).
+        Potem lahko translacijsko matriko zapišemo kot:
+        $$\begin{bmatrix}
+            1 & 0 & 0 & \cdots & \Delta x \\
+            0 & 1 & 0 & \cdots & \Delta y \\
+            0 & 0 & 1 & \cdots & \Delta z \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \cdots & 1
+        \end{bmatrix}$$
+        Da bomo translacijsko lahko pomnožili z rotacijsko, moramo rotacijskim dodati na koncu en stolpec in eno vrstico,
+        oba zapolnjena z ničlami, le skrajno desno spodnja vrednost mora biti \(1\). Ko rišemo, rišemo samo vektorje z zadnjo koordinato 1.
+      </p>
+      <p>
+        Ali bomo dali translacijsko matriko pred rotacijsko ali za njo, je odvisno od tega, ali želimo najprej izvesti
+        rotacije in nato premik, ali obratno. Možno je tudi, da potrebujemo oboje, saj morda želimo vrteti okrog točke, ki
+        ni koordinatno izhodišče.
+      </p>
+      <p>
+        Število operacij, da izvedemo premike, bo v primeru da jih izvajamo samo enkrat, približno enako, kot če bi se tega 
+        lotili z odštevanjem. Prednost tega pristopa se pokaže, če želimo večkrat prestaviti vektorje.
+      </p>
+      <cite><a href="https://en.wikipedia.org/wiki/Transformation_matrix">[Transformation matrix]</a></cite>
+    </section>
+    <section>
+      <h2>Zrcaljenje</h2>
+      <p>
+        Za zrcaljenje skozi koordinatno izhodišče lahko samo vse koordinate pomnožimo z \(-1\). Temu primerna
+        matrika je identiteta pomnožena z \(-1\):
+        $$-1 \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix} = \begin{bmatrix}
+            -1 & 0 & 0 & 0 \\
+            0 & -1 & 0 & 0 \\
+            0 & 0 & -1 & 0 \\
+            0 & 0 & 0 & -1
+        \end{bmatrix}$$
+        Paziti moramo, če opravljamo translacije z matrikami, ker v tem primeru zadnja koordinata ne sme biti pomnožena
+        z \(-1\). V tem primeru moramo napisati matriko:
+        $$\begin{bmatrix}
+        -1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & 1
+        \end{bmatrix}$$
+      </p>
+      <p>
+        Če želimo zavrteti vektor okrog premice, ga je najlažje zavrteti tako, da premica čez katero zrcalimo,
+        sovpada z eno od osi. Potem vse koordinate vektorja, razen tiste, ki jo predstavlja omenjena os, pomnožimo z \(-1\).
+        Na koncu še zavrtimo vektor nazaj. Podobno lahko zrcalimo preko ravnine, samo da v tem primeru pri množenju z \(-1\)
+        izpustimo dve koordinati namesto ene.
+      </p>
+    </section>
+  </div>
+  <footer>
+    <center>Viri</center>
+    <ul>
+      <li>Cross product. Maj 2021. url: <a href="https://en.wikipedia.org/wiki/Cross_product">https://en.wikipedia.org/wiki/Cross_product</a>.</li>
+      <li>Matrix (mathematics). Maj 2021. url: <a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">https://en.wikipedia.org/wiki/Matrix_(mathematics)</a>.</li>
+      <li>Transformation matrix. Apr. 2021. url: <a href="https://en.wikipedia.org/wiki/Transformation_matrix">https://en.wikipedia.org/wiki/Transformation_matrix</a>.</li>
+      <li>3D projection. Maj 2021. url: <a href="https://en.wikipedia.org/wiki/3D_projection">https://en.wikipedia.org/wiki/3D_projection</a>.</li>
+    </ul>
+  </footer>
+</body>
+
+</html>

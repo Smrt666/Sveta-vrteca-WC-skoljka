@@ -25,8 +25,8 @@
       <div class="teorija">
         <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
         <div class="nav-element"><a href="../../Teorija/Kompleksna_grafika/index.html">Kompleksna grafika</a></div>
-        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
-        <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
+        <div class="nav-element"><a href="../../Teorija/Projekcija/index.html">Projekcija</a></div>
+        <div class="nav-element"><a href="../../Teorija/Manipulacija_prostora/index.html">Manipulacija prostora</a></div>
         <div class="nav-element"><a href="../../Teorija/Kompleksna_stevila/index.html">Kompleksna števila</a></div>
       </div>
     </div>
@@ -40,7 +40,8 @@
         <div class="nav-element"><a href="../../Prikazi/Dodekaeder/index.html">Dodekaeder</a></div>
         <div class="nav-element"><a href="../../Prikazi/600-Cell/index.html">600-Cell</a></div>
         <div class="nav-element"><a href="../../Prikazi/120-Cell/index.html">120-Cell</a></div>
-        <div class="nav-element"><a href="../../Prikazi/Fraktali/index.html">L-Sistemi</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Fraktali/index.html">L-Sistem</a></div>
+        <div class="nav-element"><a href="../../Prikazi/Sierpinski_tetraeder/index.html">Sierpinski tetraeder</a></div>
       </div>
     </div>
   </nav>
@@ -49,7 +50,9 @@
   <div class="content">
     <section>
       <center>
-        <label for="text">V to polje vpiši kompleksna števila, ki jih želiš narisati.</label>
+        <label for="text">V to polje vpiši začetna kompleksna števila. Napiši jih v obliki a + bi, loči jih s podpičjem
+          ali pa jih napiši vsakega v svojo vrstico.
+        </label>
         <br>
         <textarea class="textfield" id="zacetne_tocke" name="text"
           placeholder="Vnesi števila. Primer: (1 + 2i), (1.5 - 7.3i), (5i)" cols="20" rows="10"></textarea>
@@ -91,12 +94,23 @@
       </p>
       <p>
         Omejitev točk je 10 000, če je njihovo število doseže to mejo, se program ustavi. Operaciji r, ^ lahko vrneta večje
-        število novih točk. Operacija " r 2 " bo na primer vrnila dva kvadratna korena za vsako število.
+        število novih točk. Operacija " r 2 " bo na primer vrnila dva kvadratna korena za vsako število. V mnogo primerih 
+        bi ti dve operaciji našli neobvadljivo število rešitev, zato jih program izbere samo del.
       </p>
       <h3>Primeri</h3>
       <p>
         Naj ima prvo polje samo število " 1 ". Drugo polje naj vsebuje " r 20; * 10 ". S tem bomo dobili 20 enakomerno razporejenih
         točk od središča oddaljenih za 10. V tretjem polju naj bo " * (0.9 + 0.41i); + (2 - 2i) ".
+      </p>
+      <p>
+        Naj ima prvo polje samo število " 1 ". Drugo polje naj vsebuje " r 20; * 10 ". S tem bomo dobili 20 enakomerno
+        razporejenih točk od središča oddaljenih za 10. V tretjem polju naj bo " / 10; ^ -0.8 + 0.2i; * 10 ". 
+        (Ponovitev na sekundo nastavi na 1)
+      </p>
+      <p>
+        Naj ima prvo polje samo število " 1i ". Drugo polje naj vsebuje " r 20; ^ -0.8 + 0.3i; ^ -0.8 + 0.3i; ^ -0.8 + 0.3i; *
+        15; + 1i ". S tem bomo dobili 20 enakomerno razporejenih točk od središča oddaljenih za 10. V tretjem polju naj bo 
+        " + -1i; / (0.999592192 + 0.028556050i); + 1i ".
       </p>
       <p>
         Primeri kotov za vrtenje v levo: <br>

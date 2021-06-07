@@ -67,6 +67,7 @@ function angles_auto_rotate() {
   } else {
     for (let i = 0; i < angles.length; i++) {
       angles[i] = (angles[i] + (0.002 * (i + 1)) % 0.00984575163) % (2 * Math.PI);
+      slider_values[i] = angles[i];
     }
   }
 }

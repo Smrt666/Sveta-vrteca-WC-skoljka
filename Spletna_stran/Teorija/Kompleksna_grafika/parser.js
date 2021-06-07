@@ -298,7 +298,7 @@ function run() {
       for (let j = 0; j < all_numbers.length; j++) {
         let tmp = looping_operations[i][0](all_numbers[j], looping_operations[i][1]);
         for (let i = 0; i < tmp.length; i++) {
-          let stmp = tmp[i].toString();
+          let stmp = [na4_mesta(tmp[i][0]), na4_mesta(tmp[i][1])].toString();
           if (!repeat_checker.has(stmp)) {
             repeat_checker.add(stmp);
             new_numbers.push(tmp[i]);

@@ -119,7 +119,7 @@ function move_to_center(point) {
   let x = point[0];
   let y = point[1];
   let z = R2(point);
-  let p = [aspect_ratio * Fov_scaling_factor * x / z, Fov_scaling_factor * y / z, q * (z - r_near)];
+  let p = [aspect_ratio * Fov_scaling_factor * x / z, Fov_scaling_factor * y / z];
   scale = 1;
   let r = [(p[0] + 1) * width / 2 * scale, (p[1] + 1) * height / 2 * scale];
   for (let i = 2; i < point.length; i++) {

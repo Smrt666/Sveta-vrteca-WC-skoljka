@@ -10,8 +10,9 @@
 }
 
 body{
-  background-color: white;
   font-family: Century Gothic;
+  background-color: rgb(56, 56, 56);
+  color: rgb(224, 224, 224);
 }
 
 header{
@@ -44,8 +45,8 @@ nav{
   flex-direction: row;
   justify-content:space-around;
   flex-wrap: wrap;
-  background-color: rgb(240, 240, 240);
   margin-top: 10px;
+  background-color: rgb(60, 60, 60);
 }
 
 .drzalo{
@@ -61,55 +62,45 @@ nav{
   flex-direction: row;
   justify-content:space-around;
   flex-wrap: wrap;
-  background-color: rgb(240, 240, 240);
   margin: 10px 0 20px 0;
+  background-color: rgb(60, 60, 60);
+}
+
+a{
+  color: aqua;
+}
+a:hover{
+  color: aquamarine;
+}
+a:visited{
+  color: rgb(104, 196, 165);
 }
 
 .nav-element{
   padding: 10px 15px;
+  color: green;
 }
 
 .nav-element a{
   text-decoration: none;
   font-size: 1.4rem;
-  color: blue;
+  color: green;
 }
 
 .nav-element a:hover{
-  color: lightblue;
+  color: lightgreen;
 }
 
 #domov{
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(60, 60, 60);
   margin-right: 10px;
   /* margin-bottom: 10px; */
   /* justify-content: center;
   align-items: center; */
 }
 
-@media(prefers-color-scheme: dark){
-  body{
-    background-color: rgb(56, 56, 56);
-    color: rgb(224, 224, 224);
-  }
-
-  .teorija{
-    background-color: rgb(60, 60, 60);
-  }
-
-  .praktika{
-      background-color: rgb(60, 60, 60);
-  }
-
-  .nav-element a{
-    color: green;
-  }
-
-  .nav-element a:hover{
-      color: lightgreen;
-  }
-
-  #domov{
-    background-color: rgb(60, 60, 60);
-  }
+footer{
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin: 150px 10%;
 }

@@ -3,7 +3,7 @@ function complex_sum(c1, c2) {
 }
 
 function complex_diff(c1, c2) {
-  return [[c1[0] + c2[0], c1[1] + c2[1]]];
+  return [[c1[0] - c2[0], c1[1] - c2[1]]];
 }
 
 function complex_mul(c1, c2) {
@@ -52,10 +52,15 @@ function complex_to_real_power(c, p) {
     solution_args.push(next_arg);
     next_arg += 2 * Math.PI * p;
   }
+  next_arg = starting_arg - 2 * Math.PI * p;
+  while (!repeat_checker.has(pcround(next_arg)) && solution_args.length < 10000) {
+    solution_args.push(next_arg);
+    next_arg -= 2 * Math.PI * p;
+  }
 
   let results = [];
   for (let i = 0; i < solution_args.length; i++) {
-    results.push([na4_mesta(r * Math.cos(solution_args[i])), na4_mesta(r * Math.sin(solution_args[i]))]);
+    results.push([r * Math.cos(solution_args[i]), r * Math.sin(solution_args[i])]);
   }
 
   return results;
@@ -75,39 +80,41 @@ function complex_exponentation(c1, c2) {
   let solutions = [];
   let prev = [undefined, undefined];
   let diff = [0, 0];
-  for (let arg = Math.atan2(b, a); !repeat_checker.has(pcround(arg)) && solutions.length < 10000; arg += 2 * Math.PI) {
-    let r = (a**2 + b**2) ** (c / 2) * Math.E ** (- d * arg);
-    let resarg = c * arg + 1 / 2 * d * Math.log(a ** 2 + b ** 2);
-    let realunit = Math.cos(resarg);
-    let imagunit = Math.sin(resarg);
-    // console.log(r*realunit, r*imagunit);
-    let sol = [na4_mesta(r * realunit), na4_mesta(r * imagunit)];
-    let sols = sol.toString();
-    if (repeat_checker2.has(sols)) {
-      break;
-    }
-    repeat_checker2.add(sols);
-    solutions.push(sol);
-
-    if (prev[0] && prev[1]) {
-      if (prev[0] == sol[0]) {
-        diff[0]++;
-      } else {
-        diff[0] = 0;
-      }
-      if (prev[1] == sol[1]) {
-        diff[1]++;
-      } else {
-        diff[1] = 0;
-      }
-      prev[0] = sol[0];
-      prev[1] = sol[1];
-      if ((diff[0] > 20 && diff[1] == 0) && (diff[1] > 20 && diff[0] == 0)) {
+  let chs = [Math.PI * 2, - Math.PI * 2];
+  for (let ch = 0; ch < 2; ch++) {
+    for (let arg = Math.atan2(b, a); !repeat_checker.has(pcround(arg)) && solutions.length < 10000; arg += chs[ch]) {
+      let r = (a**2 + b**2) ** (c / 2) * Math.E ** (- d * arg);
+      let resarg = c * arg + 1 / 2 * d * Math.log(a ** 2 + b ** 2);
+      let realunit = Math.cos(resarg);
+      let imagunit = Math.sin(resarg);
+      // console.log(r*realunit, r*imagunit);
+      let sol = [r * realunit, r * imagunit];
+      let sols = [pcround(sol[0]), pcround(sol[1])].toString();
+      if (repeat_checker2.has(sols)) {
         break;
+      }
+      repeat_checker2.add(sols);
+      solutions.push(sol);
+      
+      if (prev[0] && prev[1]) {
+        if (prev[0] == sol[0]) {
+          diff[0]++;
+        } else {
+          diff[0] = 0;
+        }
+        if (prev[1] == sol[1]) {
+          diff[1]++;
+        } else {
+          diff[1] = 0;
+        }
+        prev[0] = sol[0];
+        prev[1] = sol[1];
+        if ((diff[0] > 20 && diff[1] == 0) && (diff[1] > 20 && diff[0] == 0)) {
+          break;
+        }
       }
     }
   }
-
   return solutions;
 }
 

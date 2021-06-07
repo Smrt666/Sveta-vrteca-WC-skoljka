@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="sl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Simpleks</title>
+  <title>Sierpinski tetraeder</title>
   <link rel="stylesheet" type="text/css" href="../../css/universal.css">
   <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
   <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
@@ -12,11 +13,14 @@
   <script src="../../js/matrix.js"></script>
   <script src="../../js/NDEngine.js"></script>
   <script src="../../js/graphics_prep.js"></script>
-  <script src="../../js/simplex.js"></script>
+  <script src="../../js/sierpinski_tetraeder.js"></script>
   <script src="../../js/angles.js"></script>
 </head>
+
 <body>
-  <header><h1>Simpleks</h1></header>
+  <header>
+    <h1>Sierpinski tetraeder</h1>
+  </header>
   <!-- Navigacija -->
   <nav>
     <div class="drzalo">
@@ -49,6 +53,7 @@
   <div class="content">
     <section>
       <center>
+        <button onclick="na6()" id="na6">Želite večjo natančnost?</button>
         <div id="nastavitve"></div>
       </center>
     </section>
@@ -63,8 +68,42 @@
   </div>
 </body>
 <script>
-    dimensions = 4; // naj ostane pod 35
-    init(dimensions, simplexEdges(dimensions), ["simplex"], simplexEdges, [2, 35]);
+    init(3, fractal(5)); // max 6
     requestAnimationFrame(mainloop);
-</script>  
+    Fov_scaling_factor *= 6;
+    move[2] *= 2;
+
+    function angles_auto_rotate(dt) {
+      angles[0] = (0.002 * dt / 10 + angles[0]) % (2 * Math.PI);
+      angles[1] = (0.0013 * dt / 10 + angles[1]) % (2 * Math.PI);
+      angles[2] = (0.0011 * dt / 10 + angles[2]) % (2 * Math.PI);
+    }
+
+    function mainloop(timestamp) {
+      let dt = timestamp - last_timestamp;
+      updateSliders();
+      update_angles(dt);
+      update_matrices();
+
+      //console.log(move);
+      draw(vertices, edges, ctx, move, rotate);
+
+      last_timestamp = timestamp;
+      requestAnimationFrame(mainloop);
+    }
+
+    function na6() {
+      document.getElementById("na6").remove();
+      document.getElementById("angles_reset_button").remove();
+      document.getElementById("auto_rotate_button").remove();
+      try {
+        clear_settings();
+      } catch (error) {
+      }
+      init(3, fractal(6));
+      Fov_scaling_factor *= 6;
+      move[2] *= 2;
+    }
+</script>
+
 </html>

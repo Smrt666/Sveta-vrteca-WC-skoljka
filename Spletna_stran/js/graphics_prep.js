@@ -195,9 +195,9 @@ function update_matrices() {
   }
 }
 
-function update_angles() {
+function update_angles(t) {
   if (mode == 0) { 
-    angles_auto_rotate();
+    angles_auto_rotate(t);
   } else {
     angles = slider_values;
   }
@@ -234,6 +234,7 @@ function normal_slider(i) {
   circ_slider.setAttribute("min", "-360");
   circ_slider.setAttribute("max", "360");
   circ_slider.setAttribute("value", "45");
+  circ_slider.setAttribute("step", "1");
   nastavitve.appendChild(circ_slider);
   return circ_slider;
 }
@@ -276,12 +277,16 @@ function updateSlider(slider, ctx, i, b) {
       slider_values[i] = slider.value * Math.PI / 180;
     }
   } else {
-    ctx.beginPath();
-    ctx.clearRect(0, 0, 100, 100);
-    ctx.arc(50, 50, 49, 0, 2 * Math.PI);
-    ctx.moveTo(50, 50);
-    ctx.lineTo(49 * Math.cos(slider_values[i]) + 50, 49 * Math.sin(slider_values[i]) + 50);
-    ctx.stroke();
+    if (slider_mode == 0) {
+      ctx.beginPath();
+      ctx.clearRect(0, 0, 100, 100);
+      ctx.arc(50, 50, 49, 0, 2 * Math.PI);
+      ctx.moveTo(50, 50);
+      ctx.lineTo(49 * Math.cos(slider_values[i]) + 50, 49 * Math.sin(slider_values[i]) + 50);
+      ctx.stroke();
+    } else {
+      slider.value = slider_values[i] * 180 / Math.PI;
+    }
   }
 }
 
