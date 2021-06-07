@@ -4,16 +4,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>L-Sistem</title>
+	<title>L-Sistemi</title>
 	<link rel="stylesheet" type="text/css" href="../../css/universal.css">
 	<link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
+	<link rel="stylesheet" type="text/css" href="../../css/l-sistemi.css">
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<script src="../../js/l-sistem.js"></script>
+	<script src="../../js/l-sistem_prep.js"></script>
 	<script src="../../js/turtle.js"></script>
 </head>
 <body>
 	<header>
-		<h1>L-Sistem</h1>
+		<h1>L-Sistemi</h1>
 	</header>
 	<!-- Navigacija -->
 <nav>
@@ -37,123 +39,107 @@
       <div class="nav-element"><a href="../../Prikazi/Dodekaeder/index.html">Dodekaeder</a></div>
       <div class="nav-element"><a href="../../Prikazi/600-Cell/index.html">600-Cell</a></div>
       <div class="nav-element"><a href="../../Prikazi/120-Cell/index.html">120-Cell</a></div>
-      <div class="nav-element"><a href="../../Prikazi/Fraktali/index.html">L-Sistem</a></div>
+      <div class="nav-element"><a href="../../Prikazi/Fraktali/index.html">L-Sistemi</a></div>
     </div>
   </div>
 </nav>
 <!-- Konec navigacije -->
 	
 	<div class="content">
-		<div id="definitions">
-			<input type="text" value="F = naprej">
-			<input type="text" value="G = naprej">
-			<input type="text" value="+ = levo120">
-			<input type="text" value="- = desno120">
+		<h3>Testni primer:</h3>
+		<p>F = naprej;G = naprej;+ = levo 120;- = desno 120</p><br>
+		<p>F = F - G + F + G - F;G = G G</p><br>
+		<p>F - G - G</p><hr>
+		<div class="textinput">
+			<label for="definitions">Vnesite definicije spremenljivk in konstant</label><br>
+			<textarea name="definitions" id="definitions" cols="60" rows="4"></textarea>
 		</div>
-		<input type="text" id="axiom" value="F + G + G"><br>
-		<input type="text" id="iterations" value="7">
-		<div id="rules">
-			<input type="text" value="F = F + G - F - G + F">
-			<input type="text" value="G = G G">
-			<input type="text">
+		<div class="textinput">
+			<label for="definitions">Vnesite pravila za spremenljivke</label><br>
+			<textarea name="rules" id="rules" cols="60" rows="4"></textarea>
 		</div>
-		<button onclick="start()">Generate</button><br>
+
+		<div class="textinput">
+			<label for="axiom">Vnesite aksiom</label><br>
+			<input name="axiom" id="axiom" type="text">
+		</div>
+		<div class="textinput">
+			<label for="iterations">Vnesite število iteracij</label><br>
+			<input name="iterations" id="iterations" type="number">
+		</div>
+
+		<button onclick="start()">Generiraj L-Sistem</button><br>
 		<canvas width='400' height='400' id="canvas"></canvas>
 	</div>
 </body>
 <script>
-	let canvas = document.getElementById('canvas');
-	init(canvas);
-
-	function setup(){
-		let defsChildren = document.getElementById('definitions').getElementsByTagName('input');
-		let rulesChildren = document.getElementById('rules').getElementsByTagName('input');
-
-		let defs = {};
-		let rules = {};
-
-		for(let i = 0; i < defsChildren.length; i++){ //definitions input turned into dictionary
-			let defArray = defsChildren[i].value.split('=');
-			defArray = defArray.map(element => {return element.trim()}); //remove spaces on outside
-
-			if(defArray[0] && defArray[1] != undefined){ //if textbox isn't empty
-				defs[defArray[0]] = defArray[1];
-			}
-		}
-
-		for(let i = 0; i < rulesChildren.length; i++){ //rules input turned into dictionary
-			let ruleArray = rulesChildren[i].value.split('=');
-			ruleArray = ruleArray.map(element => {return element.trim()}); //remove spaces on outside
-
-			if(ruleArray[0] && ruleArray[1] != undefined){ //if textbox isn't empty
-				rules[ruleArray[0]] = ruleArray[1].split(" ");
-			}
-		}
-
-		return [rules, defs];
-	}
-
-
-	function LDraw(sequence, defs, dist, noDraw=false){
-		let meanings = { //string meanings into functions
-			"naprej" : forward,
-			"levo" : left,
-			"desno" : right,
-		}
-		let [maxX, maxY] = [0, 0];
-
-		for(let i = 0; i < sequence.length; i++){ //each element of the L-System alphabet does something with turtle
-			let current = sequence[i];
-			if(current in defs){ //if current even has a definition
-				let currentDef = defs[current].replace(/\d+/, ''); //remove integers from the definition
-				if(currentDef == "naprej"){ //if the definition is forward
-					if(noDraw){ //only move the turtle
-						meanings[currentDef](dist);
-						if(pos()[0] > maxX){maxX = pos()[0];} //finding maximum x
-						if(pos()[1] > maxY){maxY = pos()[1];} //finding maximum y
-					} else { //move and draw with turtle
-						pendown();
-						meanings[currentDef](dist);
-						penup();
-					}
-				} else { //otherwise the definition is rotation
-					let currentAngle = parseInt(defs[current].match(/\d+/)[0]); //find only integers in string
-					meanings[currentDef](currentAngle);
-				}
-			}
-		}
-		if(noDraw){ //reset after searching for max dist and return max values
-			reset();
-			return [maxX, maxY];
-		}
-	}
-
-
-	function maxDist(sequence, defs){
-		let [maxX, maxY] = LDraw(sequence, defs, 1, true);
-
-		if((maxX - canvas.width) >= (maxY - canvas.height)){ //find out in which direction is the drawing closer/further to/from the edge
-			return canvas.width / maxX; //return necessary distance to fill the entire canvas
-		} else {
-			return canvas.height / maxY; //return necessary distance to fill the entire canvas
-		}
-	}
-
-
+	init(document.getElementById('canvas'));
 	function start(){
-		reset(); //clear canvas and return to origin
-		let axiom = document.getElementById('axiom').value.trim().split(" "); //turing axiom input into array with no spaces
-		let iterations = parseInt(document.getElementById('iterations').value.trim()); //remove spaces and turn into integer
-		let [rules, defs] = setup();
-
-		let sequence = generate(axiom, rules, iterations); //L-System array
-		LDraw(sequence, defs, maxDist(sequence, defs)); //drawing the L-System based on defs with distance that fills the entire canvas
+		reset();
+		let [defs, rules, axiom, iter] = prep();
+		let sequence = generate(axiom, rules, iter);
+		LDraw(sequence, defs, 10)
 	}
 
-	// let axiom = ["F", "+", "G", "+", "G"]; //sierpinski triangle
-	// let rules = {
-	// 	"F": ["F", "+", "G", "-", "F", "-", "G", "+", "F"],
-	// 	"G": ["G", "G"]
-	// };
+
+	// function test(){
+	// 	console.log(prep());
+	// }
+
+	// function LDraw(sequence, defs, dist, noDraw=false){
+	// 	let meanings = { //string meanings into functions
+	// 		"naprej" : forward,
+	// 		"levo" : left,
+	// 		"desno" : right,
+	// 	}
+	// 	let [maxX, maxY] = [0, 0];
+
+	// 	for(let i = 0; i < sequence.length; i++){ //each element of the L-System alphabet does something with turtle
+	// 		let current = sequence[i];
+	// 		if(current in defs){ //if current even has a definition
+	// 			let currentDef = defs[current].replace(/\d+/, ''); //remove integers from the definition
+	// 			if(currentDef == "naprej"){ //if the definition is forward
+	// 				if(noDraw){ //only move the turtle
+	// 					meanings[currentDef](dist);
+	// 					if(pos()[0] > maxX){maxX = pos()[0];} //finding maximum x
+	// 					if(pos()[1] > maxY){maxY = pos()[1];} //finding maximum y
+	// 				} else { //move and draw with turtle
+	// 					pendown();
+	// 					meanings[currentDef](dist);
+	// 					penup();
+	// 				}
+	// 			} else { //otherwise the definition is rotation
+	// 				let currentAngle = parseInt(defs[current].match(/\d+/)[0]); //find only integers in string
+	// 				meanings[currentDef](currentAngle);
+	// 			}
+	// 		}
+	// 	}
+	// 	if(noDraw){ //reset after searching for max dist and return max values
+	// 		reset();
+	// 		return [maxX, maxY];
+	// 	}
+	// }
+
+
+	// function maxDist(sequence, defs){
+	// 	let [maxX, maxY] = LDraw(sequence, defs, 1, true);
+
+	// 	if((maxX - canvas.width) >= (maxY - canvas.height)){ //find out in which direction is the drawing closer/further to/from the edge
+	// 		return canvas.width / maxX; //return necessary distance to fill the entire canvas
+	// 	} else {
+	// 		return canvas.height / maxY; //return necessary distance to fill the entire canvas
+	// 	}
+	// }
+
+
+	// function start(){
+	// 	reset(); //clear canvas and return to origin
+	// 	let axiom = document.getElementById('axiom').value.trim().split(" "); //turing axiom input into array with no spaces
+	// 	let iterations = parseInt(document.getElementById('iterations').value.trim()); //remove spaces and turn into integer
+	// 	let [rules, defs] = setup();
+
+	// 	let sequence = generate(axiom, rules, iterations); //L-System array
+	// 	LDraw(sequence, defs, maxDist(sequence, defs)); //drawing the L-System based on defs with distance that fills the entire canvas
+	// }
 </script>
 </html>

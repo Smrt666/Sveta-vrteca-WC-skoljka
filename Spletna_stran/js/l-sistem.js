@@ -14,10 +14,31 @@ function generate(sequence, rules, n){
     return sequence;
 }
 
-// function string(array){
-//     let result = '';
-//     for (let i = 0; i < array.length; i++){
-//         result += array[i];
-//     }
-//     return result;
-// }
+function LDraw(sequence, defs, dist, draw=true){
+    let meanings = { //give each string its function
+        "naprej" : forward,
+        "levo" : left,
+        "desno" : right
+    }
+
+    for(let i = 0; i < sequence.length; i++){
+        let current = sequence[i];
+        if(current in defs){ //if the element has a definition
+            let currentArray = toArray(defs[current], " \t"); //separate the definition from its value
+            let currentDef = currentArray[0];
+            if(currentDef == "naprej"){
+                if(draw){ //draw and move
+                    pendown();
+                    meanings[currentDef](dist); //move forward with dist
+                    penup();
+                } else{ //only move
+                    meanings[currentDef](dist); //move forward with dist
+                }
+            }
+            if(currentDef == "levo" | currentDef == "desno"){
+                let currentValue = currentArray[1]; //rotations have a value, so the currentArray is 2 long and we can get the second element
+                meanings[currentDef](parseInt(currentValue)); //rotate for value in definition
+            }
+        }
+    }
+}

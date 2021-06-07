@@ -1,8 +1,8 @@
 function init(can) {
     trutle_x = 0;
-    trutle_y = 0;
-    trutle_heading = 0; // y osi = dol
-    turtle_pen = "down";
+    trutle_y = can.height; //move origin to bottom left
+    trutle_heading = 180; //flip initial heading to look up
+    turtle_pen = "up";
     turtle_canvas = can;
     turtle_ctx = can.getContext("2d");
 }
@@ -58,7 +58,7 @@ function pos(){
 
 function reset(){ 
     trutle_x = 0;
-    trutle_y = 0;
+    trutle_y = turtle_canvas.height;
     clear();
-    trutle_heading = 0;
+    trutle_heading = 180;
 }
