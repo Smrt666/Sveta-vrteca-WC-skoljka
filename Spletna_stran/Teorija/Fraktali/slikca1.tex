@@ -1,0 +1,26 @@
+\documentclass[a4paper, 12px]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{gensymb}
+\usepackage{hyperref}
+
+\usepackage{biblatex}
+\usepackage{xcolor}
+
+\usepackage{witharrows}
+
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, angles, quotes, calc, patterns}
+
+
+\begin{document}
+\begin{tikzpicture}
+    \draw[thick] (0,0) rectangle (4,4);
+    \node at (2,-0.3) {$d$};
+    \draw[step=2cm,thick] (6,0) grid (10,4);
+    \node at (7,-0.3) {$\frac{d}{2}$};
+    \node at (9,-0.3) {$\frac{d}{2}$};
+\end{tikzpicture}
+\end{document}

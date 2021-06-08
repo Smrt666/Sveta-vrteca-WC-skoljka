@@ -63,7 +63,7 @@
         Eden od teh je trikotnik Sierpinskega, prikazan na spodnji sliki. Glavna struktura je trikotnik, ki je razdeljen na 3
         manjše trikotnike s polovično dolžino stranice.
         S ponavljanjem delitve na novo nastalih trikotnikih v neskončnost dobimo prikazan fraktal.
-        <cite>[Fractal] [3Blue1Brown]</cite>
+        <cite>[<a href="https://en.wikipedia.org/wiki/Fractal">Fractal</a>] [<a href="https://www.youtube.com/watch?v=gB9n2gHsHN4">3Blue1Brown</a>]</cite>
       </p>
       <p>
         Zaradi tehnike grajenja fraktalov iz vedno manjših podenot lahko vidimo, kako se v obliki pojavi samopodobnost, ampak za uporabo fraktalov v primerih resničnega življenja to ne zadošča.
@@ -75,9 +75,128 @@
         V definicijo je bila vpeljala ideja fraktalne dimenzije (o kateri je napisano več v naslednjem podpoglavju), ki nam omogoči, razširitev fraktalov na nenavadne oblike, ki ohranjajo grobost ali nepravilnost pri vseh povečavah.
         Mandelbrot je v svoji knjigi "The Fractal Geometry of Nature" fraktale definiral kot oblike, katerih "Hausdorffova dimenzija" (dimenzije, katerih vrednost je lahko realno število) presega "topološko dimenzijo" (dimenzije celih vrednosti).
         Na žalost tudi ta definicija sama po sebi ni popolna, saj se pojavijo izjeme, ki imajo Hausendorffovo dimenzijo enako topološki dimenziji.
-        <cite>[3Blue1Brown]</cite>
-        <cite>[Hausdorff dimension]</cite>
+        <cite>[<a href="https://www.youtube.com/watch?v=gB9n2gHsHN4">3Blue1Brown</a>]</cite>
+        <cite>[<a href="https://en.wikipedia.org/wiki/Hausdorff_dimension">Hausdorff dimension</a>]</cite>
       </p>
+      <p>
+        Z vsem tem je fraktal mogoče neformalno definirati kot množico, ki ima vsaj nekatere od naslednjih lastnosti:
+        <ul>
+          <li>je samopodobna</li>
+          <li>njena dimenzija presega njeno topološko dimenzijo</li>
+          <li>ima nepravilno obliko</li>
+          <li>ni diferenciabilna (v primeru grafa funkcije)</li>
+          <li>ohranja podrobnosti pri vsaki povečavi</li>
+          <li>ima rekurzivno definicijo</li>
+        </ul>
+        <cite>[VESNA IRŠIC. Fraktalna dimenzija]</cite>
+      </p>
+    </section>
+    <section>
+      <h2>Fraktalna dimenzija</h2>
+      <p>
+        Za razumevanje fraktalne dimenzije, moramo najprej pogledati lastnosti celih dimenzij.
+        Za začetek vzamemo za primer daljico, ki ima dimenzijo 1 in dolžino \(d\).
+        Če daljico presekamo na pol, dobimo dve novi daljici z dolžino \(\frac{d}{2}\).<br>
+        <img src="slikca0-1.svg" alt="Deljenje daljice na dva dela">
+      </p>
+      <p>
+        To lahko storimo tudi z kvadratom, ki ima 2 dimenziji in dolžino stranice \(d\).
+        Če prvotnemu kvadratu zmanjšamo stranico na \(\frac{d}{2}\), dobimo štiri nove kvadrate s četrtino ploščine.<br>
+        <img src="slikca1-1.svg" alt="Deljenje kvadrata na štiri dele">
+      </p>
+      <p>
+        Ta postopek lahko razširimo na višje dimenzije.
+        V treh dimenzijah dobimo rezultat 8 novih kock s polovično dolžino stranice.
+        V štirih dimenzijah dobimo 16 novih <a href="../../Prikazi/Kocka-Teserakt-/index.html">teseraktov</a>
+        (4-D različica kocke) s polovično dolžino stranice in tako naprej.
+      </p>
+      <p>
+        Možno je tudi stranice skrčiti z drugačnimi faktorji.
+        Za primer lahko vzamemo tretjine.
+        V prvi dimenziji iz ene črte tako dobimo 3 nove s tretjino dolžine.
+        V drugi dimenziji iz kvadrata dobimo 9 novih s stranico, dolgo tretjino originalne.
+        V tretji dimenziji s kocko dobimo 27 novih kock s stranico, dolgo tretjino originalne.
+        To lahko nadaljujemo v višje dimenzije.
+      </p>
+      <p>        
+        Viden je vzorec, število manjših kopij se s povečanjem dimenzije za 1 poveča za obratno vrednost faktorja krčenja.
+        Če to posplošimo v formulo, kjer je \(N\) število kopij, \(D\) dimenzija in \(r\) faktor krčenja (\(0 < r < 1\)),
+        dobimo naslednje:
+          $$N=\left(\frac{1}{r}\right)^D$$
+        V primeru, da kopijo poskušamo razširiti, je \(r\) faktor širjenja (\(1 < r\)), pa dobimo naslednji izraz: 
+          $$N = r^D$$ 
+        Ko izrazimo dimenzijo, pa se nam pojavi naslednja formula (\(0 < r < 1\)):
+          $$ D = -\frac{\log{N}}{\log{r}}$$
+        Ali (\(1 < r\)): 
+          $$D = \frac{\log{N}}{\log{r}}$$
+      </p>
+      <p>
+        Običajne oblike, kot črte in kvadrate, lahko izmerimo z enodimenzionalnimi merami, dvodimenzionalnimi merami in tako
+        naprej.
+        Primer tega so metri, dolžino merimo v metrih, ploščino v kvadratnih metrih, volumen v kubičnih metrih in tako naprej.
+        Te mere pa pri naših fraktalih ne zadostujejo.
+        Na sliki spodaj je narisana Kochova krivulja, ki na prvi pogled izgleda kot navadna črta z začetno in končno točko,
+        vendar je njena dolžina neskončna.
+        Ni važno kako blizu pogledamo in poskusimo izmeriti dolžino krivulje, spet bomo naleteli na enako krivuljo kot na začetku.
+        Prav tako je ploščina krivulje nič, saj je narejena zgolj iz črt, ki pa nimajo ploščine.
+        Tako vemo, da se Kochova krivulja nahaja nekje med 1. in 2. dimenzijo, saj je z enodimenzionalnimi merami neskončno
+        dolga, z dvodimenzionalnimi pa dobimo rezultat 0.
+        Če bi hoteli izmeriti Kochovo krivuljo, bi potrebovali mere, ki zadostujejo njeni dimenziji.
+        <cite>[<a href="https://en.wikipedia.org/wiki/Fractal">Fractal</a>]</cite>
+        <cite>[<a href="https://www.youtube.com/watch?v=v273ElS1TRU">Vu Do Math. Fractal dimensions.</a>]</cite>
+        <br>
+        <img src="koch-curve.png" alt="Kochova krivulja" style="background-color: white;">
+        <br>
+        Kochova krivulja z neskončno dolžino in ploščino nič. Vir: <a href="https://\\youwei96.wixsite.com/messyworkings/single-post/2016/06/11/area-of-the-koch-curve">https://\\youwei96.wixsite.com/messyworkings/single-post/2016/06/11/area-of-the-koch-curve</a>
+        <br>
+      </p>
+      <p>
+        Da izračunamo dimenzijo fraktala, pa lahko uporabimo formulo, ki smo jo odkrili prej.
+        Za primer lahko vzamemo Kochovo snežinko, ki je narisana na zgornji sliki.
+        Potrebujemo dva podatka, koeficient skrčenja $r$ in število kopij \(N\).
+        Ker je Kochova krivulja narejena tako, da črto razdelimo na tretjine in srednji del zamenjamo s trikotnikom brez spodnje
+        stranice, je primerno vzeti \(r=\frac{1}{3}\).
+        Če Kochovo krivuljo skrčimo, vidimo, da lahko originalno krivuljo zgradimo iz \(N=4\) kopij nove krivulje.
+        <cite>[<a href="https://www.youtube.com/watch?v=gB9n2gHsHN4">3Blue1Brown</a>]</cite><br>
+        <img src="koch-curve-dimension.png" alt="Kochova krivulja razdeljena na 4 dele" style="max-width: 100%;"> <br>
+        Kochova krivulja, zgrajena iz štirih Kochovih krivulj z dolžino 1/3 originalne
+        <br><br>
+        Če te podatke vstavimo v formulo in jo vnesemo v kalkulator, dobimo naslednje:
+        $$D = \frac{\log{4}}{\log{3}} \approx 1,26$$
+      </p>
+    </section>
+    <section>
+      <h2>Risanje fraktalov</h2>
+      <h3>Iterativni funkcijski sistem</h3>
+      <p>
+        Iterativni funkcijski sistem je eden od načinov prikazovanja fraktalov, pri čemer je končni rezultat po navadi
+        samopodobni fraktal.
+        Ideja za delovanjem sistema je sestavljenost fraktala iz mnogih enakih podenot, na katerih je bila uporabljena določena
+        funkcija.
+        Večina teh funkcij je kontraktivnih, kar zmanjšuje razdalje med točkami in posledično tudi oblike.
+        Od tod samopodobnostne lastnosti tega načina prikazovanja.
+        <cite>[<a href="https://en.wikipedia.org/wiki/Iterated_function_system">Iterated function system</a>]</cite>
+      </p>
+      <p>
+        Eden najzanimivejših primerov Iterativnega funkcijskega sistema je igra kaosa, kjer iz na pogled čisto naključne igre
+        dobimo fraktalne oblike.
+        Za risanje trikotnika Sierpinskega sledimo naslednjim navodilom.
+        Kot osnovno obliko si izberemo trikotnik in v ravnino narišemo samo oglišča tega trikotnika.
+        Nato si v ravnini izbermo poljubno točko (lahko je znotraj ali zunaj trikotnika).
+        Naključno izberemo eno od treh oglišč in se premaknemo na polovico daljice, ki je nastala med poljubno točko in
+        naključnim ogliščem.
+        Spet naključno izberemo eno od treh oglišč, vendar se tokrat pomaknemo na polovico daljice med novonastalo točko in
+        naključnim ogliščem.
+        To ponavljamo za vse novonastale točke in se nam po določenem času nariše trikotnik Sierpinskega, saj je možnost, da
+        točka pristane v praznini trikotnika Sierpinskega enaka nič (razen če je bila tja postavljena prvotna točka).
+        <cite>[<a href="https://en.wikipedia.org/wiki/Chaos_game">Chaos game</a>]</cite>
+      </p>
+      <p>        
+        Če podobno ponovimo na kvadratu, le da istega oglišča ne smemo izbrati dvakrat zapored, se nam pojavi naslednji fraktal:<br>
+        <img src="square-fractal.PNG"><br>
+        Igra kaosa na kvadratu. Vir: <a href="https://www.wikiwand.com/en/Chaos_game">https://www.wikiwand.com/en/Chaos_game</a>
+      </p>
+      <h3>L-Sistem</h3>
     </section>
   </div>
   <footer>
