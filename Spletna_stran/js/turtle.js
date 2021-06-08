@@ -5,6 +5,7 @@ function init(can) {
     turtle_pen = "up";
     turtle_canvas = can;
     turtle_ctx = can.getContext("2d");
+    turtle_saved = [];
 }
 
 function pendown() {
@@ -61,4 +62,16 @@ function reset(){
     trutle_y = turtle_canvas.height;
     clear();
     trutle_heading = 180;
+}
+
+function save(){
+    turtle_saved.push([trutle_x, trutle_y, trutle_heading]);
+    console.log(turtle_saved);
+}
+
+function restore(){
+    let pos = turtle_saved.pop();
+    trutle_x = pos[0];
+    trutle_y = pos[1];
+    trutle_heading = pos[2];
 }

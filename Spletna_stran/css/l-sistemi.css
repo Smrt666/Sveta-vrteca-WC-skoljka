@@ -3,9 +3,11 @@ textarea{
     color: inherit;
     padding: 5px;
     font-size: 16px;
-    resize: none;
     border-radius: 1px;
     max-width: 100%;
+    min-width: 170px;
+    min-height: 88px;
+    max-height: 450px;
 }
 
 input{
@@ -25,7 +27,11 @@ input{
 }
 
 button{
-    margin-top: 5px;
+    margin: 8px 0 20px;
     font-size: 14px;
     padding: 2px;
+}
+
+select{
+    margin: 20px 0;
 }

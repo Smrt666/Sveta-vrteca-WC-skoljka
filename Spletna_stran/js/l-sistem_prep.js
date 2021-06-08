@@ -10,24 +10,21 @@ function removeStartingChars(str, chars){
     return newStr;
 }
 
-function toArray(str, separators){
-    str += separators[0]; //add any separator to make sure the last char is not ignored
+function toArray(str, separators, arr=[]){
+    if(arr.length == 0){
+        str += separators[0]; //add any separator to make sure the last char is not ignored
+    }
+    str = removeStartingChars(str, separators);
 
-    let arr = [];
     let tmpStr = "";
-    while(str){
-        str = removeStartingChars(str, separators); //if the for loop was broken, delete the next separators
-        for(let i = 0; i < str.length; i++){
-            let current = str.charAt(i);
-            if(!separators.includes(current)){
-                tmpStr += current;
-            } else{
-                arr.push(tmpStr); //push to array if separator found
-                break
-            }
+    for(let i = 0; i < str.length; i++){
+        let current = str.charAt(i);
+        if(!separators.includes(current)){
+            tmpStr += current;
+        } else{
+            arr.push(tmpStr); //push to array if separator found
+            return toArray(str.slice(i), separators, arr);
         }
-        str = str.slice(tmpStr.length); //remove chars added before break
-        tmpStr = ""; //reset tmpStr
     }
     return arr;
 }
@@ -41,8 +38,12 @@ function prep(){
     let defsDict = {}
     let defsArray = toArray(definitions, "\n;"); //turn definitions into array with newline and ; as separators
     for(let i = 0; i < defsArray.length; i++){
-        let def = toArray(defsArray[i], "=:"); //turn each line into an array
-        defsDict[def[0].trim()] = def[1].trim(); //write to dict
+        let defLine = toArray(defsArray[i], "=:"); //turn each line into an array
+
+        let actions = toArray(defLine[1], ","); //array of actions 
+        actions.forEach((element, index, arr) => {arr[index] = element.trim();}); //trim each action
+
+        defsDict[defLine[0].trim()] = actions; //write to dict
     }
 
     let rulesDict = {}
@@ -56,9 +57,26 @@ function prep(){
 
     let iterValue = parseInt(iterations)
     if(!(iterValue > 0 && iterValue != NaN)){ //if iterations input is not a positive integer or is NaN
-        alert("Število iteracij naj bo 0 ali več (ne priporočam iti višje kot 8)");
-        return; //end the function
+        return [defsDict, rulesDict, axiomArray, 0]; //end the function
     }
 
     return [defsDict, rulesDict, axiomArray, iterValue];
+}
+
+function change(object){
+    let values = {
+        "custom" : ["", "", "", 0],
+        "s-triangle" : ["F = naprej\nG = naprej\n+ = levo 120\n- = desno 120", "F = F - G + F + G - F\nG = G G", "F - G - G", 0],
+        "koch-curve" : ["F = naprej\n+ = levo 120\n- = desno 60", "F = F - F + F - F", "F", 0]
+    }
+
+    let definitions = document.getElementById('definitions');
+    let rules = document.getElementById('rules');
+    let axiom = document.getElementById('axiom');
+    let iterations = document.getElementById('iterations');
+
+    definitions.value = values[object.value][0];
+    rules.value = values[object.value][1];
+    axiom.value = values[object.value][2];
+    iterations.value = values[object.value][3];
 }
