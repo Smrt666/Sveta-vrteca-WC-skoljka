@@ -61,6 +61,12 @@ function init(d, obj, obj_type_names, obj_generator, d_range) {
     move.push(0);
   }
   move[2] = 3.5;
+  if (dimensions > 3) {
+    for (let i = 3; i < move.length; i++) {
+      move[i] = 1.5;
+    }
+    Fov_scaling_factor *= Math.sqrt(1.5 * (dimensions - 2)) / 2;
+  }
 
   // matrices of rotations
   rotations = [];
