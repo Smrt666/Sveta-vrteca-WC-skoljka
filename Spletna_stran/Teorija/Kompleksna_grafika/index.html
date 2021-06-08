@@ -101,16 +101,20 @@
       <p>
         Naj ima prvo polje samo število " 1 ". Drugo polje naj vsebuje " r 20; * 10 ". S tem bomo dobili 20 enakomerno razporejenih
         točk od središča oddaljenih za 10. V tretjem polju naj bo " * (0.9 + 0.41i); + (2 - 2i) ".
+        <button onclick="insert0('1');insert1('r 20\n* 10');insert2('* (0.9 + 0.41i)\n+ (2 - 2i)');fpsto(10)">Kopiraj primer v vnosna polja</button>
       </p>
       <p>
         Naj ima prvo polje samo število " 1 ". Drugo polje naj vsebuje " r 20; * 10 ". S tem bomo dobili 20 enakomerno
         razporejenih točk od središča oddaljenih za 10. V tretjem polju naj bo " / 10; ^ -0.8 + 0.2i; * 10 ". 
         (Ponovitev na sekundo nastavi na 1)
+        <button onclick="insert0('1');insert1('r 20\n* 10');insert2('/ 10\n^ (-0.8 + 0.2i)\n* 10');fpsto(1)">Kopiraj primer v vnosna polja</button>
       </p>
       <p>
         Naj ima prvo polje samo število " 1i ". Drugo polje naj vsebuje " r 20; ^ -0.8 + 0.3i; ^ -0.8 + 0.3i; ^ -0.8 + 0.3i; *
         15; + 1i ". S tem bomo dobili 20 enakomerno razporejenih točk od središča oddaljenih za 10. V tretjem polju naj bo 
         " + -1i; / (0.999592192 + 0.028556050i); + 1i ".
+        <button onclick="insert0('1i');insert1('r 20\n^ (-0.8 + 0.3i)\n^ (-0.8 + 0.3i)\n^ (-0.8 + 0.3i)\n* 15\n+ 1i');insert2('- 1i\n/ (0.999592192 + 0.028556050i)\n+ 1i');fpsto(30)">Kopiraj primer v
+          vnosna polja</button>
       </p>
       <p>
         Primeri kotov za vrtenje v levo: <br>
@@ -147,6 +151,18 @@
   ctx = can.getContext("2d");
 
   coordinate_system();
+  function insert0(text) {
+    document.getElementById("zacetne_tocke").value = text;
+  }
+  function insert1(text) {
+    document.getElementById("zacetne_operacije").value = text;
+  }
+  function insert2(text) {
+    document.getElementById("ponavljajoce_operacije").value = text;
+  }
+  function fpsto(n) {
+    document.getElementById("fps").value = n;
+  }
 </script>
 
 </html>
