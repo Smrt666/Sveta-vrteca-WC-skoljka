@@ -67,7 +67,9 @@ function change(object){
     let values = {
         "custom" : ["", "", "", 0],
         "s-triangle" : ["F = naprej\nG = naprej\n+ = levo 120\n- = desno 120", "F = F - G + F + G - F\nG = G G", "F - G - G", 0],
-        "koch-curve" : ["F = naprej\n+ = levo 120\n- = desno 60", "F = F - F + F - F", "F", 0]
+        "koch-curve" : ["F = naprej\n+ = levo 120\n- = desno 60", "F = F - F + F - F", "F", 0],
+        "koch-snowflake" : ["F = naprej\n+ = levo 120\n- = desno 60", "F = F - F + F - F", "F + F + F", 0],
+        "binary-tree" : ["B = naprej\nT = naprej\n[ = shrani, levo 20\n] = povrni, desno 20", "T = B [ T ] T", "T", 0]
     }
 
     let definitions = document.getElementById('definitions');
