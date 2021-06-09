@@ -51,6 +51,7 @@ nav {
   margin: 5px;
   font-size: 1.25rem;
   display: inline-block;
+  max-width: 250px;
 }
 
 .nov-div {
@@ -58,7 +59,6 @@ nav {
   margin: 0;
   display: inline-block;
 }
-
 
 .nav-element a {
   text-decoration: none;
