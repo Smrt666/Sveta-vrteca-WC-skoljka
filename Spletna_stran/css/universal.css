@@ -31,7 +31,8 @@ header span {
 }
 
 .crtice{
-  margin-right: 50px;
+  margin-right: 15px;
+  display: inline-block;
 }
 
 .crtice:hover {
@@ -68,4 +69,8 @@ nav {
 
 .nav-element a {
   text-decoration: none;
+}
+
+.content {
+  padding: 5%;
 }
