@@ -1,21 +1,26 @@
-:root{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
   font-size: 16px;
 }
 
-body{
-  width: max-content;
-}
-
-textarea{
-  max-height: 800px;
-}
-
-header{
-  width: 100%;
-  margin: 0;
+header {
   background-color: brown;
+  padding: 15px;
+  overflow-x: hidden;
 
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header span {
+  font-size: 3rem;
 }
 
 .crtica {
@@ -34,37 +39,16 @@ header{
   cursor: pointer;
 }
 
-
-nav{
-  margin: 0;
-  width: 20%;
-  height: 90vh;
-  background-color: chartreuse;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: 1%;
-
-  float: left;
+nav {
+  display: none;
+  background-color: greenyellow;
+  padding: 15px;
 }
 
-.content{
-  width: 80%;
-  word-break: break-all;
-}
-
-.drzalo{
-  width: 98vw;
-  text-align: right;
-  padding: 15px 5% 15px 25px;
-  font-size: 3rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-footer{
-  width: 100vw;
+.nav-element {
+  background-color: aqua;
+  padding: 15px 20px;
+  margin: 5px;
+  font-size: 1.25rem;
+  display: inline-block;
 }
