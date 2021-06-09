@@ -52,3 +52,14 @@ nav {
   font-size: 1.25rem;
   display: inline-block;
 }
+
+.nov-div {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+
+.nav-element a {
+  text-decoration: none;
+}
