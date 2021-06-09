@@ -51,7 +51,13 @@ nav {
   margin: 5px;
   font-size: 1.25rem;
   display: inline-block;
-  max-width: 250px;
+  max-width: 300px;
+  transition: all 200ms ease-in-out;
+}
+
+.nav-element:hover {
+  transform: scale(1.02);
+  background-color: aquamarine;
 }
 
 .nov-div {
