@@ -2,105 +2,69 @@
   font-size: 16px;
 }
 
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+body{
+  width: max-content;
 }
 
-body{
-  font-family: Century Gothic;
-  background-color: rgb(56, 56, 56);
-  color: rgb(224, 224, 224);
+textarea{
+  max-height: 800px;
 }
 
 header{
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
+  width: 100%;
+  margin: 0;
+  background-color: brown;
+
+  
 }
 
-h2{
-  margin-bottom: 5px;
-  font-size: 1.9rem;
+.crtica {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 5px 0;
 }
 
-p{
-  margin-bottom: 15px;
+.crtice{
+  margin-right: 50px;
+}
+
+.crtice:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+
+nav{
+  margin: 0;
+  width: 20%;
+  height: 90vh;
+  background-color: chartreuse;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 1%;
+
+  float: left;
 }
 
 .content{
-  padding: 0 5%;
-}
-
-nav{
-  display: flex;
-  flex-direction: column;
-  margin: 0 max(5px, 2%);
-}
-
-.teorija{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  background-color: rgb(60, 60, 60);
+  width: 80%;
+  word-break: break-all;
 }
 
 .drzalo{
+  width: 98vw;
+  text-align: right;
+  padding: 15px 5% 15px 25px;
+  font-size: 3rem;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.praktika{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-  flex-wrap: wrap;
-  margin: 10px 0 20px 0;
-  background-color: rgb(60, 60, 60);
-}
-
-a{
-  color: aqua;
-}
-a:hover{
-  color: aquamarine;
-}
-a:visited{
-  color: rgb(104, 196, 165);
-}
-
-.nav-element{
-  padding: 10px 15px;
-  color: green;
-}
-
-.nav-element a{
-  text-decoration: none;
-  font-size: 1.4rem;
-  color: green;
-}
-
-.nav-element a:hover{
-  color: lightgreen;
-}
-
-#domov{
-  background-color: rgb(60, 60, 60);
-  margin-right: 10px;
-  /* margin-bottom: 10px; */
-  /* justify-content: center;
-  align-items: center; */
+  justify-content: space-between;
+  align-items: center;
 }
 
 footer{
-  border-top-style: solid;
-  border-top-width: 1px;
-  margin: 150px 10%;
+  width: 100vw;
 }
