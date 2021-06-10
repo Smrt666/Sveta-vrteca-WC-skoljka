@@ -10,11 +10,14 @@
   <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
   <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="../../js/orodja.js"></script>
   <script src="../../js/matrix.js"></script>
   <script src="../../js/NDEngine.js"></script>
   <script src="../../js/graphics_prep.js"></script>
   <script src="../../js/tesseract.js"></script>
   <script src="../../js/dodecahedron.js"></script>
+  <script src="../../js/120-cell.js"></script>
+  <script src="120_dodeka.js"></script>
   <script src="../../js/angles.js"></script>
 </head>
 
@@ -117,31 +120,21 @@
         </a>
       </div>
       <div class="nov-div">
-        <a href="../../Prikazi/Ikozaeder/index.html">
+        <a href="../../Prikazi/600Ikozaeder/index.html">
           <div class="nav-element">
-            <center> <h5> Ikozaeder </h5> </center>
+            <center> <h5> Ikozaeder in 600-cell </h5> </center>
             <div class="opisi-naslovov">
-              <p>Iz štirih trikotnikov tetraeder, kaj pa iz dvajsetih? <br><br></p>
+              <p>Iz štirih trikotnikov tetraeder, kaj pa iz dvajsetih? Ali pa morda 4D objekt iz 600 tetraedrov?</p>
             </div>
           </div>
         </a>
       </div>
       <div class="nov-div">
-        <a href="../../Prikazi/Dodekaeder/index.html">
+        <a href="../../Prikazi/120Dodekaeder/index.html">
           <div class="nav-element">
-            <center> <h5> Dodekaeder </h5> </center>
+            <center> <h5> Dodekaeder in 120-cell </h5> </center>
             <div class="opisi-naslovov">
-              <p>Trikotniki, kvadrati, kaj pa telo iz petkotnikov? <br><br></p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="nov-div">
-        <a href="../../Prikazi/120-Cell/index.html">
-          <div class="nav-element">
-            <center> <h5> 120-Cell </h5> </center>
-            <div class="opisi-naslovov">
-              <p>Telo iz petkotnikov - dodekaeder. Kaj pa 4D objekt iz 120 dodekaedrov?</p>
+              <p>Trikotniki, kvadrati, kaj pa telo iz petkotnikov? Ali pa 4D objekt iz tega?<br></p>
             </div>
           </div>
         </a>
@@ -221,7 +214,8 @@
 </body>
 <script>
   dimensions = 3;
-  init(dimensions, dodecahedronEdges());
+  let names = [undefined, undefined, undefined, "dodekaeder", "120-cell"];
+  init(dimensions, generate_120_or_dodecahedron(dimensions), names, generate_120_or_dodecahedron, [3, 4]);
   requestAnimationFrame(mainloop);
 </script>
 <script src="../../css/menu-pokazi-skrij.js"></script>
