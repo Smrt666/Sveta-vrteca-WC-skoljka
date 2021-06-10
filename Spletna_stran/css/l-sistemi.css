@@ -1,37 +1,43 @@
 textarea{
-    background-color: inherit;
-    color: inherit;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 1px;
-    max-width: 100%;
-    min-width: 170px;
-    min-height: 88px;
-    max-height: 450px;
+  background-color: inherit;
+  color: inherit;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 1px;
+  max-width: 100%;
+  min-width: 170px;
+  min-height: 88px;
+  max-height: 450px;
 }
 
 input{
-    background-color: inherit;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 1px;
-    font-size: 16px;
-    color: inherit;
-    padding: 5px;
-    max-width: 100%;
+  background-color: inherit;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1px;
+  font-size: 16px;
+  color: inherit;
+  padding: 5px;
+  max-width: 100%;
 }
 
 .textinput{
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 button{
-    margin: 8px 0 20px;
-    font-size: 14px;
-    padding: 2px;
+  margin: 8px 0 20px;
+  font-size: 14px;
+  padding: 2px;
 }
 
 select{
-    margin: 20px 0;
+  margin: 20px 0;
+}
+
+canvas{
+  background-color: rgb(243, 243, 243);
+  padding: 10px;
+  border-radius: 4px;
 }

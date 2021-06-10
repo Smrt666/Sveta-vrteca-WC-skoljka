@@ -12,7 +12,7 @@ function removeStartingChars(str, chars){
 
 function toArray(str, separators, arr=[]){
     if(arr.length == 0){
-        str += separators[0]; //add any separator to make sure the last char is not ignored
+        str += separators[0]; //add any separator on the first call to make sure the last char is not ignored
     }
     str = removeStartingChars(str, separators);
 
@@ -20,13 +20,13 @@ function toArray(str, separators, arr=[]){
     for(let i = 0; i < str.length; i++){
         let current = str.charAt(i);
         if(!separators.includes(current)){
-            tmpStr += current;
+            tmpStr += current; //save the char to a string and don't push
         } else{
             arr.push(tmpStr); //push to array if separator found
-            return toArray(str.slice(i), separators, arr);
+            return toArray(str.slice(i), separators, arr); //remove the newly found chars and pass the new string to the function recursively
         }
     }
-    return arr;
+    return arr; //the function returns when the string has length 0 and sends the array up the recursion call list
 }
 
 function prep(){

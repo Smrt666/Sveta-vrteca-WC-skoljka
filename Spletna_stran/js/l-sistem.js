@@ -27,7 +27,7 @@ function LDraw(sequence, defs, dist, draw=true){
     for(let i = 0; i < sequence.length; i++){
         let current = sequence[i];
         if(current in defs){ //if the element has a definition
-            defs[current].forEach(definition => { //the current sequence element may be defined as multiple axtions
+            defs[current].forEach(definition => { //the current sequence element may be defined as multiple actions
                 let currentArray = toArray(definition, " \t"); //separate the definition from its value
                 let currentDef = currentArray[0];
                 if(currentDef == "naprej"){
@@ -63,7 +63,7 @@ function fullDraw(sequence, defs){
     let yRatio = canvas.height / (maxY - minY);
     
     let dist = Math.min(xRatio, yRatio); //if the ratio is smaller, the difference in length/height is smaller, meaning the picture should be scaled in that direction
-
+    
     reset(); //return to origin after searching for min/max x, y values
     move_to(-minX*dist, canvas.height - (maxY - canvas.height)*dist); //move to a new origin where the whole picture can be seen (minX and [maxY - canvas.height] are the smallest x and y positions)
 
