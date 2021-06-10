@@ -93,6 +93,11 @@ function create600Cell() {
   Predstavljam vam 600-cell - zadeva omejena s 600 tetraedri
   */
   let vertices = cell600_vertices();
+  for (let i = 0; i < vertices.length; i++) {
+    for (let j = 0; j < vertices[i].length; j++) {
+      vertices[i][j] *= 2;
+    }
+  }
   let edges = find_edges(vertices);
   return [edges, vertices];
 }

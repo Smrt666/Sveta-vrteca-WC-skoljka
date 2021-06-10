@@ -126,7 +126,12 @@ function init(d, obj, obj_type_names, obj_generator, d_range) {
   nastavitve.appendChild(auto_rotate_button);
 
   if (dimension_range) {
-    if (dimension_range[1] - dimension_range[0] > 1) {
+    if (dimension_range[1] - dimension_range[0] >= 1) {
+      label_for_dimensions = document.createElement("label");
+      label_for_dimensions.setAttribute("for", "dimensions");
+      label_for_dimensions.innerHTML = "<br>Število dimenzij:";
+      nastavitve.appendChild(label_for_dimensions);
+
       select_next_simulation_dimensions = document.createElement("input");
       select_next_simulation_dimensions.setAttribute("id", "dimensions");
       select_next_simulation_dimensions.setAttribute("type", "number");
@@ -308,4 +313,5 @@ function clear_settings() {
   angles_reset_button.remove();
   auto_rotate_button.remove();
   newline_after_sliders.remove();
+  label_for_dimensions.remove();
 }
