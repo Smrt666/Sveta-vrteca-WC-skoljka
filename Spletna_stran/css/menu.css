@@ -9,3 +9,17 @@ nav {
   background-color: inherit;
   padding: 15px;
 }
+
+.nav-element {
+  min-width: 300px;
+  max-width: 600px;
+  display: inline-block;
+}
+
+.nov-div {
+  display: inline-block;
+}
+
+nav img {
+  max-width: 100%;
+}

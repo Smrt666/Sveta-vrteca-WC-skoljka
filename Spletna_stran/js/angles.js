@@ -53,6 +53,10 @@ function reset_angles() {
       }
     }
   }
+  for (let i = 0; i < slider_values.length; i++) {
+    angles[i] = slider_values[i];
+    sliders[i].value = angles[i] * 180 / Math.PI;
+  } 
 }
 
 function angles_auto_rotate() {
