@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ikozaeder in 600-cell</title>
+  <title>Ikozaeder, 24-celica in 600-celica</title>
   <link rel="stylesheet" type="text/css" href="../../css/universal.css">
   <link rel="stylesheet" type="text/css" href="../../css/prakticno.css">
   <link rel="stylesheet" type="text/css" href="../../css/nd_prikazi.css">
@@ -29,7 +29,7 @@
         <a href="../../index.html"><img src="../../home-button.svg" width="48"></a>
       </span>
       <span>
-        Ikozaeder in 600-cell
+        Ikozaeder, 24-celica in 600-celica
       </span>
     </header>
     <!-- Navigacija -->
@@ -131,7 +131,7 @@
         <div class="nov-div">
           <a href="../../Prikazi/600Ikozaeder/index.html">
             <div class="nav-element">
-              <center> <h5> Ikozaeder in 600-cell </h5> </center>
+              <center> <h5> Ikozaeder, 24-celica in 600-celica </h5> </center>
               <div class="opisi-naslovov">
                 <p>Iz štirih trikotnikov tetraeder, kaj pa iz dvajsetih? Ali pa morda 4D objekt iz 600 tetraedrov?</p>
               </div>
@@ -141,7 +141,7 @@
         <div class="nov-div">
           <a href="../../Prikazi/120Dodekaeder/index.html">
             <div class="nav-element">
-              <center> <h5> Dodekaeder in 120-cell </h5> </center>
+              <center> <h5> Dodekaeder in 120-celica </h5> </center>
               <div class="opisi-naslovov">
                 <p>Trikotniki, kvadrati, kaj pa telo iz petkotnikov? Ali pa 4D objekt iz tega?<br></p>
               </div>
@@ -198,18 +198,38 @@
           </center>
         </p>
       </section>
+      <section>
+        <div id="icosahedron">
+          Ikozaeder je platonsko telo. Omejuje ga 20 pravilnih trikotnih ploskev. Ima 30 robov in 12 oglišč, na vsakem
+          se stika 5 ploskev.
+        </div>
+        <div id="600-cell">
+          600-celica je pravilni konveksni 4-politop. Omejuje ga 600 tetraedrov. Ima 1200 pravilnih trikotnih ploskev, 
+          720 robov in 120 oglišč.
+        </div>
+        <div id="24-cell">
+          24-celica je pravilni konveksni 4-politop. Omejuje ga 24 tetraedrov. Ima 96 pravilnih trikotnih ploskev,
+          96 robov in 24 oglišč.
+        </div>
+      </section>
     </div>
     <footer>
       <center>Viri</center>
       <ul>
+        <li>Ikozaeder. April 2019. url: <a href="https://sl.wikipedia.org/wiki/Ikozaeder">https://sl.wikipedia.org/wiki/Ikozaeder</a>.</li>
+        <li>600-cell. April 2019. url: <a href="https://en.wikipedia.org/wiki/600-cell">https://en.wikipedia.org/wiki/600-cell</a>.</li>
+        <li>24-cell. April 2019. url: <a href="https://en.wikipedia.org/wiki/24-cell">https://en.wikipedia.org/wiki/24-cell</a>.</li>
         <li>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></li>
       </ul>
     </footer>
 </body>
 <script>
+  document.getElementById("24-cell").hidden = true;
+  document.getElementById("600-cell").hidden = true;
+
   dimensions = 3;
   let names = [undefined, undefined, undefined, "icosahedron", "600-cell"]
-  init(dimensions, ikosahedron_600cell(dimensions), names, ikosahedron_600cell, [3, 4]);
+  init(dimensions, ikosahedron_600cell(dimensions), names, ikosahedron_600cell, [3, 4], spec);
   requestAnimationFrame(mainloop);
 </script>
 <script src="../../css/menu-pokazi-skrij.js"></script>

@@ -29,6 +29,12 @@ function reset_angles() {
       }
       slider_values[4] = 1;
       slider_values[5] = 1.5;
+    } else if (object_type == "600-cell") {
+      for (let i = 0; i < slider_values.length; i++) {
+        slider_values[i] = 0;
+      }
+      slider_values[4] = 0.548308; // Math.PI/6;
+      slider_values[5] = 1.570796; // Math.PI/2;
     } else if (object_type == "simplex") {
       slider_values[0] = 0;
       slider_values[1] = 0.2;
@@ -36,6 +42,10 @@ function reset_angles() {
       slider_values[3] = - Math.PI / 2 + 0.2;
       slider_values[4] = - Math.PI / 2 - 0.2;
       slider_values[5] = Math.PI / 2;
+    } else if (object_type == "120-cell") {
+      for (let i = 0; i < angles.length; i++) {
+        slider_values[i] = 0;
+      }
     } else {
       for (let i = 0; i < slider_values.length; i++) {
         slider_values[i] = Math.random() * 2 * Math.PI;
@@ -56,7 +66,7 @@ function reset_angles() {
   for (let i = 0; i < slider_values.length; i++) {
     angles[i] = slider_values[i];
     sliders[i].value = angles[i] * 180 / Math.PI;
-  } 
+  }
 }
 
 function angles_auto_rotate() {
@@ -71,7 +81,9 @@ function angles_auto_rotate() {
   } else {
     for (let i = 0; i < angles.length; i++) {
       angles[i] = (angles[i] + (0.002 * (i + 1)) % 0.00984575163) % (2 * Math.PI);
-      slider_values[i] = angles[i];
     }
+  }
+  for (let i = 0; i < angles.length; i++) {
+    slider_values[i] = angles[i];
   }
 }

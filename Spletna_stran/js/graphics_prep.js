@@ -1,4 +1,21 @@
-function init(d, obj, obj_type_names, obj_generator, d_range) {
+function init(d, obj, obj_type_names, obj_generator, d_range, special_f) {
+  if (obj_type_names) {
+    for (let i = 0; i < obj_type_names.length; i++) {
+      try {
+        document.getElementById(obj_type_names[i]).hidden = true;
+        if (i == d) {
+          document.getElementById(obj_type_names[i]).hidden = false;
+        }
+      } catch (error) {}
+    }
+    try {
+      if (obj_type_names.length - 1 < d) {
+        document.getElementById("default").hidden = false;
+      } else {
+        document.getElementById("default").hidden = true;
+      }
+    } catch (error) {}
+  }
   object_generator = obj_generator;
   type_names = obj_type_names;
   dimension_range = d_range;
@@ -148,6 +165,10 @@ function init(d, obj, obj_type_names, obj_generator, d_range) {
       nastavitve.appendChild(new_dimension_button);
     }
   }
+  try {
+    special_f();
+  } catch (error) {
+  }
 }
 
 function mode_change() {
@@ -219,8 +240,9 @@ function mainloop(timestamp) {
   update_angles();
   update_matrices();
 
-  //console.log(move);
+  //console.log(vertices, edges, ctx, move, rotate);
   draw(vertices, edges, ctx, move, rotate);
+  
 
   last_timestamp = timestamp;
   requestAnimationFrame(mainloop);

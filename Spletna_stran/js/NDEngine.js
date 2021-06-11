@@ -141,6 +141,7 @@ function visible(point) {
 function project_vertices(vertices, move, rotate) {
   projected_vertices = [];
   for (let j = 0; j < vertices.length; j++) {
+    // console.log([vertices[j]], rotate);
     let tmp = matrix_sub(matrix_mul([vertices[j]], rotate), [move])[0];
     // najprej zavrtmo okrog 0, potem pa premaknemo glede na kamero
     let projected = move_to_center(tmp);

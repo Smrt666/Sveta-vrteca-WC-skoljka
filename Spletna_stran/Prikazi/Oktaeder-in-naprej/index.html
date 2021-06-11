@@ -129,7 +129,7 @@
         <div class="nov-div">
           <a href="../../Prikazi/600Ikozaeder/index.html">
             <div class="nav-element">
-              <center> <h5> Ikozaeder in 600-cell </h5> </center>
+              <center> <h5> Ikozaeder, 24-celica in 600-celica </h5> </center>
               <div class="opisi-naslovov">
                 <p>Iz štirih trikotnikov tetraeder, kaj pa iz dvajsetih? Ali pa morda 4D objekt iz 600 tetraedrov?</p>
               </div>
@@ -139,7 +139,7 @@
         <div class="nov-div">
           <a href="../../Prikazi/120Dodekaeder/index.html">
             <div class="nav-element">
-              <center> <h5> Dodekaeder in 120-cell </h5> </center>
+              <center> <h5> Dodekaeder in 120-celica </h5> </center>
               <div class="opisi-naslovov">
                 <p>Trikotniki, kvadrati, kaj pa telo iz petkotnikov? Ali pa 4D objekt iz tega?<br></p>
               </div>
@@ -196,17 +196,36 @@
           </center>
         </p>
       </section>
+      <section>
+        <div id="octahedron">
+          Pravilni oktaeder je platonsko telo. Ima 8 pravilnih trikotnih ploskev, 12 robov in 6 oglišč.
+          Negova oglišča lahko dobimo kot središča ploskev kocke. V koordinatnem sistemu so še enostavnejša,
+          saj je vedno ena koordinata \(\pm 1\), ostale pa \(0\).
+        </div>
+        <div id="16-cell">
+          Pravilna 16-celica je pravilni konveksni 4-politop. Ima 16 celic - tetraedrov, 32 ploskev, 24 robov in 8 oglišč.
+          Njegova oglišča lahko dobimo kot središča ploskev teserakta. V koordinatnem sistemu so še enostavnejša,
+          saj je vedno ena koordinata \(\pm 1\), ostale pa \(0\).
+        </div>
+        <div id="default">
+          Pravilni n-ortopleks je pravilni konveksni n-politop.
+          Njegova oglišča lahko dobimo kot središča ploskev n-kocke. V koordinatnem sistemu so še enostavnejša,
+          saj je vedno ena koordinata \(\pm 1\), ostale pa \(0\).
+        </div>
+      </section>
     </div>
     <footer>
       <center>Viri</center>
       <ul>
+        <li>Octahedron. June 2021. url: <a href="https://en.wikipedia.org/wiki/Octahedron">https://en.wikipedia.org/wiki/Octahedron</a>.</li>
+        <li>16-cell. April 2021. url: <a href="https://en.wikipedia.org/wiki/16-cell">https://en.wikipedia.org/wiki/16-cell</a>.</li>
         <li>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></li>
       </ul>
     </footer>
 </body>
 <script>
   dimensions = 3; // naj ostane pod 9
-  init(dimensions, octahedronEdges(dimensions), [undefined, undefined, undefined, "octahedron", "24-Cell", undefined],
+  init(dimensions, octahedronEdges(dimensions), [undefined, undefined, undefined, "octahedron", "16-cell", "default"],
   octahedronEdges, [3, 9]);
   requestAnimationFrame(mainloop);
 </script>
