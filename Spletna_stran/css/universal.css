@@ -82,3 +82,12 @@ nav {
     height: auto;
   }
 }
+
+ul li {
+  list-style-position: inside;
+}
+
+ul {
+  list-style: none;
+  padding-left: 20px;
+}
