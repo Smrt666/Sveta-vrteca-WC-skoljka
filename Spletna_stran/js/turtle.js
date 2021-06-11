@@ -1,10 +1,10 @@
-function init(can) {
+function init(can, ctx) {
     trutle_x = 0;
     trutle_y = can.height; //move origin to bottom left
     trutle_heading = 180; //flip initial heading to look up
     turtle_pen = "up";
     turtle_canvas = can;
-    turtle_ctx = can.getContext("2d");
+    turtle_ctx = ctx;
     turtle_saved = [];
 }
 

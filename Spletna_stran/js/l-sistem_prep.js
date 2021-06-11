@@ -29,6 +29,20 @@ function toArray(str, separators, arr=[]){
     return arr; //the function returns when the string has length 0 and sends the array up the recursion call list
 }
 
+function canvasPrep(){
+    let width = window.innerWidth; //window height and width
+    let height = window.innerHeight;
+
+    let minimum = Math.min(width, height);
+
+    if (minimum == height) {height *= 0.8;} //if height is chosen, scale it down
+    canvas.width = minimum; //set resolution to minimum of window height and width
+    canvas.height = minimum;
+
+    canvas.style.height = canvas.height; //scale canvas with css
+    canvas.style.width = canvas.width;
+}
+
 function prep(){
     let definitions = document.getElementById('definitions').value;
     let rules = document.getElementById('rules').value;

@@ -1,7 +1,18 @@
 function generate(sequence, rules, n){
+    let start = Date.now(); //starting timestamp
+
+    let original = sequence; //original sequence in case this one exceedes the time limit
     for(let i = 0; i < n; i++){
         let tmpArray = [];
         for (let j = 0; j < sequence.length; j++) {
+            let currentTime = Date.now();
+            if(currentTime - start > 1000){ //if the function generates for more than a second, alert and try to generate with a smaller number of iterations
+                alert("Število iteracij je preveliko, narisal bom z manj iteracij.");
+
+                document.getElementById("iterations").value = i; //number of iterations is i, since i starts at 0
+                return sequence;
+            }
+
             let current = sequence[j]
             if(current in rules){ //if current element is a variable and not a constant
                 tmpArray = tmpArray.concat(rules[current]); //add elements of array, not the entire array

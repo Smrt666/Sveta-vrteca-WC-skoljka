@@ -217,8 +217,10 @@
   </footer>
 </body>
 <script>
-  let canvas = document.getElementById('canvas');
-  init(canvas);
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext("2d");
+  init(canvas, ctx);
+  canvasPrep();
 
   function start(){
     reset();
@@ -226,6 +228,12 @@
     let sequence = generate(axiom, rules, iter);
     fullDraw(sequence, defs);
   }
+
+  addEventListener("resize", () => {
+    let old = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    canvasPrep();
+    ctx.drawImage(old, 0, 0);
+  });
 </script>
 <script src="../../css/menu-pokazi-skrij.js"></script>
 </html>
