@@ -66,7 +66,7 @@ function reset(){
 
 function save(){
     turtle_saved.push([trutle_x, trutle_y, trutle_heading]);
-    console.log(turtle_saved);
+    // console.log(turtle_saved);
 }
 
 function restore(){
