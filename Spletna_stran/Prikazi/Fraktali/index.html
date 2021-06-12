@@ -180,6 +180,70 @@
   <!-- Konec navigacije -->
   
   <div class="content">
+    <h2>Navodila za L-Sisteme</h2>
+    <p><i><b>V spodnjih navodilih so primeri navedeni z narekovaji (""), zato da jih je lažje ločiti od besedila. Če poskušate te primere prepisati, uporabite le tisto kar je znotraj narekovajev.</b></i></p>
+    <p>
+      Spodnje platno je koordinatni sistem z izhodiščem v levem spodnjem kotu.
+      Po njem rišemo z želvjo grafiko, kar pomeni, da se v nekem trenutku nahajamo na točki v tem koordinatnem sistemu z določeno usmeritvijo in se ob premiku naprej iz našega prejšnjega položaja do zdajšnjega položaja izriše črta.
+      Kot primer, <b>na začetku se nahajamo v koordinatnem izhodišču (točka (0, 0)) in smo usmerjeni gor (v smeri y osi)</b>.
+      Če se premaknemo naprej, se nam izriše pokončna črta iz izhodišča.
+      Če pa se pred tem zavrtimo 90 stopinj v desno, pa se nam prikaže vodoravna črta.
+      Razdalje premika ni potrebno podati, saj program sam izračuna razdaljo, ki bo risala čez celotno platno.
+    </p>
+    <p>
+      Da sploh lahko rišemo, pa je treba računalniku dopovedati kaj od njega sploh želimo.
+      Zaradi preglednosti v prvo polje definiramo ukaz, ki bo v nadaljnem izvršila dejanje, ki smo ji ga pripisali.
+      Kot primer lahko definiramo: <i>"F = naprej"</i> ali <i>"D = desno 90"</i>.
+      S tem računalniku povemo, da če prebere ukaz F, se premakne naprej in za sabo riše in če prebere ukaz D, se zavrti za 90 stopinj v desno.
+      Ukaz definiramo tako, da <b>v polje vnesemo črko, število ali besedo (ukaz ne sme vsebovati presledkov), vnesemo <i>"="</i> ali <i>":"</i> in ga nasledimo z naslednjimi dejanji:</b>
+      <ul>
+        <li><i>"naprej"</i> - premik naprej</li>
+        <li><i>"desno (kot v stopinjah)"</i> - obrat v desno za kot</li>
+        <li><i>"levo (kot v stopinjah)"</i> - obrat v levo za kot</li>
+        <li><i>"shrani"</i> - shrani trenutni položaj in usmeritev</li>
+        <li><i>"povrni"</i> - vrni se na nazadnje shranjeni položaj in usmeritev</li>
+      </ul><br>
+      En ukaz ima lahko tudi več definicij, kot naprimer: <i>"F = desno 90, naprej"</i> (pomembno je, da <b>več definicij ukaza ločimo z vejico</b>).
+      V tem primeru se bo pri ukazu F, računalnik najprej obrnil za 90 stopinj v desno in se premaknil naprej.
+      <b>Če hočemo definirati več ukazov, jih ločimo tako, da gremo v novo vrstico ali pa uporabimo ";"</b>.
+      Kot primer: <br><br>
+      <i>"F = naprej; D = desno 90"</i><br><br>
+      ali<br><br>
+      <i>"F = naprej<br>
+      D = desno 90"</i>
+    </p>
+    <p>
+      Zdaj ko imamo definirane ukaze, lahko izpišemo aksiom.
+      To je začetno zaporednje ukazov, ki se izriše, če ne definiramo pravil ali uporabimo za število iteracij 0.
+      Če smo definirali ukaz <i>"F = naprej"</i> in ukaz <i>"D = desno 90"</i> se nam pri aksiomu <i>"F D F"</i> (brez uporabe pravil) izriše pokončna črta in vodoravna črta, ker se premaknemo naprej, se obrnemo v desno in se spet premaknemo naprej.
+      Pomembno je, da <b>ukaze v aksiomu ločimo s presledki</b>, saj bi drugače računalnik aksiom <i>"FDF"</i> obravnaval kot en ukaz, ki najbrž nima definicije.
+    </p>
+    <p>
+      Za pravilno uporabo L-Sistemov pa potrebujemo še pravila.
+      To so zaporednja ukazov, ki nadomestijo en ukaz pri vsaki iteraciji (pri vsaki ponovitvi).
+      Kot primer bomo vzeli L-Sistem, z ukazoma <i>"F = naprej"</i> in <i>"D = desno 90"</i>, z aksiomom <i>"F"</i> in pravilom <i>"F = F D F"</i>.
+      Računalnik bo zdaj vzel aksiom <i>"F"</i> in na njem izvedel pravilo/pravila.
+      Imamo pravilo <i>"F = F D F"</i>, kar pomeni, da se bo ukaz <i>"F"</i> zamenjal z ukazi <i>"F D F"</i> in bomo dobilo zaporednje ukazov <i>"F D F"</i>.
+      Če to ponovimo še enkrat, se <i>"F D F"</i> spremeni v <i>"F D F D F D F"</i>, kar se ob še eni ponovitvi spremeni v <i>"F D F D F D F D F D F D F D F"</i> in tako naprej.
+      Končno zaporednje ukazov, ki jih dobimo, se nam bo izrisalo na platnu.
+      Pravila definiramo podobno kot ukaze.
+      <b>Naprej vnesemo ukaz, ki se bo nadomestil, vnesemo <i>"="</i> ali <i>":"</i> in na koncu zapišemo še zaporednje ukazov, ki bodo nadomestili ukaz (zaporednje ukazov ima med ukazi presledke)</b>.
+      Primer: <i>"F = F F D F</i>.
+      <b>Prav tako lahko definiramo več pravil s tem, da jih ločimo z novo vrstico ali <i>";"</i></b>:<br><br>
+      <i>"F = F D F; D = F D"</i><br><br>
+      ali<br><br>
+      <i>"F = F D F<br>
+      D = F D"</i>
+    </p>
+    <p>
+      Nazadnje lahko zapišemo še število iteracij.
+      To v resnici pomeni število ponovitev pravila na aksiomu.
+      Če imamo aksiom <i>"F"</i> in pravilo <i>"F = F D F"</i> bomo pri številu iteracij 1 dobili <i>"F D F"</i>, pri 2 <i>"F D F D F D F"</i>, 3 <i>"F D F D F D F D F D F D F D F"</i> in tako naprej.
+      <b>Če vnesemo 0, se nam izriše aksiom</b>.
+      <b>Število iteracij naj bo pozitivno celo ali 0</b>.
+      V primeru, da je negativno, bo uporabljeno število iteracij 0 in v primeru, da je podano število decimalno, bo uporabljen celi del.
+    </p><hr>
+
     <label for="preset">Že narejeni L-Sistemi:</label>
     <select name="preset" id="preset" onchange="change(this)">
       <option value="custom" selected>Naredi svoj sistem</option>
@@ -230,12 +294,6 @@
     let sequence = generate(axiom, rules, iter);
     fullDraw(sequence, defs);
   }
-
-  addEventListener("resize", () => {
-    let old = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    canvasPrep();
-    ctx.drawImage(old, 0, 0);
-  });
 </script>
 <script src="../../css/menu-pokazi-skrij.js"></script>
 </html>

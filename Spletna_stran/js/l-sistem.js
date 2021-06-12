@@ -1,7 +1,5 @@
 function generate(sequence, rules, n){
     let start = Date.now(); //starting timestamp
-
-    let original = sequence; //original sequence in case this one exceedes the time limit
     for(let i = 0; i < n; i++){
         let tmpArray = [];
         for (let j = 0; j < sequence.length; j++) {

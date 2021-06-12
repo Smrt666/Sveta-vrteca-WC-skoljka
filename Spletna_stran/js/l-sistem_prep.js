@@ -35,7 +35,8 @@ function canvasPrep(){
 
     let minimum = Math.min(width, height);
 
-    if (minimum == height) {height *= 0.8;} //if height is chosen, scale it down
+    if(minimum == height){minimum *= 0.7;} //if height is chosen, scale it down
+
     canvas.width = minimum; //set resolution to minimum of window height and width
     canvas.height = minimum;
 
