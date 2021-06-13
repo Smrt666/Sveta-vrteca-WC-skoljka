@@ -241,9 +241,9 @@
     <p>
       Nazadnje lahko zapišemo še število iteracij.
       To v resnici pomeni število ponovitev pravila na aksiomu.
-      Če imamo aksiom <i>"F"</i> in pravilo <i>"F = F D F"</i> bomo pri številu iteracij 1 dobili <i>"F D F"</i>, pri 2 <i>"F D F D F D F"</i>, 3 <i>"F D F D F D F D F D F D F D F"</i> in tako naprej.
+      Če imamo aksiom <i>"F"</i> in pravilo <i>"F = F D F"</i> bomo pri številu iteracij 1 dobili <i>"F D F"</i>, pri 2 <i>"F D F D F D F"</i>, pri 3 <i>"F D F D F D F D F D F D F D F"</i> in tako naprej.
       <b>Če vnesemo 0, se nam izriše aksiom</b>.
-      <b>Število iteracij naj bo pozitivno celo ali 0</b>.
+      <b>Število iteracij naj bo pozitivno nedecimalno število, vključno z 0</b>.
       V primeru, da je negativno, bo uporabljeno število iteracij 0 in v primeru, da je podano število decimalno, bo uporabljen celi del.
     </p><hr>
 
@@ -259,16 +259,15 @@
       <option value="Levy-C-curve">Lévy C krivulja</option>
       <option value="koch2">Ostra Kochova krivulja</option>
       <option value="wierd-flower">Roža</option>
-      <option value="rectangle">Pravokotni fraktal</option>
     </select>
 
     <div class="textinput">
       <label for="definitions">Vnesite definicije spremenljivk in konstant</label><br>
-      <textarea name="definitions" id="definitions" cols="60" rows="4"></textarea>
+      <textarea name="definitions" id="definitions" cols="80" rows="8"></textarea>
     </div>
     <div class="textinput">
       <label for="definitions">Vnesite pravila za spremenljivke</label><br>
-      <textarea name="rules" id="rules" cols="60" rows="4"></textarea>
+      <textarea name="rules" id="rules" cols="80" rows="8"></textarea>
     </div>
     <div class="textinput">
       <label for="axiom">Vnesite aksiom</label><br>
