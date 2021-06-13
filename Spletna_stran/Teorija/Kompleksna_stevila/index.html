@@ -180,43 +180,80 @@
 
   <div class="content">
     <section>
-      <h2>Definicija kompleksnih števil</h2>
-      <p>Kompleksna števila so množica, ki predstavlja razširitev realnih števil. Vanjo spadajo tudi koreni in negativna
+      <h2>Kompleksna števila</h2>
+      <p>
+        Kompleksna števila so množica, ki predstavlja razširitev realnih števil. Vanjo spadajo tudi koreni in negativna
         števila.
-        Vsebujejo imaginarno enoto \(i\), kjer je   Sestavljena so iz realnega (\(x\)) in imaginarnega dela (\(y\)). To
+        Vsebujejo imaginarno enoto \(i\), kjer je \(i^2 = -1\). Sestavljena so iz realnega (\(x\)) in imaginarnega dela (\(y\)). To
         skupaj napišemo kot \(x + yi\).</p>
       <p>
         Kompleksna števila ponazarjamo v kompleksni (Gaussovi) ravnini. Lahko predstavljajo točko ali
         vektor. Na abscisni osi ponazorimo realna števila. Imenujemo jo realna os in jo označujemo z \(Re\). Na
-        ordinatni osi ponazorimo imaginarna števila in jo označujemo z \(Im\). Eulerjeva enačba:
+        ordinatni osi ponazorimo imaginarna števila in jo označujemo z \(Im\).
       </p>
-      <p>Seštevanje dveh kompleksnih števil je samo seštevanje dveh vektorjev, množenje z določenim
-        kompleksnim številom pa je hkratno vrtenje in razteg. Množenje z \(i\) je enakovredno vrtenju v
+      <p>
+        <b>Absolutna vrednost</b> kompleksnega števila \(z = a + bi\) je definirana kot \(|z| = r.\) 
+      </p>
+      <p>
+        <b>Seštevamo in odštevamo</b> jih tako, da posebej seštejemo oz. odštejemo realni in posebej imaginarni komponenti:
+        $$\left( a + bi \right) + \left( c + di \right) = \left( a + c \right) + \left( b + d \right) i$$
+        $$\left( a + bi \right) - \left( c + di \right) = \left( a - c \right) + \left( b - d \right) i$$
+      </p>
+      <p>
+        Kompleksno število lahko predstavimo tudi kot poltrak s krajiščem v \(0 + 0i\) in oddaljenostjo števila od krajišča.
+        Poltrak določimo s kotom, oddaljenost od krajišča je pa absolutna vrednost. S pomočjo Eulerjeve formule
+        \(e^{ix}\ = \cos{x} + i \sin{x}\), lahko kompleksno število \(x + yi\) zapišemo s <b>polarnimi koordinatami</b>: 
+        $$\DeclareMathOperator{\atantwo}{atan2} z = r e^{i \varphi} = \sqrt{x^2 + y^2} \cdot e^{i \atantwo \left( y, x \right)}$$
+        kjer je \(r\) absolutna
+        vrednost števila, \(\varphi\) pa kot med abscisno osjo in poltrakom s krajiščem v \(0 + 0i\), na katerem število leži.
+      </p>
+      <p>Seštevanje dveh kompleksnih števil je samo seštevanje dveh vektorjev, <b>množenje</b> z določenim
+        kompleksnim številom pa je hkratno vrtenje in razteg. Kompleksna števila lahko množimo kot veččlenike: 
+        $$\left( a + bi \right) \cdot \left( c + di \right) = \left( ac - bd \right) + i\left( ad + bc \right)$$
+        če jih zapišemo s polarnim zapisom, pa izraz postane: 
+        $$r_1 e^{i \varphi_1} \cdot r_2 e^{i \varphi_2} = r_1 \cdot r_2 \cdot e^{i \left( \varphi_1 + \varphi_2 \right)}$$
+        Torej absolutni vrednosti se zmnožita, kota pa seštejeta.
+        Množenje z \(i\) je enakovredno vrtenju v
         nasprotni smeri urinega kazalca za 90 stopinj. Geometrijski ekvivalent enačbe \(i^2  = -1\) je vrtenje za 180
         stopinj. Tako se lahko tudi na enačbo (-1)(-1) = 1 geometrijsko gleda kot na dve vrtenji za 180 stopinj,
         torej vrtenje za 360 stopinj.
       </p>
-      <p> Absolutna vrednost kompleksnega števila \(z = a + bi\) je definirana kot \(|z| = r.\) </p>
-  
-      <p>Konjugacija kompleksnega števila \(z = a + ib\) je definirana kot \(a - ib\), kar se zapiše kot ali z * .
+      <p>
+        Realna <b>potenca</b> kompleksnega števila \(\left( r \cdot e^{i \varphi} \right) ^ n\) (\(n\) je realno število)
+        je enaka \(r^n \cdot e^{i \cdot \varphi \cdot n}\). Pri množenju smo dobili samo eno rešitev, tukaj je pa rešitev lahko
+        neskončno, saj lahko različni koti predstavljajo ista kompleksna števila (koti, ki se razlikujejo za polni kot \(2\pi\)). 
+        Če je \(n\) celo število, bodo zaradi \(\sin \left( x + 2\pi \right) = \sin x \) in \(\cos \left(x + 2\pi\right) = \cos x \)
+        v Eulerjevi formuli vse rešitve enake. Pri realnih potencah pa temu ni nujno tako. Edini razlog, da je to tukaj omenjeno,
+        so koreni števila \(1\). \(\sqrt[n]{x}\) lahko zapišemo kot \(x^\frac{1}{n}\). Če vzamemo recimo 5. koren iz 1,
+        dobimo \(1\), saj je \(1^5 = 1\). Obstajajo pa še 4 kompleksne rešitve enačbe \(x^5 = 1\), ki pa niso realne.
+        Te rešitve lahko skupaj z \(1 + 0i\) povežemo v pravilni petkotnik. Rešitev, z najmanjšim kotom, večjim od 0, ima ta kot
+        točno \(\frac{2\pi}{5}\), oziroma 72°. Če vzamemo neke druge korene števila 1, lahko dokaj enostavno poiščemo kompleksna števila,
+        ki pri množenju zavrtijo za nek želen kot. Ker imajo absolutno vrednost 1, absolutnih vrednosti pri množenju ne spreminjajo.
+      </p>
+      <p>
+        <b>Konjugacija</b> kompleksnega števila \(z = a + bi\) je definirana kot \(a - bi\), kar se zapiše kot 
+        \(\overline{z}\) ali \(z^*\).
         Geometrijska ponazoritev konjugacije kompleksnega števila je zrcaljenje števila prek realne osi.
         Konjugacija je komutativna z vsemi algebrskimi operacijami, kar je zelo povezano z imaginarno enoto
-        \(i\) (-1 ima dva različna kvadratna korena).</p>
-  
-      <p>Seštevamo in odštevamo jih tako, da posebej seštejemo oz. odštejemo realni in posebej imaginarni
-        komponenti.</p>
-  
-      <p>Deljenje: Kompleksno število a + ib lahko delimo z ne ničelnim kompleksnim številom \(c + id\). Kvocient
-        izrazi kot ulomek, nato pa se imenovalec in števec pomnoži s konjugiranim imenovalcem, kar privede
-        do realnega imenovalca.</p>
-  
-      <p>Množenje: Pri množenju kompleksnih števil velja pravilo za množenje dvočlenikov, s tem da, moramo
-        upoštevati, da je \(i^2 = -1\) </p>
+        \(i\) (-1 ima dva različna kvadratna korena).
+      </p>  
+      <p>
+        Kompleksno število \(a + bi\) lahko <b>delimo</b> z ne ničelnim kompleksnim številom \(c + di\). Kvocient
+        izrazimo kot ulomek, nato pa imenovalec in števec pomnožimo s konjugiranim imenovalcem, kar privede
+        do realnega imenovalca:
+        $$ \frac{a + bi}{c + di} = \frac{\left( a + bi \right) \cdot \left( c - di \right)}{\left( c + di \right) \cdot \left( c - di \right)} = 
+        \frac{\left( a + bi \right) \cdot \left( c - di \right)}{c^2 + d^2}
+        $$
+      </p>
+      <p>
+        Vse te operacije lahko preizkusite na <a href="https://vaje.gimvic.org/2d/Dimenzije/Prikazi/Kompleksna_grafika/index.html">kompleksna grafika</a>.
+      </p>
     </section>
   </div>
   <footer>
     <center>Viri</center>
     <ul>
+      <li>Euler's formula. Junij 2021. url: <a href="https://en.wikipedia.org/wiki/Euler%27s_formula">https://en.wikipedia.org/wiki/Euler%27s_formula</a>.</li>
       <li>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></li>
     </ul>
   </footer>
