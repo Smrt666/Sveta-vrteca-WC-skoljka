@@ -98,6 +98,25 @@ ul {
   padding-left: 20px;
 }
 
-p{
+p {
   margin-bottom: 15px;
+}
+
+.slika {
+  display: inline-block;
+  margin: 30px;
+  text-align: center;
+  max-width: 100%;
+}
+
+.slika img {
+  max-width: 100%;
+}
+
+.slika span {
+  word-break: break-all;
+}
+
+ul li {
+  word-break: break-all;
 }

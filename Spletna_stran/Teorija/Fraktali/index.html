@@ -185,10 +185,9 @@
     <section>
       <h2>Definicija fraktala</h2>
       <p>
-        <div style="float: right;">
-          <img src="sierpinski-triangle.png" alt="Trikotnik Sierpinskega kot primer samopodobnega fraktala."
-            style="max-width: 500px; margin: 10px;">
-          <br>Trikotnik Sierpinskega kot primer samopodobnega fraktala.<br>
+        <div class="slika" style="float: right; max-width: min(500px, 100%);">
+          <img src="sierpinski-triangle.png" alt="Trikotnik Sierpinskega kot primer samopodobnega fraktala." style="max-width: min(500px, 100%);"><br>
+          <span>Trikotnik Sierpinskega kot primer samopodobnega fraktala. Vir: <a href="https://www.gresham.ac.uk/search?terms=Biographer">https://www.gresham.ac.uk/search?terms=Biographer</a></span>
         </div>
         Fraktali zaradi nespecifičnosti in kompleksnosti teh oblik niso uradno definirani, vendar obstajajo nekatere bolj
         splošne definicije z nekaj pomanjkljivostmi.
@@ -231,12 +230,16 @@
         Za razumevanje fraktalne dimenzije, moramo najprej pogledati lastnosti celih dimenzij.
         Za začetek vzamemo za primer daljico, ki ima dimenzijo 1 in dolžino \(d\).
         Če daljico presekamo na pol, dobimo dve novi daljici z dolžino \(\frac{d}{2}\).<br>
-        <img src="slikca0-1.svg" alt="Deljenje daljice na dva dela">
+        <div class="slika">
+          <img src="slikca0-1.svg" alt="Deljenje daljice na dva dela">
+        </div>
       </p>
       <p>
         To lahko storimo tudi z kvadratom, ki ima 2 dimenziji in dolžino stranice \(d\).
         Če prvotnemu kvadratu zmanjšamo stranico na \(\frac{d}{2}\), dobimo štiri nove kvadrate s četrtino ploščine.<br>
-        <img src="slikca1-1.svg" alt="Deljenje kvadrata na štiri dele">
+        <div class="slika">
+          <img src="slikca1-1.svg" alt="Deljenje kvadrata na štiri dele">
+        </div>
       </p>
       <p>
         Ta postopek lahko razširimo na višje dimenzije.
@@ -278,11 +281,10 @@
         Če bi hoteli izmeriti Kochovo krivuljo, bi potrebovali mere, ki zadostujejo njeni dimenziji.
         <cite>[<a href="https://en.wikipedia.org/wiki/Fractal">Fractal</a>]</cite>
         <cite>[<a href="https://www.youtube.com/watch?v=v273ElS1TRU">Vu Do Math. Fractal dimensions.</a>]</cite>
-        <br>
-        <img src="koch-curve.png" alt="Kochova krivulja" style="background-color: white;">
-        <br>
-        Kochova krivulja z neskončno dolžino in ploščino nič.
-        <br>
+        <div class="slika" style="display: block;">
+          <img src="koch-curve.png" alt="Kochova krivulja" style="padding-bottom: 10px;"><br>
+          <span>Kochova krivulja z neskončno dolžino in ploščino nič. Vir: <a href="https://\\youwei96.wixsite.com/messyworkings/single-post/2016/06/11/area-of-the-koch-curve">https://\\youwei96.wixsite.com/messyworkings/single-post/2016/06/11/area-of-the-koch-curve</a></span>
+        </div>
       </p>
       <p>
         Da izračunamo dimenzijo fraktala, pa lahko uporabimo formulo, ki smo jo odkrili prej.
@@ -292,9 +294,10 @@
         stranice, je primerno vzeti \(r=\frac{1}{3}\).
         Če Kochovo krivuljo skrčimo, vidimo, da lahko originalno krivuljo zgradimo iz \(N=4\) kopij nove krivulje.
         <cite>[<a href="https://www.youtube.com/watch?v=gB9n2gHsHN4">3Blue1Brown</a>]</cite><br>
-        <img src="koch-curve-dimension.png" alt="Kochova krivulja razdeljena na 4 dele" style="max-width: 100%;"> <br>
-        Kochova krivulja, zgrajena iz štirih Kochovih krivulj z dolžino 1/3 originalne
-        <br><br>
+        <div class="slika" style="display: block;">
+          <img src="koch-curve-dimension.png" alt="Kochova krivulja razdeljena na 4 dele" style="padding-bottom: 10px;  max-width: min(900px, 100%);"> <br>
+          <span>Kochova krivulja, zgrajena iz štirih Kochovih krivulj z dolžino 1/3 originalne</span>
+        </div>
         Če te podatke vstavimo v formulo in jo vnesemo v kalkulator, dobimo naslednje:
         $$D = \frac{\log{4}}{\log{3}} \approx 1,26$$
       </p>
@@ -327,8 +330,10 @@
       </p>
       <p>        
         Če podobno ponovimo na kvadratu, le da istega oglišča ne smemo izbrati dvakrat zapored, se nam pojavi naslednji fraktal:<br>
-        <img src="square-fractal.PNG"><br>
-        Igra kaosa na kvadratu. Vir: <a href="https://www.wikiwand.com/en/Chaos_game">https://www.wikiwand.com/en/Chaos_game</a>
+        <div class="slika">
+          <img src="square-fractal.PNG"><br>
+          <span>Igra kaosa na kvadratu. Vir: <a href="https://www.wikiwand.com/en/Chaos_game">https://www.wikiwand.com/en/Chaos_game</a></span>
+        </div>
       </p>
       <h3>L-Sistem</h3>
       <p>
@@ -342,13 +347,13 @@
       <p>
         Za primer lahko vzamemo sistem s spremenljivkama \(A\) in \(B\), aksiomom \(A\) in pravili \(A \rightarrow AB\) in \(B \rightarrow A\). (\(n\) predstavlja število iteracij):
         <ul>
-            <li> \(n=0: A\) </li>
-            <li> \(n=1: AB\) </li>
-            <li> \(n=2: ABA\) </li>
-            <li> \(n=3: ABAAB\) </li>
-            <li> \(n=4: ABAABABA\) </li>
-            <li> \(n=5: ABAABABAABAAB\) </li>
-          </ul>
+          <li> \(n=0: A\) </li>
+          <li> \(n=1: AB\) </li>
+          <li> \(n=2: ABA\) </li>
+          <li> \(n=3: ABAAB\) </li>
+          <li> \(n=4: ABAABABA\) </li>
+          <li> \(n=5: ABAABABAABAAB\) </li>
+        </ul><br>
       <p>
         Za risanje fraktalov z L-sistemi definiramo eno spremenljivko ali več spremenljivk kot risanje črte v določeno smer z določeno dolžino.
         Poleg tega pa definiramo še konstante \(+\), kar pomeni obrat v levo za določen kot, \(-\), obrat v desno za določen kot, \([\), shrani trenuten položaj ter \(]\), ki povrne sistem v nazadnje shranjen položaj.
@@ -370,9 +375,9 @@
         Končno delitveno pravilo razdeli določeno teselacijo ali tlakovanje (pokritje ravnine z geometrijskimi liki) in jo spremeni v novo teselacijo iz manjših večkotnikov.
         En način deljenja večkotnika imenujemo vrsta ploščice in en način deljenja roba oblike vrsta roba.
         <cite>[<a href="https://en.wikipedia.org/wiki/Finite_subdivision_rule">Finite subdivision rule</a>]</cite>
-        <div>
-          <img src="fsr-fractal.png" alt=""> <br>
-          Fraktal, narejen s končnim delitvenim pravilom. Vir: <a href="https://www.pinterest.com/pin/422353271298859809/">https://www.pinterest.com/pin/422353271298859809/</a>
+        <div class="slika">
+          <img src="fsr-fractal.png" alt="" style="max-width: min(400px, 100%);"><br>
+          <span>Fraktal, narejen s končnim delitvenim pravilom. Vir: <a href="https://www.pinterest.com/pin/422353271298859809/">https://www.pinterest.com/pin/422353271298859809/</a></span>
         </div>
       </p>
       <h3>Escape-time fraktali</h3>
@@ -385,7 +390,7 @@
         <div>
           Miškin klik za povečavo, premikaj miško, da premikaš sliko.
           <button onclick="reset()">Ponastavi</button> <br>
-          <canvas id='canvas'>
+          <canvas id='canvas' style="max-width: 100%;">
           </canvas>
         </div>
     </section>

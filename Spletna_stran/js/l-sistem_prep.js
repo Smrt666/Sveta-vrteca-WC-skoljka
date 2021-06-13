@@ -86,10 +86,11 @@ function change(object){
         "koch-snowflake" : ["F = naprej\n+ = levo 120\n- = desno 60", "F = F - F + F - F", "F + F + F", 0],
         "binary-tree": ["B = naprej\nT = naprej\n[ = shrani, levo 20\n] = povrni, desno 20\nF = naprej", "T = B B [ T ] T\nB = B F", "T", 0],
         "square" : ["F = naprej\n+ = levo 90\n- = desno 90", "F = F + F - F - F + F", "F - F - F - F", 0],
-        "dragon-curve": ["F = naprej\n+ = desno 90\n- = levo 90\nD = naprej", "F = F + D\nD = F - D", "F", 0],
-        "Levy-C-curve": ["F = naprej\n+ = desno 45\n- = levo 90", "F = + F - F +", "- - F", 0],
-        "koch2": ["F = naprej\n+ = levo 80\n- = desno 160\nz = desno 90", "F = F + F - F + F", "z F", 0],
-        "wierd-flower": ["F = naprej\n[ = shrani\n] = povrni\n+ = levo 30\n- = desno 30", "F = F [ + F F ] [ - F F ] F [ - F ] [ + F ] F", "F", 0],
+        "dragon-curve" : ["F = naprej\n+ = desno 90\n- = levo 90\nD = naprej", "F = F + D\nD = F - D", "F", 0],
+        "Levy-C-curve" : ["F = naprej\n+ = desno 45\n- = levo 90", "F = + F - F +", "- - F", 0],
+        "koch2" : ["F = naprej\n+ = levo 80\n- = desno 160\nz = desno 90", "F = F + F - F + F", "z F", 0],
+        "wierd-flower" : ["F = naprej\n[ = shrani\n] = povrni\n+ = levo 30\n- = desno 30", "F = F [ + F F ] [ - F F ] F [ - F ] [ + F ] F", "F", 0],
+        "rectangle" : ["F = naprej\n+ = levo 90\n- = desno 90", "F = F F + F - F + F + F F", "F + F + F + F", 0]
     }
 
     let definitions = document.getElementById('definitions');
