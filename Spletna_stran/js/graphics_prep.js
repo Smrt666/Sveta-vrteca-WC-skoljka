@@ -1,3 +1,5 @@
+unnn = false;
+
 function init(d, obj, obj_type_names, obj_generator, d_range, special_f) {
   if (obj_type_names) {
     for (let i = 0; i < obj_type_names.length; i++) {
@@ -91,6 +93,12 @@ function init(d, obj, obj_type_names, obj_generator, d_range, special_f) {
   for (let i = 0; i < Math.floor(dimensions * (dimensions - 1) / 2); i++) {
     rotations.push(0);
     angles.push(Math.PI / 6);
+  }
+
+  if (!unnn) {
+    document.getElementById("nastavitve").appendChild(document.createTextNode("Tukaj nastavite, kako je objekt obrnjen:"));
+    document.getElementById("nastavitve").appendChild(document.createElement("br"));
+    unnn = true;
   }
 
   slider_mode = 0;
