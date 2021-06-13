@@ -83,6 +83,12 @@ nav {
   }
 }
 
+@media only screen and (max-width: 500px) {
+  #logo{
+    display: none;
+  }
+}
+
 ul li {
   list-style-position: inside;
 }

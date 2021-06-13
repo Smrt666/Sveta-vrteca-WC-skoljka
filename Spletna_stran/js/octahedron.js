@@ -11,6 +11,7 @@ function average(v) {
   return s;
 }
 
+/*
 function createOctahedron(dimensions) {
   let tsds = tesseractSides(dimensions);
   let ncube_sides = tsds[0];
@@ -24,6 +25,16 @@ function createOctahedron(dimensions) {
     vertices.push(average(tmp));
   });
   return vertices;
+}*/
+
+function createOctahedron(dimensions) {
+  let z = [2];
+  let z2 = [-2];
+  for (let i = 0; i < dimensions-1; i++) {
+    z.push(0);
+    z2.push(0);
+  }
+  return permutations(z).concat(permutations(z2));
 }
 
 function octahedronSides(dimensions) {
