@@ -1,4 +1,4 @@
-canvas{
+canvas {
   max-width: 100%; 
   max-height: 100%; 
   border:1px solid #8a8888; 
@@ -6,10 +6,16 @@ canvas{
   background-color: inherit;
 }
 
-.value-holder{
+.value-holder {
   padding: 5px;
   border-radius: 20px;
   border-style: solid;
   border-width: 1px;
   width: 50px;
+}
+
+input {
+  margin: 3px 8px 3px 0;
+  font-size: 14px;
+  padding: 2px;
 }
