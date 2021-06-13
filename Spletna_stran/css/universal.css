@@ -10,6 +10,7 @@
 
 body {
   font-size: 1.2rem;
+  background-color: rgb(253, 253, 253);
 }
 
 h2 {
@@ -28,7 +29,7 @@ p {
 }
 
 header {
-  background-color: brown;
+  background-color: lightskyblue;
   padding: 15px;
   overflow-x: hidden;
 
@@ -40,6 +41,7 @@ header {
 
 header span {
   font-size: 3rem;
+  font-family: serif;
 }
 
 .crtica {
@@ -61,23 +63,24 @@ header span {
 
 nav {
   display: none;
-  background-color: greenyellow;
+  background-color: lightblue;
   padding: 15px;
 }
 
 .nav-element {
-  background-color: aqua;
+  background-color: lavender;
   padding: 15px 20px;
   margin: 8px 5px;
   font-size: 1.25rem;
   display: inline-block;
   max-width: 300px;
   transition: all 200ms ease-in-out;
+  color: black;
 }
 
 .nav-element:hover {
   transform: scale(1.02);
-  background-color: aquamarine;
+  background-color: lightskyblue;
 }
 
 .nov-div {
