@@ -183,7 +183,7 @@
   
   <div class="content">
     <h2>Navodila za L-Sisteme</h2>
-    <p><i><b>V spodnjih navodilih so primeri navedeni z narekovaji (""), zato da jih je lažje ločiti od besedila. Če poskušate te primere prepisati, uporabite le tisto kar je znotraj narekovajev.</b></i></p>
+    <p><i><b>V spodnjih navodilih so primeri navedeni z narekovaji (""), zato da jih je lažje ločiti od besedila. Če poskušate te primere prepisati, uporabite le tisto, kar je znotraj narekovajev.</b></i></p>
     <p>
       Spodnje platno je koordinatni sistem z izhodiščem v levem spodnjem kotu.
       Po njem rišemo z želvjo grafiko, kar pomeni, da se v nekem trenutku nahajamo na točki v tem koordinatnem sistemu z določeno usmeritvijo in se ob premiku naprej iz našega prejšnjega položaja do zdajšnjega položaja izriše črta.
@@ -193,8 +193,8 @@
       Razdalje premika ni potrebno podati, saj program sam izračuna razdaljo, ki bo risala čez celotno platno.
     </p>
     <p>
-      Da sploh lahko rišemo, pa je treba računalniku dopovedati kaj od njega sploh želimo.
-      Zaradi preglednosti v prvo polje definiramo ukaz, ki bo v nadaljnem izvršila dejanje, ki smo ji ga pripisali.
+      Da sploh lahko rišemo, pa je treba računalniku dopovedati, kaj od njega sploh želimo.
+      Zaradi preglednosti v prvo polje definiramo ukaz, ki bo v nadaljnjem izvršila dejanje, ki smo ji ga pripisali.
       Kot primer lahko definiramo: <i>"F = naprej"</i> ali <i>"D = desno 90"</i>.
       S tem računalniku povemo, da če prebere ukaz F, se premakne naprej in za sabo riše in če prebere ukaz D, se zavrti za 90 stopinj v desno.
       Ukaz definiramo tako, da <b>v polje vnesemo črko, število ali besedo (ukaz ne sme vsebovati presledkov), vnesemo <i>"="</i> ali <i>":"</i> in ga nasledimo z naslednjimi dejanji:</b>
@@ -206,7 +206,7 @@
         <li><i>"povrni"</i> - vrni se na nazadnje shranjeni položaj in usmeritev</li>
       </ul><br>
       En ukaz ima lahko tudi več definicij, kot naprimer: <i>"F = desno 90, naprej"</i> (pomembno je, da <b>več definicij ukaza ločimo z vejico</b>).
-      V tem primeru se bo pri ukazu F, računalnik najprej obrnil za 90 stopinj v desno in se premaknil naprej.
+      V tem primeru se bo pri ukazu F računalnik najprej obrnil za 90 stopinj v desno in se premaknil naprej.
       <b>Če hočemo definirati več ukazov, jih ločimo tako, da gremo v novo vrstico ali pa uporabimo ";"</b>.
       Kot primer: <br><br>
       <i>"F = naprej; D = desno 90"</i><br><br>
@@ -217,7 +217,7 @@
     <p>
       Zdaj ko imamo definirane ukaze, lahko izpišemo aksiom.
       To je začetno zaporednje ukazov, ki se izriše, če ne definiramo pravil ali uporabimo za število iteracij 0.
-      Če smo definirali ukaz <i>"F = naprej"</i> in ukaz <i>"D = desno 90"</i> se nam pri aksiomu <i>"F D F"</i> (brez uporabe pravil) izriše pokončna črta in vodoravna črta, ker se premaknemo naprej, se obrnemo v desno in se spet premaknemo naprej.
+      Če smo definirali ukaz <i>"F = naprej"</i> in ukaz <i>"D = desno 90"</i>, se nam pri aksiomu <i>"F D F"</i> (brez uporabe pravil) izriše pokončna črta in vodoravna črta, ker se premaknemo naprej, se obrnemo v desno in se spet premaknemo naprej.
       Pomembno je, da <b>ukaze v aksiomu ločimo s presledki</b>, saj bi drugače računalnik aksiom <i>"FDF"</i> obravnaval kot en ukaz, ki najbrž nima definicije.
     </p>
     <p>
